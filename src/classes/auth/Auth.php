@@ -23,7 +23,7 @@ class Auth
 
         if (!$user) throw new AuthException();
 
-        if (password_verify($passwd, $user['passwd'])) {
+        if (password_verify($passwd, $user['password'])) {
             $_SESSION['user'] = $user;
         } else {
             throw new AuthException();
