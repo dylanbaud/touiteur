@@ -14,10 +14,16 @@ class Dispatcher
 
     public function run(): void
     {
-        switch ($this->action) {
-            default :
+        $class = null;
 
+        switch ($this->action)
+        {
+            case 'default':
+                $class = new AC\DefaultAction();
+                break;
         }
+
+        $this->renderPage($class->execute());
     }
 
     private function renderPage(string $html): void

@@ -1,6 +1,6 @@
 <?php
 
-namespace iutnc\touiteur\action;
+namespace iutnc\touiteur\actions;
 
 abstract class Action {
 
