@@ -1,4 +1,54 @@
-body{
-    background-color: #5e2c71;
-    color: #fff;
+*{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+/* ### Navbar ### */
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #222222;
+    width: 100%;
+    height: 10vh;
+}
+
+nav img{
+    height: 100%;
+    margin-left: 10vh;
+}
+
+nav ul{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+nav a{
+    color: white;
+    margin: 0 30px;
+    font-size: 1.2rem;
+}
+
+/* ### Default ### */
+
+.default{
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.default h1{
+    font-size: 5rem;
+    font-weight: 1000;
+    color: #5e2c71;
+    text-transform: uppercase;
 }

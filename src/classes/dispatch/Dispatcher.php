@@ -33,10 +33,18 @@ class Dispatcher
 <html lang="fr">
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="icon" href="./img/logo.png">
     <title>Touiteur | Accueil</title>
 </head>
 <body>
+<nav>
+    <img src="./img/logo.png" alt="Logo">
+    <ul>
+        <li><a href="./index.php">Accueil</a></li>
+        <li><a href="./index.php?action=sign-in">Connexion</a></li>
+    </ul>
+</nav>
 </body>
 </html>';
         print $html;
