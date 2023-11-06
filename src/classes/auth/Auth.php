@@ -30,31 +30,38 @@ class Auth
         }
     }
 
-    public static function register(string $email, string $passwd)
+    public static function register(string $username, string $email, string $passwd)
     {
+
         $db = ConnectionFactory::makeConnection();
-        $query = 'select count(*) as nb from user where email = ?';
+        $query = 'select count(*) as nbemail from USER where email = ?';
         $resultset = $db->prepare($query);
         $resultset->bindParam(1, $email);
         $resultset->execute();
-
         if (!$resultset) throw new AuthException();
-
         $user = $resultset->fetch(PDO::FETCH_ASSOC);
 
-        if ($user['nb'] == 0 && strlen($passwd) >= 10) {
+        $query = 'select count(*) as nbusername from USER where username = ?';
+        $resultset = $db->prepare($query);
+        $resultset->bindParam(1, $username);
+        $resultset->execute();
+        if (!$resultset) throw new AuthException();
+        $user2 = $resultset->fetch(PDO::FETCH_ASSOC);
+
+        if ($user['nbemail'] == 0 && $user2['nbusername'] == 0 && strlen($passwd) >= 10) {
 
             $hash = password_hash($passwd, PASSWORD_DEFAULT, ['cost' => 12]);
-            $query = 'select max(id)+1 from user as id';
+            $query = 'select max(userid)+1 from USER as id';
             $resultset = $db->prepare($query);
             $resultset->execute();
             $row = $resultset->fetch(PDO::FETCH_ASSOC);
 
-            $query = 'insert into user values (?, ?, "./img/defaultProfile.png", ?, time())';
+            $query = "insert into USER values (?, ?, ? , './img/defaultProfile.png' , ?, null, null, 1)";
             $resultset = $db->prepare($query);
             $resultset->bindParam(1, $row['id']);
             $resultset->bindParam(2, $email);
-            $resultset->bindParam(3, $hash);
+            $resultset->bindParam(3, $username);
+            $resultset->bindParam(4, $hash);
             $resultset->execute();
         } else {
             throw new AuthException();
