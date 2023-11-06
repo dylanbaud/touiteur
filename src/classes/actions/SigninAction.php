@@ -17,7 +17,7 @@ class SigninAction extends Action
         $html = '';
         if ($this->http_method === 'GET') {
             $html .= <<<HTML
-                <div class="sign-in">
+                <div class="sign">
                     <form method="post" action="?action=sign-in">
                         <h2>Connexion</h2>
                         <label for="email">Email:</label>
