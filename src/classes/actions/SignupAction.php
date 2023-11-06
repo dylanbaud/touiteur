@@ -15,8 +15,14 @@ class SignupAction extends Action
             $html .= '
                 <form method="post" action="?action=sign-up">
                 
-                    <label for="username">Username:</label>
+                    <label for="username">Pseudo:</label>
                     <input type="text" name="username" id="username" required><br>
+                    
+                    <label for="firstname">Prénom:</label>
+                    <input type="text" name="firstname" id="firstname" required><br>
+                    
+                    <label for="lastname">Nom de famille:</label>
+                    <input type="text" name="lastname" id="lastname" required><br>
                     
                     <label for="email">Email:</label>
                     <input type="text" name="email" id="email" required><br>
@@ -26,11 +32,13 @@ class SignupAction extends Action
                     <input type="submit" value="Inscription">
                 </form>';
         } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $username = filter_var($_POST['username'], FILTER_SANITIZE_EMAIL);
+            $username = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
             $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
             $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
+            $firstname = filter_var($_POST['firstname'], FILTER_SANITIZE_STRING);
+            $lastname = filter_var($_POST['lastname'], FILTER_SANITIZE_STRING);
             try {
-                Auth::register($username, $email, $password);
+                Auth::register($username, $firstname, $lastname, $email, $password);
                 $html .= 'Inscription réussie';
             } catch (AuthException $e) {
                 $html .= 'Inscription refusé';

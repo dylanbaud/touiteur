@@ -30,7 +30,7 @@ class Auth
         }
     }
 
-    public static function register(string $username, string $email, string $passwd)
+    public static function register(string $username, string $firstname, string $lastname, string $email, string $passwd)
     {
 
         $db = ConnectionFactory::makeConnection();
@@ -56,12 +56,14 @@ class Auth
             $resultset->execute();
             $row = $resultset->fetch(PDO::FETCH_ASSOC);
 
-            $query = "insert into USER values (?, ?, ? , './img/defaultProfile.png' , ?, null, null, 1)";
+            $query = "insert into USER values (?, ?, ? , './img/defaultProfile.png' , ?, null, null, 1, ?, ?)";
             $resultset = $db->prepare($query);
             $resultset->bindParam(1, $row['id']);
             $resultset->bindParam(2, $email);
             $resultset->bindParam(3, $username);
             $resultset->bindParam(4, $hash);
+            $resultset->bindParam(5, $firstname);
+            $resultset->bindParam(6, $lastname);
             $resultset->execute();
         } else {
             throw new AuthException();
