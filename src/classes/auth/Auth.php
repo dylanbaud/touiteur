@@ -50,7 +50,7 @@ class Auth
             $resultset->execute();
             $row = $resultset->fetch(PDO::FETCH_ASSOC);
 
-            $query = 'insert into user values (?, ?, ?, 1)';
+            $query = 'insert into user values (?, ?, "./img/defaultProfile.png", ?, time())';
             $resultset = $db->prepare($query);
             $resultset->bindParam(1, $row['id']);
             $resultset->bindParam(2, $email);

@@ -2,6 +2,8 @@
 
 namespace iutnc\touiteur\user;
 
+use iutnc\touiteur\db\ConnectionFactory;
+
 class Post
 {
 
