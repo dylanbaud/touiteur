@@ -1,7 +1,7 @@
 <?php
 
 namespace iutnc\touiteur\dispatch;
-
+use iutnc\touiteur\actions as AC;
 class Dispatcher
 {
 
@@ -18,7 +18,7 @@ class Dispatcher
 
         switch ($this->action)
         {
-            case 'default':
+            default:
                 $class = new AC\DefaultAction();
                 break;
         }

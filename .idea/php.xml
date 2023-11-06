@@ -5,14 +5,5 @@
       <path value="$PROJECT_DIR$/vendor/composer" />
     </include_path>
   </component>
-  <component name="PhpProjectSharedConfiguration" php_language_level="8.2" />
-<<<<<<< HEAD
-  <component name="PhpStanOptionsConfiguration">
-    <option name="transferred" value="true" />
-  </component>
-  <component name="PsalmOptionsConfiguration">
-    <option name="transferred" value="true" />
-  </component>
-=======
->>>>>>> 380c0c2439cac2a4aaca6938857162574ea1f013
+  <component name="PhpProjectSharedConfiguration" php_language_level="7.4" />
 </project>
