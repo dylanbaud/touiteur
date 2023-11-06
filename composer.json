@@ -1,0 +1,13 @@
+{
+    "name": "iutnc/touiteur",
+    "description": "social network",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "iutnc\\touiteur\\": "./src/classes"
+        }
+    },
+  "require": {
+    "ext-pdo": "*"
+  }
+}
