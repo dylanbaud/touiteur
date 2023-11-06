@@ -2,6 +2,7 @@
 
 namespace iutnc\touiteur\dispatch;
 use iutnc\touiteur\actions as AC;
+
 class Dispatcher
 {
 
@@ -29,12 +30,13 @@ class Dispatcher
     private function renderPage(string $html): void
     {
         print '<!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-    <title>Touiteur</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/styles.css">
+    <title>Touiteur | Accueil</title>
 </head>
 <body>
-<h1>Accueil Touiteur</h1>
 </body>
 </html>';
         print $html;
