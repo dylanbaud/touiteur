@@ -16,7 +16,7 @@ class User {
         $posts = [];
 
         $bd = ConnectionFactory::makeConnection();
-        $sql = // TODO : SQL request
+        $sql =
         $res = $bd->prepare($sql);
         $res->execute();
 

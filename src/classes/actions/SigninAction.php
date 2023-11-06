@@ -44,9 +44,9 @@ HTML;
 
                 $user = new User($row['email']);
 
-                foreach ($user->getPosts() as $post) {
-                    $html .= $post . '<br>';
-                }
+//                foreach ($user->getPosts() as $post) {
+//                    $html .= $post . '<br>';
+//                }
 
             } catch
             (AuthException $e) {
