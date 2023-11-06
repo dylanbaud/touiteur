@@ -13,27 +13,23 @@ class SignupAction extends Action
         $html = '';
         if ($this->http_method === 'GET') {
             $html .= <<<HTML
-            <div class="sign">
+            <div class="sign sign-up">
                 <form method="post" action="?action=sign-up">
                     <h2>Inscription</h2>
                 
-                    <label for="username">Pseudo:</label>
-                    <input type="text" name="username" id="username" required><br>
+                    <input type="text" name="username" id="username" required placeholder="Pseudo"><br>
                     
-                    <label for="firstname">Prénom:</label>
-                    <input type="text" name="firstname" id="firstname" required><br>
+                    <div class="name">
+                        <input type="text" name="firstname" id="firstname" required placeholder="Prénom"><br>
+                        
+                        <input type="text" name="lastname" id="lastname" required placeholder="Nom"><br>
+                    </div>
                     
-                    <label for="lastname">Nom de famille:</label>
-                    <input type="text" name="lastname" id="lastname" required><br>
+                    <input type="date" name="birthday" id="birthday" required placeholder="Date de naissance"><br>
                     
-                    <label for="birthday">Date de naissance:</label>
-                    <input type="date" name="birthday" id="birthday" required><br>
+                    <input type="text" name="email" id="email" required placeholder="Email"><br>
                     
-                    <label for="email">Email:</label>
-                    <input type="text" name="email" id="email" required><br>
-                    
-                    <label for="password">Mot de passe:</label>
-                    <input type="password" name="password" id="password" required><br>
+                    <input type="password" name="password" id="password" required placeholder="Mot de passe"><br>
                     <input type="submit" value="Inscription" class="submit">
                 </form>';
             </div>

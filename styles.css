@@ -128,6 +128,16 @@ nav li a:hover:after{
     margin: 10px 0;
 }
 
+.sign-up form input{
+    margin: 0;
+}
+
+.sign .name{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
 .sign .submit{
     background-color: var(--dark-color);
     color: var(--primary-color);
