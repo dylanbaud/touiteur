@@ -2,12 +2,16 @@
 
 require_once 'vendor/autoload.php';
 
-use iutnc\touiteur\dispatch;
+use iutnc\touiteur\db\ConnectionFactory;
+use iutnc\touiteur\dispatch\Dispatcher;
+
+ConnectionFactory::setConfig('./conf/db.config.ini');
+ConnectionFactory::makeConnection();
 
 if (isset($_GET['action'])) {
-    $dispatcher = new \iutnc\touiteur\dispatch\Dispatcher($_GET['action']);
+    $dispatcher = new Dispatcher($_GET['action']);
     $dispatcher->run();
 } else {
-    $dispatcher = new \iutnc\touiteur\dispatch\Dispatcher('');
+    $dispatcher = new Dispatcher('');
     $dispatcher->run();
 }
