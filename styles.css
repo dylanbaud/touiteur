@@ -1,3 +1,8 @@
+:root{
+    --primary-color: #c379ef;
+    --dark-color: #252525;
+}
+
 *{
     padding: 0;
     margin: 0;
@@ -13,7 +18,7 @@ nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #222222;
+    background-color: var(--dark-color);
     width: 100%;
     height: 10vh;
 }
@@ -49,6 +54,63 @@ nav a{
 .default h1{
     font-size: 5rem;
     font-weight: 1000;
-    color: #5e2c71;
+    color: var(--primary-color);
     text-transform: uppercase;
+}
+
+/* ### Sign-in ### */
+
+.sign-in{
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.sign-in form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--dark-color);
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+}
+
+.sign-in h2{
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.sign-in form label{
+    align-self: flex-start;
+}
+
+.sign-in form input{
+    width: 100%;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    margin: 10px 0;
+}
+
+.sign-in .submit{
+    background-color: var(--dark-color);
+    color: var(--primary-color);
+    border: var(--primary-color) 2px solid;
+    font-size: 1.2rem;
+    height: auto;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.sign-in .submit:hover{
+    background-color: var(--primary-color);
+    color: var(--dark-color);
+    border: var(--dark-color) 2px solid;
 }
