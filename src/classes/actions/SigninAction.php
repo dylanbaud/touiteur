@@ -15,7 +15,7 @@ class SigninAction extends Action
     {
         $db = ConnectionFactory::makeConnection();
         $html = '';
-        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        if ($this->http_method === 'GET') {
             $html .= <<<HTML
                 <div class="sign-in">
                     <form method="post" action="?action=sign-in">
@@ -30,7 +30,7 @@ class SigninAction extends Action
                     </form>
                 </div>
 HTML;
-        } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        } elseif ($this->http_method === 'POST') {
             $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
             $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
 
@@ -51,11 +51,10 @@ HTML;
             } catch
             (AuthException $e) {
                 $html .= <<<HTML
-<div class="default">
-    <h2>Erreur d'authentification</h2>
-</div>
-HTML;
-
+                    <div class="default">
+                        <h2>Erreur d'authentification</h2>
+                    </div>
+                HTML;
             }
 
         }
