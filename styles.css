@@ -101,7 +101,6 @@ nav li a:hover:after{
 .sign form{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
     background-color: var(--dark-color);
     padding: 20px;
@@ -117,6 +116,7 @@ nav li a:hover:after{
 
 .sign form label{
     align-self: flex-start;
+    margin-bottom: 5px;
 }
 
 .sign form input{
@@ -124,18 +124,15 @@ nav li a:hover:after{
     height: 30px;
     border-radius: 5px;
     border: none;
-    padding: 5px;
-    margin: 10px 0;
-}
-
-.sign-up form input{
-    margin: 0;
+    padding: 5px 10px;
+    margin-bottom: 20px;
 }
 
 .sign .name{
     display: flex;
     justify-content: space-between;
     width: 100%;
+    gap: 10px;
 }
 
 .sign .submit{
@@ -147,6 +144,7 @@ nav li a:hover:after{
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
+    margin-top: 10px;
 }
 
 .sign .submit:hover{

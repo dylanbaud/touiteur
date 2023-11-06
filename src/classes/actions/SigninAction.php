@@ -21,10 +21,10 @@ class SigninAction extends Action
                     <form method="post" action="?action=sign-in">
                         <h2>Connexion</h2>
                         <label for="email">Email:</label>
-                        <input type="text" name="email" id="email" required placeholder="exemple@mail.com"><br>
+                        <input type="text" name="email" id="email" required placeholder="exemple@mail.com">
                         
                         <label for="password">Mot de passe:</label>
-                        <input type="password" name="password" id="password" required placeholder="dylansmashunpeunon"><br>
+                        <input type="password" name="password" id="password" required placeholder="dylansmashunpeunon">
                         <input type="submit" value="Connexion" class="submit">
                         <p>Pas encore inscrit ? <a href="?action=sign-up">Inscrivez-vous</a></p>
                     </form>

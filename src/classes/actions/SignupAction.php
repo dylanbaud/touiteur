@@ -13,23 +13,23 @@ class SignupAction extends Action
         $html = '';
         if ($this->http_method === 'GET') {
             $html .= <<<HTML
-            <div class="sign sign-up">
+            <div class="sign">
                 <form method="post" action="?action=sign-up">
                     <h2>Inscription</h2>
                 
-                    <input type="text" name="username" id="username" required placeholder="Pseudo"><br>
+                    <input type="text" name="username" id="username" required placeholder="Pseudo">
                     
                     <div class="name">
-                        <input type="text" name="firstname" id="firstname" required placeholder="Prénom"><br>
+                        <input type="text" name="firstname" id="firstname" required placeholder="Prénom">
                         
-                        <input type="text" name="lastname" id="lastname" required placeholder="Nom"><br>
+                        <input type="text" name="lastname" id="lastname" required placeholder="Nom">
                     </div>
                     
-                    <input type="date" name="birthday" id="birthday" required placeholder="Date de naissance"><br>
+                    <input type="date" name="birthday" id="birthday" required placeholder="Date de naissance">
                     
-                    <input type="text" name="email" id="email" required placeholder="Email"><br>
+                    <input type="text" name="email" id="email" required placeholder="Email">
                     
-                    <input type="password" name="password" id="password" required placeholder="Mot de passe"><br>
+                    <input type="password" name="password" id="password" required placeholder="Mot de passe">
                     <input type="submit" value="Inscription" class="submit">
                 </form>';
             </div>
