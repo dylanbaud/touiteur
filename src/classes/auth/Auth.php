@@ -12,7 +12,7 @@ class Auth
     {
 
         $db = ConnectionFactory::makeConnection();
-        $query = 'select * from user where email = ?';
+        $query = 'select * from USER where email = ?';
         $resultset = $db->prepare($query);
         $resultset->bindParam(1, $email);
         $resultset->execute();

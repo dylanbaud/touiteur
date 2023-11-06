@@ -17,7 +17,7 @@ class SigninAction extends Action
         $html = '';
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             $html .= '
-                <form method="post" action="?action=signin">
+                <form method="post" action="?action=sign-in">
                     <label for="email">Email:</label>
                     <input type="text" name="email" id="email" required><br>
                     
@@ -31,16 +31,16 @@ class SigninAction extends Action
 
             try {
                 Auth::authentificate($email, $password);
-                $query = 'select * from user where email = ?';
+                $query = 'select * from USER where email = ?';
                 $resultset = $db->prepare($query);
                 $resultset->bindParam(1, $email);
                 $resultset->execute();
                 $row = $resultset->fetch(PDO::FETCH_ASSOC);
 
-                $user = new User($row['email'], $row['passwd'], $row['role']);
+                $user = new User($row['email']);
 
-                foreach ($user->getPlaylists() as $playlist) {
-                    $html .= $playlist . '<br>';
+                foreach ($user->getPosts() as $post) {
+                    $html .= $post . '<br>';
                 }
 
             } catch

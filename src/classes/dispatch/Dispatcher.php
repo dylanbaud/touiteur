@@ -19,6 +19,9 @@ class Dispatcher
 
         switch ($this->action)
         {
+            case 'sign-in':
+                $class = new AC\SigninAction();
+                break;
             default:
                 $class = new AC\DefaultAction();
                 break;
