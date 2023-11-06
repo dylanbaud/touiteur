@@ -49,7 +49,12 @@ HTML;
 
             } catch
             (AuthException $e) {
-                $html .= "Erreur lors de la connexion";
+                $html .= <<<HTML
+<div class="default">
+    <h2>Erreur d'authentification</h2>
+</div>
+HTML;
+
             }
 
         }
