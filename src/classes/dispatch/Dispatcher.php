@@ -45,7 +45,7 @@ class Dispatcher
 </head>
 <body>
 <nav>
-    <img src="./img/logo.png" alt="Logo">
+    <a href="./index.php"><img src="./img/logo.png" alt="Logo"></a>
     <ul>
         <li><a href="./index.php">Accueil</a></li>
         <li><a href="./index.php?action=sign-in">Connexion</a></li>

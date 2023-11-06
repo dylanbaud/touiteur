@@ -26,6 +26,7 @@ class SigninAction extends Action
                         <label for="password">Mot de passe:</label>
                         <input type="password" name="password" id="password" required placeholder="dylansmashunpeunon"><br>
                         <input type="submit" value="Connexion" class="submit">
+                        <p>Pas encore inscrit ? <a href="?action=sign-up">Inscrivez-vous</a></p>
                     </form>
                 </div>
 HTML;

@@ -24,7 +24,13 @@ nav{
     padding: 0 10vh;
 }
 
-nav img{
+nav > a{
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+nav a img{
     height: 100%;
 }
 
@@ -35,17 +41,17 @@ nav ul{
     gap: 100px;
 }
 
-nav a{
+nav li a{
     color: white;
     font-size: 1.3rem;
     transition: all 0.3s ease-in-out;
 }
 
-nav a:hover{
+nav li a:hover{
     color: var(--primary-color);
 }
 
-nav a:after{
+nav li a:after{
     content: '';
     display: block;
     height: 3px;
@@ -55,7 +61,7 @@ nav a:after{
     transition: width 0.3s ease;
 }
 
-nav a:hover:after{
+nav li a:hover:after{
     width: 100%;
 }
 
@@ -137,4 +143,12 @@ nav a:hover:after{
     background-color: var(--primary-color);
     color: white;
     border: var(--dark-color) 2px solid;
+}
+
+.sign-in p{
+    margin-top: 10px;
+}
+
+.sign-in a{
+    color: var(--primary-color);
 }
