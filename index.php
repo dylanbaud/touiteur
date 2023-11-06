@@ -6,7 +6,6 @@ use iutnc\touiteur\db\ConnectionFactory;
 use iutnc\touiteur\dispatch\Dispatcher;
 
 ConnectionFactory::setConfig('./conf/db.config.ini');
-ConnectionFactory::makeConnection();
 
 if (isset($_GET['action'])) {
     $dispatcher = new Dispatcher($_GET['action']);
