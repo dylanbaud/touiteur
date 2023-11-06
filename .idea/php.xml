@@ -15,11 +15,7 @@
       <path value="$PROJECT_DIR$/vendor/composer" />
     </include_path>
   </component>
-<<<<<<< HEAD
-  <component name="PhpProjectSharedConfiguration" php_language_level="7.4" />
-=======
   <component name="PhpProjectSharedConfiguration" php_language_level="8.2" />
->>>>>>> 7c3b73046e16027cf0ccd6e90dca98fd4bf189f7
   <component name="PhpStanOptionsConfiguration">
     <option name="transferred" value="true" />
   </component>
