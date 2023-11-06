@@ -11,7 +11,7 @@ class SignupAction extends Action
     public function execute(): string
     {
         $html = '';
-        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        if ($this->http_method === 'GET') {
             $html .= '
                 <form method="post" action="?action=sign-up">
                 
@@ -31,7 +31,7 @@ class SignupAction extends Action
                     <input type="password" name="password" id="password" required><br>
                     <input type="submit" value="Inscription">
                 </form>';
-        } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        } elseif ($this->http_method === 'POST') {
             $username = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
             $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
             $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
