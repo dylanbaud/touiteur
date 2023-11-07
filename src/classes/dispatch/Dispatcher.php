@@ -48,15 +48,18 @@ class Dispatcher
     <title>Touiteur</title>
 </head>
 <body>
-<nav>
-    <a href="./index.php"><img src="./img/logo.png" alt="Logo"></a>
-    <ul>
-        <li><a href="./index.php">Accueil</a></li>
-        <li><a href="./index.php?action=sign-in">Connexion</a></li>
-    </ul>
-</nav>'. $html .'
+<div class="navbar">
+    <nav>
+        <a href="?action=" class="logo"><img src="/img/logo.png" alt="Logo"></a>
+        <a href="?action="><i class="fa-solid fa-house"></i>Accueil</a>
+        <a href=""><i class="fa-solid fa-magnifying-glass"></i>Rechercher</a>
+        <a href="?action=sign-in"><i class="fa-solid fa-user"></i>Connexion</a>
+    </nav>
+</div>
+
+' . $html . '
+<script src="https://kit.fontawesome.com/84d125ec8a.js" crossorigin="anonymous"></script>
 </body>
 </html>';
     }
-
 }
