@@ -1,6 +1,7 @@
 :root{
     --primary-color: #c379ef;
     --dark-color: #080808;
+    --dark-color2: #1a1a1a;
     --border-color: #2f3336;
 }
 
@@ -52,6 +53,7 @@ nav a{
     transition: all 0.3s ease-in-out;
     padding: 15px 15px 15px 10px;
     border-radius: 50px;
+    margin: 2px 0;
 }
 
 nav .post{
@@ -205,6 +207,11 @@ nav .logo:hover{
     backdrop-filter: blur(10px);
     border: var(--border-color) 1px solid;
     padding: 10px;
+    gap: 10px;
+}
+
+.title img{
+    height: 50px;
 }
 
 .title h1{
@@ -223,6 +230,11 @@ nav .logo:hover{
     padding: 10px;
     border: var(--border-color) 1px solid;
     width: 100%;
+    cursor: pointer;
+}
+
+.card:hover{
+    background-color: var(--dark-color2);
 }
 
 .card-profile{

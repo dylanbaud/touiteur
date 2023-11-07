@@ -18,6 +18,7 @@ class PostListRender{
         $html = <<<HTML
 <div class="post-list">
     <div class="title">
+        <img src="/img/logo.png" alt="Logo">
         <h1>Touiteur</h1>
     </div>
 HTML;

@@ -61,7 +61,6 @@ class Dispatcher
 <body>
 <div class="navbar">
     <nav>
-        <a href="?action=" class="logo"><img src="/img/logo.png" alt="Logo"></a>
         <a href="?action="><i class="fa-solid fa-house"></i>Accueil</a>
         <a href=""><i class="fa-solid fa-magnifying-glass"></i>Rechercher</a>
         <a href="?action=sign-in"><i class="fa-solid fa-user"></i>Compte</a>
