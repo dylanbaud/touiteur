@@ -31,6 +31,9 @@ class Dispatcher
             case 'view-profile':
                 $class = new AC\ViewProfileAction();
                 break;
+            case 'create-post':
+                $class = new AC\CreatePostAction();
+                break;
             default:
                 $class = new AC\DefaultAction();
                 break;
@@ -67,7 +70,7 @@ class Dispatcher
         <a href="?action="><i class="fa-solid fa-house"></i>Accueil</a>
         <a href=""><i class="fa-solid fa-magnifying-glass"></i>Rechercher</a>
         <a href="?action=sign-in"><i class="fa-solid fa-user"></i>Compte</a>
-        <a href="" class="post">Poster</a>
+        <a href="?action=create-post" class="post">Poster</a>
     </nav>
 </div>
 
