@@ -26,8 +26,7 @@ class PostAction extends Action
                 </div>
 HTML;
 
-    }
-        elseif ($this->http_method === 'POST' && Auth::isLogged()) {
+        } elseif ($this->http_method === 'POST' && Auth::isLogged()) {
             $texte_post = filter_var($_POST['texte-post'], FILTER_SANITIZE_STRING);
             $png_post = "";
             $query = "insert into USER values (?, ?, 0, date('Y-m-d'), ?)";
@@ -38,4 +37,5 @@ HTML;
         }
 
         return $html;
+    }
 }

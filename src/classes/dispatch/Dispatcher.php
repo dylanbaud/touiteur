@@ -66,13 +66,8 @@ class Dispatcher
     <nav>
         <a href="?action="><i class="fa-solid fa-house"></i>Accueil</a>
         <a href=""><i class="fa-solid fa-magnifying-glass"></i>Rechercher</a>
-<<<<<<< HEAD
-        <a href="?action=sign-in"><i class="fa-solid fa-user"></i>Connexion</a>
-        <a href="?action=create-post"><i class="fa-solid fa-user"></i>Publier un poste</a>
-=======
         <a href="?action=sign-in"><i class="fa-solid fa-user"></i>Compte</a>
         <a href="" class="post">Poster</a>
->>>>>>> 92dd6ea7918c9ac5dfde89122480fe500613e01a
     </nav>
 </div>
 
