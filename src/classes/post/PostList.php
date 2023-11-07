@@ -27,7 +27,7 @@ class PostList
         $postList = array();
 
         $db = ConnectionFactory::makeConnection();
-        $query = "select * from POST order by score desc limit 10 offset ?";
+        $query = "select * from POST order by postDate limit 10 offset ?";
         $resultset = $db->prepare($query);
         $resultset->bindParam(1, $min);
         $resultset->execute();
