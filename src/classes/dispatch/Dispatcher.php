@@ -72,10 +72,17 @@ class Dispatcher
 <body>
 <div class="navbar">
     <nav>
+<<<<<<< HEAD
         <a href="?action="><i class="fa-solid fa-house"></i>Accueil</a>
         <a href=""><i class="fa-solid fa-magnifying-glass"></i>Rechercher</a>
         <a href="?action=sign-in"><i class="fa-solid fa-user"></i>Compte</a>
         <a href="?action=create-post" class="post">Poster</a>
+=======
+        <a href="?action="><img src="./img/home.svg">Accueil</a>
+        <a href=""><img src="./img/search.svg">Rechercher</a>
+        <a href="?action=sign-in"><img src="./img/account.png">Compte</a>
+        <a href="" class="post">Poster</a>
+>>>>>>> 5753fc66473b5901fe7a91f8becacf27a62bae65
     </nav>
 </div>
 
@@ -83,7 +90,6 @@ class Dispatcher
 
 <div class="right"></div>
 
-<script src="https://kit.fontawesome.com/84d125ec8a.js" crossorigin="anonymous"></script>
 </body>
 </html>';
     }

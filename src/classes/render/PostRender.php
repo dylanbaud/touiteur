@@ -20,7 +20,7 @@ class PostRender
         $html = '
 <div class="blur">
     <div class="card better-card">
-        <a href="?action=" class="quit-btn"><i class="fa-solid fa-xmark"></i></a>
+        <a href="?action=" class="quit-btn"><img src="./img/cancel.png"></a>
         <div class="card-profile better-card-profile">
             <img src='.$user->profilePic.'>
             <p>'.$user->username.'<span> - '.$user->lastName.' '.$user->firstName.'</span></p>
