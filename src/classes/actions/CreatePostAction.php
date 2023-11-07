@@ -36,14 +36,13 @@ HTML;
             $text = filter_var($_POST['text'], FILTER_SANITIZE_STRING);
 
             $upload_dir = 'img/post/';
-            $filename = uniqid();
+            $filename = uniqid().explode('/', $_FILES['inputfile']['type'][1]);
 
-            print $_FILES['inputfile']['type'];
 
             $tmp = $_FILES['inputfile']['tmp_name'];
-            if (($_FILES['inputfile']['error'] === UPLOAD_ERR_OK) && ($_FILES['inputfile']['type'] === 'image/png' || $_FILES['inputfile']['type'] === 'image/jpeg' || $_FILES['inputfile']['type'] === 'image/gif') && ($_FILES['inputfile']['size'] < 20000000)) {
+            if (($_FILES['inputfile']['error'] === UPLOAD_ERR_OK) && explode('/',$_FILES['inputfile']['type'])[0] == 'image' && ($_FILES['inputfile']['size'] < 20000000)) {
 
-                $dest = $upload_dir . $filename . '.png';
+                $dest = $upload_dir . $filename;
                 if (!move_uploaded_file($tmp, $dest)) {
                     print "hum, hum téléchargement non valide<br>";
                 } else {
