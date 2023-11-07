@@ -27,8 +27,12 @@ class PostList
         $resultset->execute();
 
         while ($row = $resultset->fetch(PDO::FETCH_ASSOC)) {
-            $user = User::getUser($row['userId']);
-            $post = new Post($row['postId'], $row['postText'], $row['image'], $row['score'], $row['postDate'], $user);
+            $post = new Post($row['postId']);
+            $post->postText = $row['postText'];
+            $post->image = $row['image'];
+            $post->score = $row['score'];
+            $post->postDate = $row['postDate'];
+            $post->user = User::getUser($row['userId']);
             $postList[] = $post;
         }
 

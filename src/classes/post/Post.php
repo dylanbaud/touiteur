@@ -8,22 +8,21 @@ use iutnc\touiteur\exception\InvalidPropertyNameException;
 
 class Post
 {
-    private int $id;
-    private string $postText;
-    private string $image;
-    private int $score;
-    private string $postDate;
-    private User $user;
+    protected int $id;
+    protected string $postText;
+    protected ?string $image;
+    protected int $score;
+    protected string $postDate;
+    protected User $user;
 
-    function __construct(int $id, string $postText, string $image, int $score, string $postDate, User $user) {
+    public function __construct(int $id)
+    {
         $this->id = $id;
-        $this->postText = $postText;
-        $this->image = $image;
-        $this->score = $score;
-        $this->postDate = $postDate;
-        $this->user = $user;
     }
 
+    /**
+     * @throws Exception
+     */
     public function __set(string $at, mixed $val): void
     {
         if (property_exists($this, $at)) {

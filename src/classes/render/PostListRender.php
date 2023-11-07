@@ -27,12 +27,16 @@ class PostListRender{
         </div>
         <div class="card-content">
             <p>$post->postText</p>
-            <img src='$post->image'>
-        </div>
-    </div>
 HTML;
+            if ($post->image != null){
+                $html .= "<img src='$post->image'>";
+            }
+
+            $html .= '</div>
+    </div>';
         }
-        $html .= '</div>';
+        $html .= '
+    </div>';
         return $html;
     }
 
