@@ -5,7 +5,10 @@ namespace iutnc\touiteur\user;
 use Exception;
 use iutnc\touiteur\exception\AuthException;
 use iutnc\touiteur\db\ConnectionFactory;
+use iutnc\touiteur\exception\PostException;
 use iutnc\touiteur\exception\UserException;
+use iutnc\touiteur\post\Post;
+use iutnc\touiteur\post\PostList;
 use PDO;
 
 class User
@@ -66,6 +69,28 @@ where userId = ?';
     {
         if (property_exists($this, $at)) return $this->$at;
         throw new Exception ("$at: invalid property");
+    }
+
+    /**
+     * @throws UserException
+     * @throws PostException
+     */
+    public static function getPostListUser(int $id): PostList
+    {
+        $postList = array();
+
+        $db = ConnectionFactory::makeConnection();
+        $query = "select * from POST where userId = ? order by postDate desc";
+        $resultset = $db->prepare($query);
+        $resultset->bindParam(1, $id);
+        $resultset->execute();
+
+        while ($row = $resultset->fetch(PDO::FETCH_ASSOC)) {
+            $post = Post::getPost($row['postId']);
+            $postList[] = $post;
+        }
+
+        return new PostList($postList);
     }
 
 }

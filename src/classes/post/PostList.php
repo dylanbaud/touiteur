@@ -13,7 +13,7 @@ class PostList
 {
     private array $posts;
 
-    private function __construct(array $posts = array())
+    public function __construct(array $posts = array())
     {
         $this->posts = $posts;
     }
@@ -27,7 +27,7 @@ class PostList
         $postList = array();
 
         $db = ConnectionFactory::makeConnection();
-        $query = "select * from POST order by postDate limit 10 offset ?";
+        $query = "select * from POST order by postDate desc limit 10 offset ?";
         $resultset = $db->prepare($query);
         $resultset->bindParam(1, $min);
         $resultset->execute();

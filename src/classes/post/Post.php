@@ -62,7 +62,6 @@ class Post
 
         if (!$row) throw new PostException();
 
-
         $post = new Post($id);
         $post->postText = $row['postText'];
         $post->image = $row['image'];
