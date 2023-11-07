@@ -54,6 +54,7 @@ class Dispatcher
         <a href="?action="><i class="fa-solid fa-house"></i>Accueil</a>
         <a href=""><i class="fa-solid fa-magnifying-glass"></i>Rechercher</a>
         <a href="?action=sign-in"><i class="fa-solid fa-user"></i>Connexion</a>
+        <a href="?action=create-post"><i class="fa-solid fa-user"></i>Publier un poste</a>
     </nav>
 </div>
 
