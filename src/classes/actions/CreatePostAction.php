@@ -36,7 +36,7 @@ HTML;
             $text = filter_var($_POST['text'], FILTER_SANITIZE_STRING);
 
             $upload_dir = 'img/post/';
-            $filename = uniqid().explode('/', $_FILES['inputfile']['type'])[1];
+            $filename = uniqid().".".explode('/', $_FILES['inputfile']['type'])[1];
 
 
             $tmp = $_FILES['inputfile']['tmp_name'];
