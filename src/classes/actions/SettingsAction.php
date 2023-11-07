@@ -5,7 +5,6 @@ namespace iutnc\touiteur\actions;
 use iutnc\touiteur\auth\Auth;
 use iutnc\touiteur\db\ConnectionFactory;
 use iutnc\touiteur\user\User;
-use SplFileInfo;
 
 class SettingsAction extends Action
 {
@@ -38,7 +37,7 @@ class SettingsAction extends Action
 
         } else if ($this->http_method === 'POST' && Auth::isLogged()) {
 
-            if (isset($_FILES['profilePic'])) {
+            if (isset($_FILES['profilePic']) && $_FILES['profilePic']['size'] <= 10000000) {
                 if(file_exists($_SESSION['user']->profilePic) && $_SESSION['user']->profilePic != "./img/defaultProfile.png")
                     unlink($_SESSION['user']->profilePic);
                 $origine = $_FILES['profilePic']['tmp_name'];
