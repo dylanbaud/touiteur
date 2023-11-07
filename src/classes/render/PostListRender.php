@@ -18,14 +18,16 @@ class PostListRender{
         $html = <<<HTML
 <div class="post-list">
     <div class="title">
+        <img src="/img/logo.png" alt="Logo">
         <h1>Touiteur</h1>
     </div>
 HTML;
         $postList = $this->postlist;
         foreach ($postList->posts as $post){
             $user = $post->user;
+            $id = $post->id;
             $html .= <<<HTML
-    <div class="card">
+    <a href="?action=view-post&id=$id" class="card">
         <div class="card-profile">
             <img src='$user->profilePic'>
             <p>$user->username</p>
@@ -38,12 +40,9 @@ HTML;
             }
 
             $html .= '</div>
-    </div>';
+    </a>';
         }
-        $html .= '
-    </div>';
+        $html .= '</div>';
         return $html;
     }
-
-
 }

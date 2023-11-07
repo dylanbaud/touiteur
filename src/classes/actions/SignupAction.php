@@ -32,6 +32,7 @@ class SignupAction extends Action
                     
                     <input type="password" name="password" id="password" required placeholder="Mot de passe">
                     <input type="submit" value="S'inscrire" class="submit">
+                    <p>Déjà inscrit ? <a href="?action=sign-in">Connectez-vous</a></p>
                 </form>
             </div>
 HTML;

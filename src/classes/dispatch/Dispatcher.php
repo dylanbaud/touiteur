@@ -28,6 +28,11 @@ class Dispatcher
             case 'sign-out':
                 $class = new AC\SignoutAction();
                 break;
+            case 'view-profile':
+                $class = new AC\ViewProfileAction();
+            case 'view-post':
+                $class = new AC\ViewPostAction();
+                break;
             default:
                 $class = new AC\DefaultAction();
                 break;
@@ -61,10 +66,9 @@ class Dispatcher
 <body>
 <div class="navbar">
     <nav>
-        <a href="?action=" class="logo"><img src="/img/logo.png" alt="Logo"></a>
-        <a href="?action="><i class="fa-solid fa-house"></i>Accueil</a>
-        <a href=""><i class="fa-solid fa-magnifying-glass"></i>Rechercher</a>
-        <a href="?action=sign-in"><i class="fa-solid fa-user"></i>Compte</a>
+        <a href="?action="><img src="./img/home.svg">Accueil</a>
+        <a href=""><img src="./img/search.svg">Rechercher</a>
+        <a href="?action=sign-in"><img src="./img/account.png">Compte</a>
         <a href="" class="post">Poster</a>
     </nav>
 </div>
@@ -73,7 +77,6 @@ class Dispatcher
 
 <div class="right"></div>
 
-<script src="https://kit.fontawesome.com/84d125ec8a.js" crossorigin="anonymous"></script>
 </body>
 </html>';
     }
