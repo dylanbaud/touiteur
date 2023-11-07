@@ -36,6 +36,9 @@ class Dispatcher
             case 'create-post':
                 $class = new AC\CreatePostAction();
                 break;
+            case 'settings':
+                $class = new AC\SettingsAction();
+                break;
             default:
                 $class = new AC\DefaultAction();
                 break;

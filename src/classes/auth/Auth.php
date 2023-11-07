@@ -52,12 +52,8 @@ class Auth
         if ($user['nbemail'] == 0 && $user2['nbusername'] == 0 && strlen($passwd) >= 10) {
 
             $hash = password_hash($passwd, PASSWORD_DEFAULT, ['cost' => 12]);
-            $query = 'select max(userid)+1 from USER as id';
-            $resultset = $db->prepare($query);
-            $resultset->execute();
-            $row = $resultset->fetch(PDO::FETCH_ASSOC);
 
-            $query = "insert into USER values (?, ?, ? , './img/defaultProfile.png' , ?, ?, ?, 1, ?, ?)";
+            $query = "insert into USER (username, email, profilepic, password, joinDate, birthDate, role, firstName, lastName) values (?, ?, ? , './img/defaultProfile.png' , ?, ?, ?, 1, ?, ?)";
             $resultset = $db->prepare($query);
             $resultset->bindParam(1, $row['id']);
             $resultset->bindParam(2, $email);
