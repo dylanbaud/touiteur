@@ -4,6 +4,8 @@ namespace iutnc\touiteur\post;
 
 use Exception;
 use iutnc\touiteur\db\ConnectionFactory;
+use iutnc\touiteur\exception\PostException;
+use iutnc\touiteur\exception\UserException;
 use iutnc\touiteur\user\User;
 use PDO;
 
@@ -16,6 +18,10 @@ class PostList
         $this->posts = $posts;
     }
 
+    /**
+     * @throws UserException
+     * @throws PostException
+     */
     public static function getAllPosts(int $min): PostList
     {
         $postList = array();
@@ -27,12 +33,7 @@ class PostList
         $resultset->execute();
 
         while ($row = $resultset->fetch(PDO::FETCH_ASSOC)) {
-            $post = new Post($row['postId']);
-            $post->postText = $row['postText'];
-            $post->image = $row['image'];
-            $post->score = $row['score'];
-            $post->postDate = $row['postDate'];
-            $post->user = User::getUser($row['userId']);
+            $post = Post::getPost($row['postId']);
             $postList[] = $post;
         }
 

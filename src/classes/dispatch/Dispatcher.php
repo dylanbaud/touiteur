@@ -28,6 +28,9 @@ class Dispatcher
             case 'sign-out':
                 $class = new AC\SignoutAction();
                 break;
+            case 'view-profile':
+                $class = new AC\ViewProfileAction();
+                break;
             default:
                 $class = new AC\DefaultAction();
                 break;

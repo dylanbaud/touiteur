@@ -15,6 +15,7 @@ class UserRender{
 
     public function render(): string
     {
+
         $html = '';
 
         return $html;
