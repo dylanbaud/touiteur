@@ -25,6 +25,9 @@ class Dispatcher
             case 'sign-up':
                 $class = new AC\SignupAction();
                 break;
+            case 'sign-out':
+                $class = new AC\SignoutAction();
+                break;
             default:
                 $class = new AC\DefaultAction();
                 break;
@@ -41,7 +44,7 @@ class Dispatcher
     <meta charset="utf-8">
     <link rel="stylesheet" href="./styles.css">
     <link rel="icon" href="./img/logo.png">
-    <title>Touiteur | Accueil</title>
+    <title>Touiteur</title>
 </head>
 <body>
 <nav>

@@ -9,6 +9,7 @@ use PDO;
 class User
 {
 
+<<<<<<< HEAD
     private int $userId;
     private string $email;
     private string $username;
@@ -19,6 +20,9 @@ class User
     private int $role;
     private string $firstName;
     private string $lastName;
+=======
+    public string $email;
+>>>>>>> 95089e78a5d92bfb89d4b8d2537e3e273468f272
 
     private function __construct(int $userId, string $email, string $username, string $profilePic, string $password, string $joinDate, string $birthdate, int $role, string $firstName, string $lastName)
     {

@@ -72,4 +72,14 @@ class Auth
             throw new AuthException();
         }
     }
+
+    public static function isLogged(): bool
+    {
+        return isset($_SESSION['user']);
+    }
+
+    public static function logout() : void
+    {
+        unset($_SESSION['user']);
+    }
 }

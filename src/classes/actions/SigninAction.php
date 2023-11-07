@@ -15,22 +15,22 @@ class SigninAction extends Action
     {
         $db = ConnectionFactory::makeConnection();
         $html = '';
-        if ($this->http_method === 'GET') {
+        if ($this->http_method === 'GET' && !Auth::isLogged()) {
             $html .= <<<HTML
                 <div class="sign">
                     <form method="post" action="?action=sign-in">
                         <h2>Connexion</h2>
                         <label for="email">Email:</label>
-                        <input type="text" name="email" id="email" required placeholder="exemple@mail.com"><br>
+                        <input type="text" name="email" id="email" required placeholder="exemple@mail.com">
                         
                         <label for="password">Mot de passe:</label>
-                        <input type="password" name="password" id="password" required placeholder="dylansmashunpeunon"><br>
+                        <input type="password" name="password" id="password" required placeholder="dylansmashunpeunon">
                         <input type="submit" value="Connexion" class="submit">
                         <p>Pas encore inscrit ? <a href="?action=sign-up">Inscrivez-vous</a></p>
                     </form>
                 </div>
 HTML;
-        } elseif ($this->http_method === 'POST') {
+        } elseif ($this->http_method === 'POST' && !Auth::isLogged()) {
             $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
             $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
 
@@ -41,22 +41,27 @@ HTML;
                 $resultset->bindParam(1, $email);
                 $resultset->execute();
                 $row = $resultset->fetch(PDO::FETCH_ASSOC);
-
-                $user = new User($row['email']);
-
-//                foreach ($user->getPosts() as $post) {
-//                    $html .= $post . '<br>';
-//                }
-
-            } catch
-            (AuthException $e) {
+                $_SESSION['user'] = new User($email);
+                $html .= <<<HTML
+            <div class="default">
+                <h2>Bonjour $email</h2>
+            </div>
+HTML;
+            } catch (AuthException $e) {
                 $html .= <<<HTML
                     <div class="default">
                         <h2>Erreur d'authentification</h2>
                     </div>
                 HTML;
             }
-
+        } else if (Auth::isLogged()) {
+            $email = $_SESSION['user']->email;
+            $html .= <<<HTML
+            <div class="default">
+                <h2>Bonjour $email</h2>
+                <a href="?action=sign-out">Déconnexion</a>
+            </div>
+HTML;
         }
         return $html;
     }
