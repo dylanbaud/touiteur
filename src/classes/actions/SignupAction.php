@@ -4,6 +4,7 @@ namespace iutnc\touiteur\actions;
 
 use iutnc\touiteur\auth\Auth;
 use iutnc\touiteur\AuthException;
+use iutnc\touiteur\user\User;
 
 class SignupAction extends Action
 {
@@ -11,7 +12,7 @@ class SignupAction extends Action
     public function execute(): string
     {
         $html = '';
-        if ($this->http_method === 'GET') {
+        if ($this->http_method === 'GET' && !Auth::isLogged()) {
             $html .= <<<HTML
             <div class="sign">
                 <form method="post" action="?action=sign-up">
@@ -34,8 +35,7 @@ class SignupAction extends Action
                 </form>';
             </div>
 HTML;
-
-        } elseif ($this->http_method === 'POST') {
+        } else if ($this->http_method === 'POST' && !Auth::isLogged()) {
             $username = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
             $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
             $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
@@ -44,10 +44,26 @@ HTML;
             $birthday = filter_var($_POST['birthday'], FILTER_SANITIZE_STRING);
             try {
                 Auth::register($username, $firstname, $lastname, $email, $password, $birthday);
-                $html .= 'Inscription réussie';
+                $_SESSION['user'] = new User($email);
+                $html .= <<<HTML
+                <div class="default">
+                    <h2>Inscription réussi</h2>
+                </div>
+HTML;
             } catch (AuthException $e) {
-                $html .= 'Inscription refusé';
+                $html .= <<<HTML
+                <div class="default">
+                    <h2>Inscription refusé</h2>
+                </div>
+HTML;
             }
+        } else if (Auth::isLogged()) {
+            $email = $_SESSION['user']->email;
+            $html .= <<<HTML
+            <div class="default">
+                <h2>Bonjour $email</h2>
+            </div>
+HTML;
         }
         return $html;
     }

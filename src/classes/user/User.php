@@ -6,7 +6,7 @@ use iutnc\touiteur\db\ConnectionFactory;
 
 class User {
 
-    private string $email;
+    public string $email;
 
     function __construct(string $email) {
         $this->email = $email;
