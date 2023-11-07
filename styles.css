@@ -231,3 +231,7 @@ nav .logo:hover{
     height: 200px;
     border-radius: 10px;
 }
+
+.card:hover{
+    cursor: pointer;
+}
