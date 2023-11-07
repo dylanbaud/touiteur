@@ -15,16 +15,24 @@ class PostListRender{
 
     public function render(): string
     {
-        $html = '';
-
+        $html = '<div class="post-list">';
         $postList = $this->postlist;
         foreach ($postList->posts as $post){
             $user = $post->user;
-            $html.= $user->email;
-            $html .= $post->postText;
-            $html .= "<img src='$user->profilePic'>";
+            $html .= <<<HTML
+    <div class="card">
+        <div class="card-profile">
+            <img src='$user->profilePic'>
+            <p>$user->username</p>
+        </div>
+        <div class="card-content">
+            <p>$post->postText</p>
+            <img src='$post->image'>
+        </div>
+    </div>
+HTML;
         }
-
+        $html .= '</div>';
         return $html;
     }
 

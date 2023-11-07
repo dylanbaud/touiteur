@@ -41,7 +41,7 @@ class Dispatcher
         print '<!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <link rel="stylesheet" href="./styles.css">
     <link rel="icon" href="./img/logo.png">
     <title>Touiteur</title>
