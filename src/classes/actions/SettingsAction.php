@@ -17,7 +17,7 @@ class SettingsAction extends Action
         if ($this->http_method === 'GET' && Auth::isLogged()) {
             $html .= <<<HTML
                 <div class="sign">
-                    <form method="post" action="?action=updUser" enctype='multipart/form-data'>
+                    <form method="post" action="?action=settings" enctype='multipart/form-data'>
                     
                         <h2>Changer vos informations</h2>
                         <img src="{$_SESSION['user']->profilePic}" alt="Photo de profil">
