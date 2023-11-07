@@ -44,7 +44,6 @@ HTML;
             $birthday = filter_var($_POST['birthday'], FILTER_SANITIZE_STRING);
             try {
                 Auth::register($username, $firstname, $lastname, $email, $password, $birthday);
-                $_SESSION['user'] = new User($email);
                 $html .= <<<HTML
                 <div class="default">
                     <h2>Inscription réussi</h2>

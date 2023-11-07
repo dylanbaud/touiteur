@@ -15,7 +15,7 @@ class ConnectionFactory
 
     public static function makeConnection(): PDO
     {
-        $dsn = self::$config['driver'] . ':host=' . self::$config['host'] . ';dbname=' . self::$config['database'];
+        $dsn = self::$config['driver'] . ':host=' . self::$config['host'] . ';dbname=' . self::$config['database'] . ';charset=utf8';
         $db = new PDO($dsn, self::$config['username'], self::$config['password'], [
             PDO::ATTR_PERSISTENT => true,
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,

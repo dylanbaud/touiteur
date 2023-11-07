@@ -41,7 +41,7 @@ HTML;
                 $resultset->bindParam(1, $email);
                 $resultset->execute();
                 $row = $resultset->fetch(PDO::FETCH_ASSOC);
-                $_SESSION['user'] = new User($email);
+                $_SESSION['user'] = User::getUser($row['userId']);
                 $html .= <<<HTML
             <div class="default">
                 <h2>Bonjour $email</h2>
