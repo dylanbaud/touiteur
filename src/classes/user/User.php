@@ -15,25 +15,15 @@ class User
     private string $profilePic;
     private string $password;
     private string $joinDate;
-    private string $birthdate;
+    private string $birthDate;
     private int $role;
     private string $firstName;
     private string $lastName;
 
-    private function __construct(int $userId, string $email, string $username, string $profilePic, string $password, string $joinDate, string $birthdate, int $role, string $firstName, string $lastName)
+    public function __construct(string $email)
     {
-        $this->userId = $userId;
         $this->email = $email;
-        $this->username = $username;
-        $this->profilePic = $profilePic;
-        $this->password = $password;
-        $this->joinDate = $joinDate;
-        $this->birthdate = $birthdate;
-        $this->role = $role;
-        $this->firstName = $firstName;
-        $this->lastName = $lastName;
     }
-
 
     public
     static function getUser(int $id): User
@@ -48,8 +38,16 @@ where userId = ?';
         $resultset->bindParam(1, $id);
         $resultset->execute();
         $row = $resultset->fetch(PDO::FETCH_ASSOC);
-        $user = new User($row['userId'],$row['email'],$row['username'],$row['profilePic'],$row['password'],$row['joinDate'],$row['birthDate'],$row['role'],$row['firstName'],$row['lastName']);
-
+        $user = new User($row['email']);
+        $user->userId = $row['userId'];
+        $user->username = $row['username'];
+        $user->profilePic = $row['profilePic'];
+        $user->password = $row['password'];
+        $user->joinDate = $row['joinDate'];
+        $user->birthDate = $row['birthDate'];
+        $user->role = $row['role'];
+        $user->firstName = $row['firstName'];
+        $user->lastName = $row['lastName'];
         return $user;
     }
 

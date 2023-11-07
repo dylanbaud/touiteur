@@ -3,12 +3,8 @@
 namespace iutnc\touiteur\actions;
 
 use iutnc\touiteur\auth\Auth;
-<<<<<<< HEAD
 use iutnc\touiteur\exception\AuthException;
-=======
-use iutnc\touiteur\AuthException;
 use iutnc\touiteur\user\User;
->>>>>>> 95089e78a5d92bfb89d4b8d2537e3e273468f272
 
 class SignupAction extends Action
 {
