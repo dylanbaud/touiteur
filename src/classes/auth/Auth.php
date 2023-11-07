@@ -4,6 +4,7 @@ namespace iutnc\touiteur\auth;
 
 use iutnc\touiteur\db\ConnectionFactory;
 use iutnc\touiteur\exception\AuthException;
+use iutnc\touiteur\user\User;
 use PDO;
 
 class Auth
@@ -68,6 +69,7 @@ class Auth
             $resultset->bindParam(7, $firstname);
             $resultset->bindParam(8, $lastname);
             $resultset->execute();
+            $_SESSION['user'] = User::getUser($row['id']);
         } else {
             throw new AuthException();
         }

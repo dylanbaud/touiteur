@@ -3,7 +3,9 @@
 namespace iutnc\touiteur\user;
 
 use Exception;
+use iutnc\touiteur\exception\AuthException;
 use iutnc\touiteur\db\ConnectionFactory;
+use iutnc\touiteur\exception\UserException;
 use PDO;
 
 class User
@@ -37,7 +39,13 @@ where userId = ?';
         $resultset = $db->prepare($query);
         $resultset->bindParam(1, $id);
         $resultset->execute();
+
+        if (!$resultset) throw new UserException();
+
         $row = $resultset->fetch(PDO::FETCH_ASSOC);
+
+        if (!$row) throw new UserException();
+
         $user = new User($row['email']);
         $user->userId = $row['userId'];
         $user->username = $row['username'];

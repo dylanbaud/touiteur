@@ -15,7 +15,13 @@ class PostListRender{
 
     public function render(): string
     {
-        $html = '<div class="post-list">';
+        $html = <<<HTML
+<div class="post-list">
+    <div class="title">
+        <img src="/img/logo.png" alt="Logo">
+        <h1>Touiteur</h1>
+    </div>
+HTML;
         $postList = $this->postlist;
         foreach ($postList->posts as $post){
             $user = $post->user;

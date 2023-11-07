@@ -32,7 +32,8 @@ class SignupAction extends Action
                     
                     <input type="password" name="password" id="password" required placeholder="Mot de passe">
                     <input type="submit" value="S'inscrire" class="submit">
-                </form>';
+                    <p>Déjà inscrit ? <a href="?action=sign-in">Connectez-vous</a></p>
+                </form>
             </div>
 HTML;
         } else if ($this->http_method === 'POST' && !Auth::isLogged()) {
@@ -44,7 +45,6 @@ HTML;
             $birthday = filter_var($_POST['birthday'], FILTER_SANITIZE_STRING);
             try {
                 Auth::register($username, $firstname, $lastname, $email, $password, $birthday);
-                $_SESSION['user'] = new User($email);
                 $html .= <<<HTML
                 <div class="default">
                     <h2>Inscription réussi</h2>
