@@ -2,8 +2,8 @@
 
 namespace iutnc\touiteur\auth;
 
-use iutnc\touiteur\AuthException;
 use iutnc\touiteur\db\ConnectionFactory;
+use iutnc\touiteur\exception\AuthException;
 use PDO;
 
 class Auth

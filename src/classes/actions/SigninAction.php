@@ -3,8 +3,8 @@
 namespace iutnc\touiteur\actions;
 
 use iutnc\touiteur\auth\Auth;
-use iutnc\touiteur\AuthException;
 use iutnc\touiteur\db\ConnectionFactory;
+use iutnc\touiteur\exception\AuthException;
 use iutnc\touiteur\user\User;
 use PDO;
 

@@ -3,7 +3,7 @@
 namespace iutnc\touiteur\actions;
 
 use iutnc\touiteur\auth\Auth;
-use iutnc\touiteur\AuthException;
+use iutnc\touiteur\exception\AuthException;
 
 class SignupAction extends Action
 {
