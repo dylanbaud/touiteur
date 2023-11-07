@@ -54,10 +54,9 @@ class Dispatcher
         <li><a href="./index.php">Accueil</a></li>
         <li><a href="./index.php?action=sign-in">Connexion</a></li>
     </ul>
-</nav>
+</nav>'. $html .'
 </body>
 </html>';
-        print $html;
     }
 
 }
