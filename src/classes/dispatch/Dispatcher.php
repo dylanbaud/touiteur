@@ -38,6 +38,17 @@ class Dispatcher
 
     private function renderPage(string $html): void
     {
+        $title = 'Touiteur';
+        if ($this->action == 'sign-in') {
+            $title .= ' | Connexion';
+        } else if ($this->action == 'sign-up') {
+            $title .= ' | Inscription';
+        } else if ($this->action == 'sign-out') {
+            $title .= ' | Déconnexion';
+        } else if ($this->action == '') {
+            $title .= ' | Accueil';
+        }
+
         print '
 <!DOCTYPE html>
 <html lang="fr">
@@ -45,7 +56,7 @@ class Dispatcher
     <meta charset="UTF-8">
     <link rel="stylesheet" href="./styles.css">
     <link rel="icon" href="./img/logo.png">
-    <title>Touiteur</title>
+    <title>'.$title.'</title>
 </head>
 <body>
 <div class="navbar">
@@ -53,7 +64,8 @@ class Dispatcher
         <a href="?action=" class="logo"><img src="/img/logo.png" alt="Logo"></a>
         <a href="?action="><i class="fa-solid fa-house"></i>Accueil</a>
         <a href=""><i class="fa-solid fa-magnifying-glass"></i>Rechercher</a>
-        <a href="?action=sign-in"><i class="fa-solid fa-user"></i>Connexion</a>
+        <a href="?action=sign-in"><i class="fa-solid fa-user"></i>Compte</a>
+        <a href="" class="post">Poster</a>
     </nav>
 </div>
 

@@ -1,6 +1,7 @@
 :root{
     --primary-color: #c379ef;
     --dark-color: #080808;
+    --border-color: #2f3336;
 }
 
 *{
@@ -49,11 +50,23 @@ nav a{
     color: white;
     font-size: 1.4rem;
     transition: all 0.3s ease-in-out;
-    padding: 15px 20px 15px 10px;
+    padding: 15px 15px 15px 10px;
     border-radius: 50px;
 }
 
+nav .post{
+    padding: 15px 100px;
+    margin-top: 10px;
+    border: var(--primary-color) 2px solid;
+    color: var(--primary-color);
+}
+
 nav a:hover{
+    background-color: var(--primary-color);
+    color: white;
+}
+
+nav .post:hover{
     background-color: var(--primary-color);
     color: white;
 }
@@ -65,7 +78,7 @@ nav .logo:hover{
 /* ### Default ### */
 
 .default{
-    width: 100%;
+    width: 40%;
     height: 90vh;
     display: flex;
     justify-content: center;
@@ -106,6 +119,7 @@ nav .logo:hover{
     justify-content: center;
     align-items: center;
     color: white;
+    width: 40%;
 }
 
 .sign form{
@@ -116,7 +130,7 @@ nav .logo:hover{
     padding: 20px;
     border-radius: 10px;
     width: 300px;
-    border: #999999 1px solid;
+    border: var(--border-color) 1px solid;
 }
 
 .sign h2{
@@ -181,6 +195,24 @@ nav .logo:hover{
     width: 40%;
 }
 
+.title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    backdrop-filter: blur(10px);
+    border: var(--border-color) 1px solid;
+    padding: 10px;
+}
+
+.title h1{
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
 .card{
     display: flex;
     justify-content: center;
@@ -189,8 +221,8 @@ nav .logo:hover{
     background: var(--dark-color);
     color: white;
     padding: 10px;
+    border: var(--border-color) 1px solid;
     width: 100%;
-    border: #999 1px solid;
 }
 
 .card-profile{
@@ -210,6 +242,8 @@ nav .logo:hover{
 
 .card-profile p{
     color: #c379ef;
+    font-weight: 600;
+    font-size: 1.2rem;
 }
 
 .card-content{
