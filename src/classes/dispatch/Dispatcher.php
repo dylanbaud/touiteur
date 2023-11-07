@@ -58,6 +58,9 @@ class Dispatcher
 </div>
 
 ' . $html . '
+
+<div class="right"></div>
+
 <script src="https://kit.fontawesome.com/84d125ec8a.js" crossorigin="anonymous"></script>
 </body>
 </html>';

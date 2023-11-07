@@ -32,7 +32,7 @@ class SignupAction extends Action
                     
                     <input type="password" name="password" id="password" required placeholder="Mot de passe">
                     <input type="submit" value="S'inscrire" class="submit">
-                </form>';
+                </form>
             </div>
 HTML;
         } else if ($this->http_method === 'POST' && !Auth::isLogged()) {
