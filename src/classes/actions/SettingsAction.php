@@ -40,11 +40,15 @@ class SettingsAction extends Action
             if (isset($_FILES['profilePic']) && $_FILES['profilePic']['size'] <= 10000000) {
                 if(file_exists($_SESSION['user']->profilePic) && $_SESSION['user']->profilePic != "./img/defaultProfile.png")
                     unlink($_SESSION['user']->profilePic);
-                $origine = $_FILES['profilePic']['tmp_name'];
-                $nom = uniqid() . ".png";
-                $destination = "./img/profile/$nom";
-                move_uploaded_file($origine, $destination);
-                $profilePic = $destination;
+                $type = $_FILES['profilePic']['type'];
+                if(explode('/', $type)[0] == 'image'){
+                    $extension = explode('/', $type)[1];
+                    $origine = $_FILES['profilePic']['tmp_name'];
+                    $nom = uniqid() . $extension;
+                    $destination = "./img/profile/$nom";
+                    move_uploaded_file($origine, $destination);
+                    $profilePic = $destination;
+                }
 
             } else {
                 $profilePic = $_SESSION['user']->profilePic;
