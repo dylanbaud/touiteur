@@ -45,9 +45,9 @@ HTML;
                 $dest = $upload_dir . $filename;
                 if (!move_uploaded_file($tmp, $dest)) {
                     print "hum, hum téléchargement non valide<br>";
-                } else {
-                    print "echec du téléchargement ou type non autorisé<br>";
-                }
+                } 
+            } else {
+                print "echec du téléchargement ou type non autorisé<br>";
             }
 
             $query = 'insert into POST (postText, image, postDate, score, userId) VALUES (?, ? , ?, 0, ?)';
