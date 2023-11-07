@@ -31,7 +31,7 @@ class SignupAction extends Action
                     <input type="text" name="email" id="email" required placeholder="Email">
                     
                     <input type="password" name="password" id="password" required placeholder="Mot de passe">
-                    <input type="submit" value="Inscription" class="submit">
+                    <input type="submit" value="S'inscrire" class="submit">
                 </form>';
             </div>
 HTML;

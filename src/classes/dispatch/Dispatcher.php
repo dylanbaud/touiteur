@@ -38,7 +38,8 @@ class Dispatcher
 
     private function renderPage(string $html): void
     {
-        print '<!DOCTYPE html>
+        print '
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
