@@ -25,6 +25,9 @@ class Dispatcher
             case 'sign-up':
                 $class = new AC\SignupAction();
                 break;
+            case 'sign-out':
+                $class = new AC\SignoutAction();
+                break;
             default:
                 $class = new AC\DefaultAction();
                 break;

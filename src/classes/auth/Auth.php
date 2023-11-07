@@ -77,4 +77,9 @@ class Auth
     {
         return isset($_SESSION['user']);
     }
+
+    public static function logout() : void
+    {
+        unset($_SESSION['user']);
+    }
 }

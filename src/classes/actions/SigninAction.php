@@ -59,6 +59,7 @@ HTML;
             $html .= <<<HTML
             <div class="default">
                 <h2>Bonjour $email</h2>
+                <a href="?action=sign-out">Déconnexion</a>
             </div>
 HTML;
         }
