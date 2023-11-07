@@ -42,12 +42,14 @@ class SettingsAction extends Action
                     unlink($_SESSION['user']->profilePic);
                 $type = $_FILES['profilePic']['type'];
                 if(explode('/', $type)[0] == 'image'){
-                    $extension = explode('/', $type)[1];
+                    $extension = ".".explode('/', $type)[1];
                     $origine = $_FILES['profilePic']['tmp_name'];
                     $nom = uniqid() . $extension;
                     $destination = "./img/profile/$nom";
                     move_uploaded_file($origine, $destination);
                     $profilePic = $destination;
+                } else{
+                    $profilePic = $_SESSION['user']->profilePic;
                 }
 
             } else {
