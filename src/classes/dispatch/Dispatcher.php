@@ -30,6 +30,8 @@ class Dispatcher
                 break;
             case 'view-profile':
                 $class = new AC\ViewProfileAction();
+            case 'view-post':
+                $class = new AC\ViewPostAction();
                 break;
             default:
                 $class = new AC\DefaultAction();
