@@ -35,29 +35,32 @@ HTML;
 
             $text = filter_var($_POST['text'], FILTER_SANITIZE_STRING);
 
-            $upload_dir = 'img/post/';
-            $filename = uniqid().".".explode('/', $_FILES['inputfile']['type'])[1];
+            if (isset($_POST['inputfile'])) {
+
+                $upload_dir = 'img/post/';
+                $filename = uniqid() . "." . explode('/', $_FILES['inputfile']['type'])[1];
 
 
-            $tmp = $_FILES['inputfile']['tmp_name'];
-            if (($_FILES['inputfile']['error'] === UPLOAD_ERR_OK) && explode('/',$_FILES['inputfile']['type'])[0] == 'image' && ($_FILES['inputfile']['size'] < 20000000)) {
+                $tmp = $_FILES['inputfile']['tmp_name'];
+                if (($_FILES['inputfile']['error'] === UPLOAD_ERR_OK) && explode('/', $_FILES['inputfile']['type'])[0] == 'image' && ($_FILES['inputfile']['size'] < 20000000)) {
 
-                $dest = $upload_dir . $filename;
-                if (!move_uploaded_file($tmp, $dest)) {
-                    print "hum, hum téléchargement non valide<br>";
-                } 
-            } else {
-                print "echec du téléchargement ou type non autorisé<br>";
+                    $dest = $upload_dir . $filename;
+                    if (!move_uploaded_file($tmp, $dest)) {
+                        print "hum, hum téléchargement non valide<br>";
+                    }
+
+                } else {
+                    print "fichier non autorisé<br>";
+                }
+
             }
 
-            $query = 'insert into POST (postText, image, postDate, score, userId) VALUES (?, ? , ?, 0, ?)';
+            $query = 'insert into POST (postText, image, postDate, score, userId) VALUES (?, ? , NOW(), 0, ?)';
             $resultset = $db->prepare($query);
             $resultset->bindParam(1, $text);
             $resultset->bindParam(2, $dest);
-            $date = date('Y-m-d');
-            $resultset->bindParam(3, $date);
             $id = $_SESSION['user']->userId;
-            $resultset->bindParam(4, $id);
+            $resultset->bindParam(3, $id);
             $resultset->execute();
         }
         return $html;

@@ -42,9 +42,12 @@ HTML;
                 $resultset->execute();
                 $row = $resultset->fetch(PDO::FETCH_ASSOC);
                 $_SESSION['user'] = User::getUser($row['userId']);
+                $id = $_SESSION['user']->userId;
+                $username = $_SESSION['user']->username;
                 $html .= <<<HTML
             <div class="default">
-                <h2>Bonjour $email</h2>
+                <h2>Bonjour $username</h2>
+                <a href="?action=view-profile&id=$id">Accèdez compte</a>
             </div>
 HTML;
             } catch (AuthException $e) {
@@ -55,11 +58,12 @@ HTML;
                 HTML;
             }
         } else if (Auth::isLogged()) {
-            $email = $_SESSION['user']->email;
+            $username = $_SESSION['user']->username;
+            $id = $_SESSION['user']->userId;
             $html .= <<<HTML
             <div class="default">
-                <h2>Bonjour $email</h2>
-                <a href="?action=sign-out">Déconnexion</a>
+                <h2>Bonjour $username</h2>
+                <a href="?action=view-profile&id=$id">Accèdez compte</a>
             </div>
 HTML;
         }

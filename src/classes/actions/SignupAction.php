@@ -58,10 +58,12 @@ HTML;
 HTML;
             }
         } else if (Auth::isLogged()) {
-            $email = $_SESSION['user']->email;
+            $username = $_SESSION['user']->username;
+            $id = $_SESSION['user']->userId;
             $html .= <<<HTML
             <div class="default">
-                <h2>Bonjour $email</h2>
+                <h2>Bonjour $username</h2>
+                <a href="?action=view-profile&id=$id">Accèdez compte</a>
             </div>
 HTML;
         }
