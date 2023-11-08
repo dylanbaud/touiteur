@@ -11,6 +11,10 @@ class ViewProfileAction extends Action
 
     public function execute(): string
     {
+        if(!isset($_GET['page'])){
+            $_GET['page'] = 1;
+        }
+
         if (isset($_GET['id'])){
             try {
                 $user = User::getUser($_GET['id']);
