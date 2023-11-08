@@ -80,7 +80,7 @@ where userId = ?';
         $postList = array();
 
         $db = ConnectionFactory::makeConnection();
-        $query = "select * from POST where userId = ? order by postDate desc";
+        $query = "select * from POST where userId = ? order by postDate desc limit 10";
         $resultset = $db->prepare($query);
         $resultset->bindParam(1, $id);
         $resultset->execute();
