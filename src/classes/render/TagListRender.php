@@ -17,6 +17,10 @@ class TagListRender{
     public function render(): string
     {
         $html = '';
+        foreach ($this->tagList->tags as $tag){
+            $html .= $tag->idTag . $tag->libelle;
+        }
+
         return $html;
     }
 }
