@@ -5,14 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6283e77f-b719-4081-b4e9-097c48e0916b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/discord.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/git_toolbox_prj.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/conf/db.config.ini" beforeDir="false" afterPath="$PROJECT_DIR$/conf/db.config.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/actions/DeletePostAction.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/actions/DeletePostAction.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,6 +67,7 @@
       <workItem from="1699459746137" duration="174000" />
       <workItem from="1699459929783" duration="1210000" />
       <workItem from="1699464192568" duration="619000" />
+      <workItem from="1699480439919" duration="68000" />
     </task>
     <servers />
   </component>
