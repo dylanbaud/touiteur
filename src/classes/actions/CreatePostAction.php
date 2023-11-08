@@ -25,7 +25,7 @@ class CreatePostAction extends Action
         <form method="post" action="?action=create-post" enctype='multipart/form-data'>
             <div class="text-content">
                 <img src="/img/defaultProfile.png" class="profile-pic">
-                <textarea type="text" id="text" placeholder="Quoi de neuf ?" maxlength="235"></textarea>
+                <textarea name="text" id="text" placeholder="Quoi de neuf ?" maxlength="235" required></textarea>
             </div>
             
             <hr>
@@ -46,26 +46,15 @@ HTML;
 
             $text = filter_var($_POST['text'], FILTER_SANITIZE_STRING);
 
-            if (isset($_POST['inputfile'])) {
-
+            if (($_FILES['inputfile']['error'] === UPLOAD_ERR_OK) && explode('/', $_FILES['inputfile']['type'])[0] == 'image' && ($_FILES['inputfile']['size'] < 20000000)) {
                 $upload_dir = 'img/post/';
                 $filename = uniqid() . "." . explode('/', $_FILES['inputfile']['type'])[1];
-
-
                 $tmp = $_FILES['inputfile']['tmp_name'];
-                if (($_FILES['inputfile']['error'] === UPLOAD_ERR_OK) && explode('/', $_FILES['inputfile']['type'])[0] == 'image' && ($_FILES['inputfile']['size'] < 20000000)) {
-
-                    $dest = $upload_dir . $filename;
-                    if (!move_uploaded_file($tmp, $dest)) {
-                        print "hum, hum téléchargement non valide<br>";
-                    }
-
-                } else {
-                    print "fichier non autorisé<br>";
+                $dest = $upload_dir . $filename;
+                if (!move_uploaded_file($tmp, $dest)) {
+                    print "hum, hum téléchargement non valide<br>";
                 }
-
             }
-
             $query = 'insert into POST (postText, image, postDate, score, userId) VALUES (?, ? , NOW(), 0, ?)';
             $resultset = $db->prepare($query);
             $resultset->bindParam(1, $text);
