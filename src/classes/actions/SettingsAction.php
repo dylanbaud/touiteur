@@ -15,24 +15,30 @@ class SettingsAction extends Action
         $html = "";
         if ($this->http_method === 'GET' && Auth::isLogged()) {
             $html .= <<<HTML
-                <div class="sign">
-                    <form method="post" action="?action=settings" enctype='multipart/form-data'>
-                    
-                        <h2>Changer vos informations</h2>
-                        <img src="{$_SESSION['user']->profilePic}" alt="Photo de profil">
-                        <label for="profilePic">Photo de profil:</label>
-                        <input type="file" name="profilePic">
-                        <label for="username">Nom d'utilisateur:</label>
-                        <input type="text" name="username" id="username" value="{$_SESSION['user']->username}">
-                        <label for="firstname">Prénom:</label>
-                        <input type="text" name="firstname" id="firstname" value="{$_SESSION['user']->firstName}">
-                        <label for="lastname">Nom:</label>
-                        <input type="text" name="lastname" id="lastname" value="{$_SESSION['user']->lastName}">
-                        <label for="birthday">Date de naissance:</label>
-                        <input type="date" name="birthday" id="birthday" value="{$_SESSION['user']->birthDate}" required>
-                        <button type="submit" class="submit">Modifier</button>
-                    </form>
-                </div>
+    <div class="sign sign-settings">
+        <form method="post" action="?action=settings" enctype='multipart/form-data'>
+            <h2>Informations</h2>
+            
+            <label for="profilePic" style="cursor: pointer; align-self: center;">
+                <img src="{$_SESSION['user']->profilePic}" alt="Photo de profil">
+            </label>
+            <input type="file" id="profilePic" name="profilePic">
+            
+            <label for="username">Nom d'utilisateur:</label>
+            <input type="text" name="username" id="username" value="{$_SESSION['user']->username}">
+            
+            <label for="firstname">Prénom:</label>
+            <input type="text" name="firstname" id="firstname" value="{$_SESSION['user']->firstName}">
+            
+            <label for="lastname">Nom:</label>
+            <input type="text" name="lastname" id="lastname" value="{$_SESSION['user']->lastName}">
+            
+            <label for="birthday">Date de naissance:</label>
+            <input type="date" name="birthday" id="birthday" value="{$_SESSION['user']->birthDate}" required>
+            
+            <input type="submit" class="submit" value="Modifier">
+        </form>
+    </div>
 <div class="right">
 HTML;
 
