@@ -449,18 +449,24 @@ nav .logo:hover{
     flex-direction: column;
 }
 
+.right .user-profile div{
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+}
+
 .right .user-profile img{
     width: 100px;
     height: 100px;
     border-radius: 50%;
     margin-bottom: 10px;
+    margin-right: 20px;
 }
 
 .right .user-profile h2{
     font-size: 2rem;
     font-weight: 600;
     color: var(--primary-color);
-    padding: 20px 0;
 }
 
 .right .user-profile p{
