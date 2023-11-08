@@ -3,6 +3,8 @@
 namespace iutnc\touiteur\actions;
 
 use iutnc\touiteur\actions\Action;
+use iutnc\touiteur\exception\PostException;
+use iutnc\touiteur\exception\UserException;
 use iutnc\touiteur\post\PostList;
 use iutnc\touiteur\render\PostListRender;
 use iutnc\touiteur\render\TagListRender;
@@ -15,7 +17,7 @@ class DefaultAction extends Action
     {
         $postList = PostList::getAllPosts(0);
         $postListRender = new PostListRender($postList);
-        
-        return $postListRender->render();
+        $tagListRender = new TagListRender(TagList::getAllTags());
+        return $postListRender->render() . $tagListRender->render();
     }
 }
