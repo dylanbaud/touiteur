@@ -292,9 +292,15 @@ nav .logo:hover{
     z-index: 1;
 }
 
+.transparent-blur{
+    backdrop-filter: blur(0);
+    background-color: rgba(255, 255, 255, 0.2);
+    align-items: flex-start;
+}
+
 .better-card{
     width: 40%;
-    border-radius: 20px;
+    border-radius: 25px;
     position: relative;
 }
 
@@ -309,10 +315,8 @@ nav .logo:hover{
     position: absolute;
     top: 0;
     right: 0;
-    transform: translateX(50%) translateY(-50%);
     color: white;
     font-size: 2rem;
-    background-color: var(--dark-color2);
     border-radius: 50%;
     width: 50px;
     height: 50px;
@@ -330,4 +334,100 @@ nav .logo:hover{
 .better-card footer{
     padding: 10px 0;
     color: #b4b0b0;
+}
+
+/* ### Poster ### */
+
+.poster{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--dark-color);
+    margin-top: 5vh;
+    border-radius: 25px;
+    padding: 20px;
+    color: white;
+    position: relative;
+    width: 500px;
+}
+
+.poster form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.poster .text-content{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    height: auto;
+}
+
+.poster .profile-pic{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.poster form #text{
+    resize: none;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: white;
+    width: 70%;
+    height: 200px;
+    font-size: 1.2rem;
+}
+
+.poster .submit{
+    background-color: var(--dark-color);
+    color: var(--primary-color);
+    border: var(--primary-color) 2px solid;
+    font-size: 1.2rem;
+    height: auto;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    padding: 10px 30px;
+    border-radius: 25px;
+}
+
+.poster .submit:hover{
+    background-color: var(--primary-color);
+    color: white;
+    border: var(--dark-color) 2px solid;
+}
+
+.poster hr{
+    width: 100%;
+    border: none;
+    border-bottom: var(--border-color) 1px solid;
+    margin: 10px 0;
+}
+
+.poster .buttons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.poster label img{
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.poster label img:hover{
+    opacity: 0.7;
+}
+
+.poster #inputfile{
+    display: none;
 }

@@ -3,6 +3,7 @@
 namespace iutnc\touiteur\render;
 
 use iutnc\touiteur\post\Post;
+use iutnc\touiteur\post\PostList;
 
 class PostRender
 {
@@ -16,8 +17,10 @@ class PostRender
 
     public function render(): string
     {
+        $postList = new PostListRender(PostList::getAllPosts(0));
+        $html = $postList->render();
         $user = $this->post->user;
-        $html = '
+        $html .= '
 <div class="blur">
     <div class="card better-card">
         <a href="?action=" class="quit-btn"><img src="./img/cancel.png"></a>

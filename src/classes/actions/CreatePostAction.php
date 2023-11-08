@@ -4,6 +4,8 @@ namespace iutnc\touiteur\actions;
 
 use iutnc\touiteur\auth\Auth;
 use iutnc\touiteur\db\ConnectionFactory;
+use iutnc\touiteur\post\PostList;
+use iutnc\touiteur\render\PostListRender;
 use SplFileInfo;
 
 class CreatePostAction extends Action
@@ -12,23 +14,32 @@ class CreatePostAction extends Action
     public function execute(): string
     {
         $db = ConnectionFactory::makeConnection();
-        $html = '';
+        $postList = new PostListRender(PostList::getAllPosts(0));
+        $html = $postList->render();
 
         if ($this->http_method === 'GET' && Auth::isLogged()) {
             $html .= <<<HTML
-                <div class="publier">
-                    <form method="post" action="?action=create-post" enctype='multipart/form-data'>
-                        <h2>Publier</h2>
-                        
-                        <input type="text" name="text" id="text" required placeholder="Écrivez un texte...">
-                        
-                        <label for="image">Ajoutez une image:</label>
-                        <input type="file" name="inputfile">
-                        
-                        <input type="submit" value="Poster" class="submit">
-                        
-                    </form>
-                </div>
+<div class="blur transparent-blur">
+    <div class="poster">
+        <a href="?action=" class="quit-btn"><img src="./img/cancel.png"></a>
+        <form method="post" action="?action=create-post" enctype='multipart/form-data'>
+            <div class="text-content">
+                <img src="/img/defaultProfile.png" class="profile-pic">
+                <textarea type="text" id="text" placeholder="Quoi de neuf ?" maxlength="235"></textarea>
+            </div>
+            
+            <hr>
+            
+            <div class="buttons">
+                <label for="inputfile" class="file-label">
+                    <img src="./img/image.png" class="file-icon">
+                </label>
+                <input type="file" name="inputfile" id="inputfile">
+                <input type="submit" value="Poster" class="submit">
+            </div>
+        </form>
+    </div>
+</div>
 HTML;
 
         } elseif ($this->http_method === 'POST' && Auth::isLogged()) {
