@@ -56,7 +56,10 @@ HTML;
             <div class="pagination">
             HTML;
             for ($i = 1; $i <= $pageCount; $i++){
-                $html .= '<a href="?action=default&page='.$i.'">'.$i.'</a>';
+                if($i = $_GET['page'])
+                    $html .= '<a href="?action=default&page='.$i.'" id="current-page">'.$i.'</a>';
+                else
+                    $html .= '<a href="?action=default&page='.$i.'">'.$i.'</a>';
             }
         } else {
             $query = "select * from POST where userId = ?";
