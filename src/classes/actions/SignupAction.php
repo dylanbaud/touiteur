@@ -62,17 +62,7 @@ HTML;
             }
         } else if (Auth::isLogged()) {
             $id = $_SESSION['user']->userId;
-<<<<<<< HEAD
             header("Location: index.php?action=view-profile&id=$id");
-=======
-            $html .= <<<HTML
-            <div class="default">
-                <h2>Bonjour $username</h2>
-                <a href="?action=view-profile&id=$id">Accéder au compte</a>
-            </div>
-<div class="right">
-HTML;
->>>>>>> ff307ad6c7ab41e7c3c3c8ce9ff0fce34778c479
         }
         return $html;
     }
