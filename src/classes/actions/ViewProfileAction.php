@@ -2,7 +2,6 @@
 
 namespace iutnc\touiteur\actions;
 
-use iutnc\touiteur\exception\AuthException;
 use iutnc\touiteur\exception\UserException;
 use iutnc\touiteur\render\UserRender;
 use iutnc\touiteur\user\User;
