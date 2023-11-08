@@ -43,20 +43,40 @@ HTML;
             $html .= '</div>
     </div>';
         }
-        $query = "select * from POST";
-        $db = ConnectionFactory::makeConnection();
-        $resultset = $db->prepare($query);
-        $resultset->execute();
-        $count = $resultset->rowCount();
+        if(!isset($_GET['id'])){
+            $query = "select * from POST";
+            $db = ConnectionFactory::makeConnection();
+            $resultset = $db->prepare($query);
+            $resultset->execute();
+            $count = $resultset->rowCount();
 
-        $pageCount = ceil($count / 10);
+            $pageCount = ceil($count / 10);
 
-        $html .= <<<HTML
+            $html .= <<<HTML
             <div class="pagination">
             HTML;
-        for ($i = 1; $i <= $pageCount; $i++){
-            $html .= '<a href="?action=default&page='.$i.'">'.$i.'</a>';
+            for ($i = 1; $i <= $pageCount; $i++){
+                $html .= '<a href="?action=default&page='.$i.'">'.$i.'</a>';
+            }
+        } else {
+            $query = "select * from POST where userId = ?";
+            $db = ConnectionFactory::makeConnection();
+            $resultset = $db->prepare($query);
+            $resultset->bindParam(1, $_GET['id']);
+            $resultset->execute();
+            $count = $resultset->rowCount();
+
+            $pageCount = ceil($count / 10);
+
+            $html .= <<<HTML
+            <div class="pagination">
+            HTML;
+            for ($i = 1; $i <= $pageCount; $i++){
+                $html .= '<a href="?action=view-profile&page='.$i.'&id='.$_GET['id'].'">'.$i.'</a>';
+            }
         }
+
+
         $html .= '</div>';
         $html .= '</div>
 <div class="right">';
