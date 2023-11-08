@@ -69,6 +69,7 @@ HTML;
             $id = $_SESSION['user']->userId;
             $resultset->bindParam(3, $id);
             $resultset->execute();
+            header("Location: ?action=");
 
 
 
