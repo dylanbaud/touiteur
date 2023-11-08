@@ -73,15 +73,15 @@ class Dispatcher
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="./styles.css">
-    <link rel="icon" href="./img/logo.png">
+    <link rel="icon" href="/img/logo.png">
     <title>' . $this->title . '</title>
 </head>
 <body ' . $this->body . '>
 <div class="navbar">
     <nav>
-        <a href="?action="><img src="./img/home.svg">Accueil</a>
-        <a href=""><img src="./img/search.svg">Rechercher</a>
-        <a href="?action=sign-in"><img src="./img/account.png">Compte</a>
+        <a href="?action="><img src="./img/icon/home.svg">Accueil</a>
+        <a href=""><img src="./img/icon/search.svg">Rechercher</a>
+        <a href="?action=sign-in"><img src="./img/icon/account.png">Compte</a>
         <a href="?action=create-post" class="post">Poster</a>
     </nav>
 </div>

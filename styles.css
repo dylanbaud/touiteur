@@ -313,13 +313,13 @@ nav .logo:hover{
     justify-content: center;
     align-items: center;
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 10px;
+    right: 10px;
     color: white;
     font-size: 2rem;
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
 }
 
 .quit-btn:hover{
@@ -327,7 +327,7 @@ nav .logo:hover{
 }
 
 .better-card-profile:hover{
-    text-decoration: underline;
+    text-decoration: var(--primary-color) underline;
 }
 
 .better-card-profile span{
@@ -518,6 +518,7 @@ nav .logo:hover{
 
 .sign-settings img{
     width: 100px;
+    height: 100px;
     border-radius: 50%;
 }
 
