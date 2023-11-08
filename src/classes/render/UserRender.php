@@ -6,7 +6,8 @@ use iutnc\touiteur\exception\PostException;
 use iutnc\touiteur\exception\UserException;
 use iutnc\touiteur\user\User;
 
-class UserRender{
+class UserRender
+{
 
     private User $user;
 
@@ -32,6 +33,16 @@ class UserRender{
             <img src="{$this->user->profilePic}" alt="Profile picture">
             <h2>{$this->user->username}</h2>
         </div>
+HTML;
+
+        if ($this->user->role === 2) {
+            $html .= <<<HTML
+            <p>Influenceur</p>
+            <p>Contact : {$this->user->email}</p>
+HTML;
+        }
+
+        $html .= <<<HTML
         <p>{$this->user->lastName} {$this->user->firstName}</p>
         <p>Né(e) le {$this->user->birthDate}</p>
         <p>A rejoint Touiteur le {$this->user->joinDate}</p>
@@ -50,6 +61,5 @@ HTML;
 
         return $html;
     }
-
 
 }

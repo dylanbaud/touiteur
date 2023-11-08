@@ -229,6 +229,7 @@ nav .logo:hover{
     padding: 10px;
     border: var(--border-color) 1px solid;
     width: 100%;
+    cursor: pointer;
 }
 
 .card:hover{
@@ -241,6 +242,10 @@ nav .logo:hover{
     align-items: center;
     align-self: flex-start;
     padding: 10px;
+}
+
+.card-profile:hover{
+    text-decoration: var(--primary-color) underline;
 }
 
 .card-profile img{
@@ -269,6 +274,7 @@ nav .logo:hover{
 .card-content p{
     text-align: justify;
     align-self: flex-start;
+    margin: 0 60px;
 }
 
 .card-content img{
@@ -302,6 +308,7 @@ nav .logo:hover{
     width: 40%;
     border-radius: 25px;
     position: relative;
+    cursor: default;
 }
 
 .better-card:hover{
@@ -324,10 +331,6 @@ nav .logo:hover{
 
 .quit-btn:hover{
     background-color: var(--primary-color);
-}
-
-.better-card-profile:hover{
-    text-decoration: var(--primary-color) underline;
 }
 
 .better-card-profile span{
