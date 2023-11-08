@@ -45,25 +45,21 @@ class UserRender
             <h2>{$this->user->username}</h2>
         </div>
 HTML;
-        if(isset($_SESSION['user']) and !($_SESSION['user']->userId === $id)){
-                $query = "SELECT * FROM SUB WHERE userId = {$id} AND followerId = {$_SESSION["user"]->userId}";
-                $resultset = $db->prepare($query);
-                $resultset->execute();
+        if (isset($_SESSION['user']) and !($_SESSION['user']->userId === $id)) {
+            $query = "SELECT * FROM SUB WHERE userId = {$id} AND followerId = {$_SESSION["user"]->userId}";
+            $resultset = $db->prepare($query);
+            $resultset->execute();
 
-                if ($resultset->rowCount() === 1) {
-                    $html .= <<<HTML
-        <a href="?action=follow-user&id=$id", id="follow-user">Unfollow</a>
+            if ($resultset->rowCount() === 1) {
+                $html .= <<<HTML
+        <a href="?action=follow-user&id=$id" id="follow-user">Unfollow</a>
 HTML;
-                } else {
-                    $html .= <<<HTML
-        <a href="?action=follow-user&id=$id", id="follow-user">Follow</a>
-HTML;
-                }
             } else {
                 $html .= <<<HTML
-        <a href="?action=follow-user&id=$id", id="follow-user">Follow</a>
+        <a href="?action=follow-user&id=$id" id="follow-user">Follow</a>
 HTML;
             }
+        }
         if ($this->user->role === 2) {
             $html .= <<<HTML
             <p>Influenceur</p>
