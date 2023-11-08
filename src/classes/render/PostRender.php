@@ -61,7 +61,7 @@ class PostRender
         }
 
         if($_SESSION['user']->userId === $user->userId){
-            $html .= '<a href="?delete-post&id='.$this->post->postId.'">Supprimer</a>';
+            $html .= '<a href="?action=delete-post&id='.$this->post->id.'">Supprimer</a>';
         }
 
         $html .= ' 

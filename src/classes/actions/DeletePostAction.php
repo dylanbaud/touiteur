@@ -3,6 +3,7 @@
 namespace iutnc\touiteur\actions;
 
 use iutnc\touiteur\db\ConnectionFactory;
+use PDO;
 
 class DeletePostAction extends Action
 {
@@ -11,8 +12,21 @@ class DeletePostAction extends Action
     {
         $html = "";
         $db = ConnectionFactory::makeConnection();
-        $query = 
+        if(isset($_GET['id'])){
+            $id = $_GET['id'];
+            $resultset = $db->prepare("SELECT userId FROM POST WHERE postId = ?");
+            $resultset->bindParam(1, $id);
+            $resultset->execute();
+            $resultset = $resultset->fetch(PDO::FETCH_ASSOC);;
 
+            if($resultset['userId'] === $_SESSION['user']->userId){
+                $sql = "DELETE FROM POST WHERE postId = ?";
+                $resultset = $db->prepare($sql);
+                $resultset->bindParam(1, $id);
+                $resultset->execute();
+            }
+        }
+        header("Location: index.php");
         return $html;
     }
 }

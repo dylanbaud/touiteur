@@ -1,6 +1,7 @@
 <?php
 
 namespace iutnc\touiteur\dispatch;
+
 use iutnc\touiteur\actions as AC;
 
 class Dispatcher
@@ -59,6 +60,9 @@ class Dispatcher
                 break;
             case 'follow-user':
                 $class = new AC\FollowUserAction();
+                break;
+            case 'delete-post':
+                $class = new AC\DeletePostAction();
                 break;
             default:
                 $class = new AC\DefaultAction();
