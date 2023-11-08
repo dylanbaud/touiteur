@@ -13,7 +13,12 @@ class DefaultAction extends Action
 
     public function execute(): string
     {
-        $postList = PostList::getAllPosts(0);
+        if(isset($_GET['page'])){
+            $min = $_GET['page'] * 10;
+        } else {
+            $min = 0;
+        }
+        $postList = PostList::getAllPosts($min);
         $postListRender = new PostListRender($postList);
         
         return $postListRender->render();
