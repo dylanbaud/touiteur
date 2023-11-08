@@ -24,7 +24,7 @@ class CreatePostAction extends Action
         <a href="?action=" class="quit-btn"><img src="./img/cancel.png"></a>
         <form method="post" action="?action=create-post" enctype='multipart/form-data'>
             <div class="text-content">
-                <img src="/img/defaultProfile.png" class="profile-pic">
+                <img src="{$_SESSION['user']->profilePic}" class="profile-pic">
                 <textarea name="text" id="text" placeholder="Quoi de neuf ?" maxlength="235" required></textarea>
             </div>
             

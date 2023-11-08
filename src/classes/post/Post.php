@@ -19,6 +19,7 @@ class Post
     protected int $score;
     protected string $postDate;
     protected User $user;
+    protected ?array $tags;
 
     private function __construct(int $id)
     {
@@ -69,7 +70,22 @@ class Post
         $post->postDate = $row['postDate'];
         $post->user = User::getUser($row['userId']);
 
+        $query = "select idTag from HASTAG where postId = ?";
+        $resultset = $db->prepare($query);
+        $resultset->bindParam(1, $id);
+        $resultset->execute();
+        $tags = array();
+        while ($row = $resultset->fetch(PDO::FETCH_ASSOC)) {
+            $tags[] = $row['idTag'];
+        }
+        $post->tags = $tags;
+
         return $post;
+
+    }
+
+    public static function getTags(){
+        $db = ConnectionFactory::makeConnection();
 
     }
 }
