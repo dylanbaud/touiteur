@@ -18,12 +18,12 @@ class PostListRender
     public function render(): string
     {
         $html = <<<HTML
-            <div class="post-list">
-                <div class="title">
-                    <img src="/img/logo.png" alt="Logo">
-                    <h1>Touiteur</h1>
-                </div>
-        HTML;
+<div class="post-list">
+    <div class="title">
+        <img src="/img/logo.png" alt="Logo">
+        <h1>Touiteur</h1>
+    </div>
+HTML;
         $postList = $this->postlist;
         foreach ($postList->posts as $post) {
             $user = $post->user;
@@ -41,12 +41,9 @@ HTML;
                 $html .= "<img src='$post->image'>";
             }
 
-            $html .= <<<HTML
-            </div>
-            </div>
-            HTML;
+            $html .= '</div>
+    </div>';
         }
-
         if (!isset($_GET['id'])) {
             $action = 'default';
             $query = "select count(*) from POST where 1";
@@ -70,19 +67,22 @@ HTML;
         unset($count);
         unset($postList);
 
-        $html = <<<HTML
+        $html .= <<<HTML
             <div class="pagination">
             HTML;
-        $page = 1;
-        if (isset($_GET['page'])) {
-            $page = $_GET['page'];
+        if (!isset($_GET['page'])) {
+            $page = 1;
         }
-
+        else {
+            $page = $_GET['page'];
+            echo "<p>$_GET[page]</p>";
+        }
         for ($i = 1; $i <= $pageCount; $i++) {
             if ($i == $page) {
                 $html .= <<<HTML
-                    <a href="?action={$action}&page={$page}{$author}" id="current-page">{$page}</a>
+                    <a href="?action={$action}&page={$i}{$author}" id="current-page">{$i}</a>
                     HTML;
+                #unset($page);
             } else {
                 $html .= <<<HTML
                     <a href="?action={$action}&page={$i}{$author}">{$i}</a>
@@ -93,7 +93,6 @@ HTML;
         $html .= '</div>';
         $html .= '</div>
 <div class="right">';
-
         return $html;
     }
 }

@@ -48,14 +48,14 @@ HTML;
                 Auth::register($username, $firstname, $lastname, $email, $password, $birthday);
                 $html .= <<<HTML
                 <div class="default">
-                    <h2>Inscription réussi</h2>
+                    <h2>Inscription réussie</h2>
                 </div>
 <div class="right"></div>
 HTML;
             } catch (AuthException $e) {
                 $html .= <<<HTML
                 <div class="default">
-                    <h2>Inscription refusé</h2>
+                    <h2>Inscription refusée</h2>
                 </div>
 <div class="right"></div>
 HTML;
