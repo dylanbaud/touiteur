@@ -5,6 +5,7 @@ namespace iutnc\touiteur\tag;
 use Exception;
 use iutnc\touiteur\db\ConnectionFactory;
 use iutnc\touiteur\exception\PostException;
+use iutnc\touiteur\exception\TagException;
 use iutnc\touiteur\exception\UserException;
 use iutnc\touiteur\post\Post;
 use iutnc\touiteur\user\User;
@@ -20,15 +21,14 @@ class TagList
     }
 
     /**
-     * @throws UserException
-     * @throws PostException
+     * @throws TagException
      */
     public static function getAllTags(): TagList
     {
         $tagList = array();
 
         $db = ConnectionFactory::makeConnection();
-        $query = "SELECT TAG.idtag, TAG.libelle, TAG.description
+        $query = "SELECT TAG.idtag as id, TAG.libelle, TAG.description
 FROM TAG
 LEFT JOIN LIKEDTAG ON TAG.idtag = LIKEDTAG.idtag
 GROUP BY TAG.idtag, TAG.libelle, TAG.description
@@ -37,8 +37,8 @@ ORDER BY COUNT(LIKEDTAG.idtag) DESC limit 5";
         $resultset->execute();
 
         while ($row = $resultset->fetch(PDO::FETCH_ASSOC)) {
-            $tag = TAG::getTag($row['idtag']);
-            $tagList[] = $tagList;
+            $tag = TAG::getTag($row['id']);
+            $tagList[] = $tag;
         }
 
         return new TagList($tagList);

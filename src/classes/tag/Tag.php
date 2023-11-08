@@ -6,6 +6,7 @@ use Exception;
 use iutnc\touiteur\db\ConnectionFactory;
 use iutnc\touiteur\exception\AuthException;
 use iutnc\touiteur\exception\PostException;
+use iutnc\touiteur\exception\TagException;
 use iutnc\touiteur\exception\UserException;
 use iutnc\touiteur\user\User;
 use iutnc\touiteur\exception\InvalidPropertyNameException;
@@ -17,9 +18,9 @@ class Tag
     protected string $libelle;
     protected ?string $description;
 
-    private function __construct(int $id)
+    private function __construct(int $idTag)
     {
-        $this->id = $id;
+        $this->idTag = $idTag;
     }
 
     /**
@@ -29,6 +30,7 @@ class Tag
     {
         if (property_exists($this, $at)) {
             $this->$at = $val;
+            print $at;
         } else throw new InvalidPropertyNameException();
     }
 
@@ -41,23 +43,19 @@ class Tag
         throw new Exception ("$at: invalid property");
     }
 
-    /**
-     * @throws UserException
-     * @throws PostException
-     */
     public static function getTag(int $id): Tag
     {
         $db = ConnectionFactory::makeConnection();
-        $query = "select * from POST where idTag = ?";
+        $query = "select * from TAG where idTag = ?";
         $resultset = $db->prepare($query);
         $resultset->bindParam(1, $id);
         $resultset->execute();
 
-        if (!$resultset) throw new PostException();
+        if (!$resultset) throw new TagException();
 
         $row = $resultset->fetch(PDO::FETCH_ASSOC);
 
-        if (!$row) throw new PostException();
+        if (!$row) throw new TagException();
 
         $tag = new Tag($id);
         $tag->libelle = $row['libelle'];
