@@ -2,6 +2,7 @@
 
 namespace iutnc\touiteur\render;
 
+use iutnc\touiteur\db\ConnectionFactory;
 use iutnc\touiteur\post\PostList;
 
 class PostListRender{
@@ -42,6 +43,21 @@ HTML;
             $html .= '</div>
     </div>';
         }
+        $query = "select * from POST";
+        $db = ConnectionFactory::makeConnection();
+        $resultset = $db->prepare($query);
+        $resultset->execute();
+        $count = $resultset->rowCount();
+
+        $pageCount = ceil($count / 10);
+
+        $html .= <<<HTML
+            <div class="pagination">
+            HTML;
+        for ($i = 1; $i <= $pageCount; $i++){
+            $html .= '<a href="?action=default&page='.$i.'">'.$i.'</a>';
+        }
+        $html .= '</div>';
         $html .= '</div>
 <div class="right">';
         return $html;
