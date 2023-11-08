@@ -15,6 +15,7 @@ class SignoutAction extends Action
             <div class="default">
                 <h2>Vous êtes déconnecté</h2>
             </div>
-            HTML;
+<div class="right">
+HTML;
     }
 }

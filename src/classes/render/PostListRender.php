@@ -42,7 +42,8 @@ HTML;
             $html .= '</div>
     </a>';
         }
-        $html .= '</div>';
+        $html .= '</div>
+<div class="right">';
         return $html;
     }
 }
