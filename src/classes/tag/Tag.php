@@ -8,6 +8,8 @@ use iutnc\touiteur\exception\AuthException;
 use iutnc\touiteur\exception\PostException;
 use iutnc\touiteur\exception\TagException;
 use iutnc\touiteur\exception\UserException;
+use iutnc\touiteur\post\Post;
+use iutnc\touiteur\post\PostList;
 use iutnc\touiteur\user\User;
 use iutnc\touiteur\exception\InvalidPropertyNameException;
 use PDO;
@@ -62,6 +64,29 @@ class Tag
         $tag->description = $row['description'];
 
         return $tag;
+    }
 
+    public static function getPostListTag(int $id): PostList
+    {
+        $postList = array();
+
+        $db = ConnectionFactory::makeConnection();
+        $query = "select * from HASTAG natural join POST where idTag = ? order by postDate desc limit 10 offset ?";
+        $resultset = $db->prepare($query);
+        if(!isset($_GET['page']) || $_GET['page'] < 1){
+            $_GET['page'] = 0;
+        } else {
+            $offset= ($_GET['page'] - 1) * 10;
+        }
+        $resultset->bindParam(1, $id);
+        $resultset->bindParam(2, $offset);
+        $resultset->execute();
+
+        while ($row = $resultset->fetch(PDO::FETCH_ASSOC)) {
+            $post = Post::getPost($row['postId']);
+            $postList[] = $post;
+        }
+
+        return new PostList($postList);
     }
 }
