@@ -55,14 +55,14 @@ HTML;
             $html .= <<<HTML
             <div class="pagination">
             HTML;
-            if(!isset($_GET['page']))
-                $_GET['page'] = 1;
-            for ($i = 1; $i <= $pageCount; $i++){
-                if($i = $_GET['page'])
-                    $html .= '<a href="?action=default&page='.$i.'" id="current-page">'.$i.'</a>';
-                else
-                    $html .= '<a href="?action=default&page='.$i.'">'.$i.'</a>';
-            }
+//            if(!isset($_GET['page']))
+//                $_GET['page'] = 1;
+//            for ($i = 1; $i <= $pageCount; $i++){
+//                if($i = $_GET['page'])
+//                    $html .= '<a href="?action=default&page='.$i.'" id="current-page">'.$i.'</a>';
+//                else
+//                    $html .= '<a href="?action=default&page='.$i.'">'.$i.'</a>';
+//            }
         } else {
             $query = "select * from POST where userId = ?";
             $db = ConnectionFactory::makeConnection();
@@ -76,13 +76,13 @@ HTML;
             $html .= <<<HTML
             <div class="pagination">
             HTML;
-            for ($i = 1; $i <= $pageCount; $i++){
-                if($i = $_GET['page']){
-                    $html .= '<a href="?action=view-profile&page='.$i.'&id='.$_GET['id'].'" id="current-page">'.$i.'</a>';
-                } else {
-                    $html .= '<a href="?action=view-profile&page='.$i.'&id='.$_GET['id'].'">'.$i.'</a>';
-                }
-            }
+//            for ($i = 1; $i <= $pageCount; $i++){
+//                if($i = $_GET['page']){
+//                    $html .= '<a href="?action=view-profile&page='.$i.'&id='.$_GET['id'].'" id="current-page">'.$i.'</a>';
+//                } else {
+//                    $html .= '<a href="?action=view-profile&page='.$i.'&id='.$_GET['id'].'">'.$i.'</a>';
+//                }
+//            }
         }
         $html .= '</div>';
         $html .= '</div>

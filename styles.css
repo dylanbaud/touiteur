@@ -20,6 +20,14 @@ body{
     justify-content: space-between;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px var(--dark-color) inset !important;
+    -webkit-text-fill-color: white !important;
+}
+
 ::selection{
     background-color: var(--primary-color);
     color: white;
@@ -166,7 +174,7 @@ nav .logo:hover{
     padding: 5px 10px;
     margin-bottom: 20px;
     background-color: transparent;
-    color: #b4b0b0;
+    color: white;
     border: var(--border-color) 1px solid;
 }
 
