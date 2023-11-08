@@ -1,6 +1,7 @@
 <?php
 
 namespace iutnc\touiteur\dispatch;
+
 use iutnc\touiteur\actions as AC;
 
 class Dispatcher
@@ -23,8 +24,7 @@ class Dispatcher
     {
         $class = null;
 
-        switch ($this->action)
-        {
+        switch ($this->action) {
             case 'sign-in':
                 $class = new AC\SigninAction();
                 $this->title .= ' | Connexion';
@@ -53,6 +53,9 @@ class Dispatcher
                 $class = new AC\SettingsAction();
                 $this->title .= ' | Paramètres';
                 break;
+            case 'view-tag':
+                $class = new AC\ViewTagAction();
+                $this->title .= ' | Tag';
             default:
                 $class = new AC\DefaultAction();
                 $this->title .= ' | Accueil';
@@ -71,9 +74,9 @@ class Dispatcher
     <meta charset="UTF-8">
     <link rel="stylesheet" href="./styles.css">
     <link rel="icon" href="./img/logo.png">
-    <title>'.$this->title.'</title>
+    <title>' . $this->title . '</title>
 </head>
-<body '.$this->body.'>
+<body ' . $this->body . '>
 <div class="navbar">
     <nav>
         <a href="?action="><img src="./img/home.svg">Accueil</a>
