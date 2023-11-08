@@ -25,14 +25,14 @@ class CreatePostAction extends Action
         <form method="post" action="?action=create-post" enctype='multipart/form-data'>
             <div class="text-content">
                 <img src="/img/defaultProfile.png" class="profile-pic">
-                <textarea type="text" id="text" placeholder="Quoi de neuf ?" maxlength="235"></textarea>
+                <textarea name="text" id="text" placeholder="Quoi de neuf ?" maxlength="235"></textarea>
             </div>
             
             <hr>
             
             <div class="buttons">
-                <label for="inputfile" class="file-label">
-                    <img src="./img/image.png" class="file-icon">
+                <label for="inputfile">
+                    <img src="./img/image.png">
                 </label>
                 <input type="file" name="inputfile" id="inputfile">
                 <input type="submit" value="Poster" class="submit">

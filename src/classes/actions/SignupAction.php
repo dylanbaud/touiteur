@@ -35,6 +35,7 @@ class SignupAction extends Action
                     <p>Déjà inscrit ? <a href="?action=sign-in">Connectez-vous</a></p>
                 </form>
             </div>
+<div class="right"></div>
 HTML;
         } else if ($this->http_method === 'POST' && !Auth::isLogged()) {
             $username = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
@@ -49,12 +50,14 @@ HTML;
                 <div class="default">
                     <h2>Inscription réussi</h2>
                 </div>
+<div class="right"></div>
 HTML;
             } catch (AuthException $e) {
                 $html .= <<<HTML
                 <div class="default">
                     <h2>Inscription refusé</h2>
                 </div>
+<div class="right"></div>
 HTML;
             }
         } else if (Auth::isLogged()) {
@@ -65,6 +68,7 @@ HTML;
                 <h2>Bonjour $username</h2>
                 <a href="?action=view-profile&id=$id">Accéder au compte</a>
             </div>
+<div class="right">
 HTML;
         }
         return $html;
