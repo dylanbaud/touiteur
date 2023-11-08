@@ -412,6 +412,7 @@ nav .logo:hover{
     width: 70%;
     height: 200px;
     font-size: 1.2rem;
+    margin-top: 15px;
 }
 
 .poster .submit{
