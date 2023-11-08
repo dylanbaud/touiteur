@@ -28,11 +28,12 @@ class UserRender{
 
         $html .= <<<HTML
     <div class="user-profile">
-        <img src="{$this->user->profilePic}" alt="Profile picture">
-        <h2>{$this->user->username}</h2>
+        <div>
+            <img src="{$this->user->profilePic}" alt="Profile picture">
+            <h2>{$this->user->username}</h2>
+        </div>
         <p>{$this->user->lastName} {$this->user->firstName}</p>
         <p>Né(e) le {$this->user->birthDate}</p>
-        <p>{$this->user->email}</p>
         <p>A rejoint Touiteur le {$this->user->joinDate}</p>
     </div>
     <div class="user-options">
