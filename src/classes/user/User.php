@@ -93,18 +93,18 @@ where userId = ?';
         return new PostList($postList);
     }
 
-    public function follow(int $idFollow){
+    public static function follow(int $userId, int $idFollow){
         $db = ConnectionFactory::makeConnection();
-        $query = "SELECT followerId FROM SUB WHERE userId = '$this->iderId' AND followerId = '$idFollow'";
+        $query = "SELECT followerId FROM SUB WHERE userId = '$userId' AND followerId = '$idFollow'";
         $resultset = $db->prepare($query);
         $resultset->execute();
         if($resultset->rowCount() === 1){
-            $query = "DELETE FROM SUB WHERE userId = '$this->iderId' AND followerId = '$idFollow'";
+            $query = "DELETE FROM SUB WHERE userId = '$userId' AND followerId = '$idFollow'";
             $resultset = $db->prepare($query);
             $resultset->execute();
         }
         else {
-            $query = "INSERT INTO SUB VALUES ('$this->iderId', '$idFollow')";
+            $query = "INSERT INTO SUB VALUES ('$userId', '$idFollow')";
             $resultset = $db->prepare($query);
             $resultset->execute();
         }

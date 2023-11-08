@@ -53,6 +53,9 @@ class Dispatcher
                 $class = new AC\SettingsAction();
                 $this->title .= ' | Paramètres';
                 break;
+            case 'follow-user':
+                $class = new AC\FollowUserAction();
+                break;
             default:
                 $class = new AC\DefaultAction();
                 $this->title .= ' | Accueil';
