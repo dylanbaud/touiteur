@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6283e77f-b719-4081-b4e9-097c48e0916b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/conf/db.config.ini" beforeDir="false" afterPath="$PROJECT_DIR$/conf/db.config.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/actions/SettingsAction.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/actions/SettingsAction.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/actions/ViewTagAction.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/actions/ViewTagAction.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/render/PostListRender.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/render/PostListRender.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,25 +35,29 @@
   &quot;associatedIndex&quot;: 8
 }</component>
   <component name="ProjectId" id="2XtsWPUw7x2Ia9NmKZ1CCqPrI6L" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/bauds/Documents/Cours/GIT/touiteur&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;web-ide.project.structure&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/bauds/Documents/Cours/GIT/touiteur",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "web-ide.project.structure",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\bauds\Documents\Cours\GIT\touiteur" />
@@ -67,11 +74,14 @@
       <workItem from="1699459746137" duration="174000" />
       <workItem from="1699459929783" duration="1210000" />
       <workItem from="1699464192568" duration="619000" />
-      <workItem from="1699480439919" duration="68000" />
+      <workItem from="1699480439919" duration="2705000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>
