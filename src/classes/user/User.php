@@ -104,7 +104,7 @@ where userId = ?';
         $query = "SELECT followerId FROM SUB WHERE userId = '$userId' AND followerId = '$idFollow'";
         $resultset = $db->prepare($query);
         $resultset->execute();
-        if($resultset->rowCount() === 1){
+        if($resultset->rowCount() < 2){
             $query = "DELETE FROM SUB WHERE userId = '$userId' AND followerId = '$idFollow'";
             $resultset = $db->prepare($query);
             $resultset->execute();
@@ -115,5 +115,4 @@ where userId = ?';
             $resultset->execute();
         }
     }
-
 }
