@@ -83,9 +83,4 @@ class Post
         return $post;
 
     }
-
-    public static function getTags(){
-        $db = ConnectionFactory::makeConnection();
-
-    }
 }

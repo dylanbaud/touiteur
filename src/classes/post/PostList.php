@@ -6,6 +6,7 @@ use Exception;
 use iutnc\touiteur\db\ConnectionFactory;
 use iutnc\touiteur\exception\PostException;
 use iutnc\touiteur\exception\UserException;
+use iutnc\touiteur\render\PostListRender;
 use iutnc\touiteur\user\User;
 use PDO;
 
