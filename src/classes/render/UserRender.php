@@ -36,11 +36,17 @@ class UserRender{
         <p>Né(e) le {$this->user->birthDate}</p>
         <p>A rejoint Touiteur le {$this->user->joinDate}</p>
     </div>
+HTML;
+
+        if (isset($_SESSION['user']) && $_SESSION['user']->userId === $this->user->userId) {
+            $html .= <<<HTML
     <div class="user-options">
         <a href="?action=settings">Modifier le Profil</a>
         <a href="?action=sign-out" class="deconnexion">Se déconnecter</a>
     </div>
 HTML;
+        }
+
 
         return $html;
     }

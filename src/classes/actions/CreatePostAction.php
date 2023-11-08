@@ -21,7 +21,7 @@ class CreatePostAction extends Action
             $html .= <<<HTML
 <div class="blur transparent-blur">
     <div class="poster">
-        <a href="?action=" class="quit-btn"><img src="./img/cancel.png"></a>
+        <a href="?action=" class="quit-btn"><img src="./img/icon/cancel.png"></a>
         <form method="post" action="?action=create-post" enctype='multipart/form-data'>
             <div class="text-content">
                 <img src="{$_SESSION['user']->profilePic}" class="profile-pic">
@@ -32,7 +32,7 @@ class CreatePostAction extends Action
             
             <div class="buttons">
                 <label for="inputfile">
-                    <img src="./img/image.png">
+                    <img src="./img/icon/image.png">
                 </label>
                 <input type="file" name="inputfile" id="inputfile">
                 <input type="submit" value="Poster" class="submit">

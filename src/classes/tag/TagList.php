@@ -1,43 +1,47 @@
 <?php
 
-namespace iutnc\touiteur\post;
+namespace iutnc\touiteur\tag;
 
 use Exception;
 use iutnc\touiteur\db\ConnectionFactory;
 use iutnc\touiteur\exception\PostException;
 use iutnc\touiteur\exception\UserException;
+use iutnc\touiteur\post\Post;
 use iutnc\touiteur\user\User;
 use PDO;
 
-class PostList
+class TagList
 {
-    private array $posts;
+    private array $tags;
 
-    public function __construct(array $posts = array())
+    public function __construct(array $tags = array())
     {
-        $this->posts = $posts;
+        $this->tags = $tags;
     }
 
     /**
      * @throws UserException
      * @throws PostException
      */
-    public static function getAllPosts(int $min): PostList
+    public static function getAllTags(): TagList
     {
-        $postList = array();
+        $tagList = array();
 
         $db = ConnectionFactory::makeConnection();
-        $query = "select * from POST order by postDate desc limit 10 offset ?";
+        $query = "SELECT TAG.idtag, TAG.libelle, TAG.description
+FROM TAG
+LEFT JOIN LIKEDTAG ON TAG.idtag = LIKEDTAG.idtag
+GROUP BY TAG.idtag, TAG.libelle, TAG.description
+ORDER BY COUNT(LIKEDTAG.idtag) DESC limit 5";
         $resultset = $db->prepare($query);
-        $resultset->bindParam(1, $min);
         $resultset->execute();
 
         while ($row = $resultset->fetch(PDO::FETCH_ASSOC)) {
-            $post = Post::getPost($row['postId']);
-            $postList[] = $post;
+            $tag = TAG::getTag($row['idtag']);
+            $tagList[] = $tagList;
         }
 
-        return new PostList($postList);
+        return new TagList($tagList);
     }
 
     /**

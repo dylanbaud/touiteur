@@ -23,8 +23,7 @@ class Dispatcher
     {
         $class = null;
 
-        switch ($this->action)
-        {
+        switch ($this->action) {
             case 'sign-in':
                 $class = new AC\SigninAction();
                 $this->title .= ' | Connexion';
@@ -48,11 +47,15 @@ class Dispatcher
             case 'create-post':
                 $class = new AC\CreatePostAction();
                 $this->title .= ' | Post';
+                $this->body .= 'style="overflow: hidden;"';
                 break;
             case 'settings':
                 $class = new AC\SettingsAction();
                 $this->title .= ' | Paramètres';
                 break;
+            case 'view-tag':
+                $class = new AC\ViewTagAction();
+                $this->title .= ' | Tag';
             case 'follow-user':
                 $class = new AC\FollowUserAction();
                 break;
@@ -73,15 +76,15 @@ class Dispatcher
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="./styles.css">
-    <link rel="icon" href="./img/logo.png">
-    <title>'.$this->title.'</title>
+    <link rel="icon" href="/img/logo.png">
+    <title>' . $this->title . '</title>
 </head>
-<body '.$this->body.'>
+<body ' . $this->body . '>
 <div class="navbar">
     <nav>
-        <a href="?action="><img src="./img/home.svg">Accueil</a>
-        <a href=""><img src="./img/search.svg">Rechercher</a>
-        <a href="?action=sign-in"><img src="./img/account.png">Compte</a>
+        <a href="?action="><img src="./img/icon/home.svg">Accueil</a>
+        <a href=""><img src="./img/icon/search.svg">Rechercher</a>
+        <a href="?action=sign-in"><img src="./img/icon/account.png">Compte</a>
         <a href="?action=create-post" class="post">Poster</a>
     </nav>
 </div>
