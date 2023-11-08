@@ -269,6 +269,7 @@ nav .logo:hover{
 .card-content p{
     text-align: justify;
     align-self: flex-start;
+    margin: 0 60px;
 }
 
 .card-content img{
