@@ -78,7 +78,7 @@ HTML;
             $page = $_GET['page'];
         }
 
-        for ($i = 1; $i < $pageCount; $i++) {
+        for ($i = 1; $i <= $pageCount; $i++) {
             if ($i == $page) {
                 $html .= <<<HTML
                     <a href="?action={$action}&page={$page}{$author}" id="current-page">{$page}</a>
