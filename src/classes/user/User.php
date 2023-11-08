@@ -80,9 +80,15 @@ where userId = ?';
         $postList = array();
 
         $db = ConnectionFactory::makeConnection();
-        $query = "select * from POST where userId = ? order by postDate desc limit 10";
+        $query = "select * from POST where userId = ? order by postDate desc limit 10 offset ?";
         $resultset = $db->prepare($query);
+        if(!isset($_GET['page']) || $_GET['page'] < 1){
+            $_GET['page'] = 0;
+        } else {
+            $offset= ($_GET['page'] - 1) * 10;
+        }
         $resultset->bindParam(1, $id);
+        $resultset->bindParam(2, $offset);
         $resultset->execute();
 
         while ($row = $resultset->fetch(PDO::FETCH_ASSOC)) {
