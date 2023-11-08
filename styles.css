@@ -326,6 +326,10 @@ nav .logo:hover{
     background-color: var(--primary-color);
 }
 
+.better-card-profile:hover{
+    text-decoration: underline;
+}
+
 .better-card-profile span{
     color: #b4b0b0;
     font-weight: normal;
