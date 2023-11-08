@@ -5,7 +5,8 @@ namespace iutnc\touiteur\render;
 use iutnc\touiteur\db\ConnectionFactory;
 use iutnc\touiteur\post\PostList;
 
-class PostListRender{
+class PostListRender
+{
 
     public PostList $postlist;
 
@@ -16,7 +17,9 @@ class PostListRender{
 
     public function render(): string
     {
-        $html = <<<HTML
+
+        ob_start();
+        echo <<<HTML
 <div class="post-list">
     <div class="title">
         <img src="/img/logo.png" alt="Logo">
@@ -24,10 +27,10 @@ class PostListRender{
     </div>
 HTML;
         $postList = $this->postlist;
-        foreach ($postList->posts as $post){
+        foreach ($postList->posts as $post) {
             $user = $post->user;
             $id = $post->id;
-            $html .= <<<HTML
+            echo <<<HTML
     <div onclick="location.href='?action=view-post&id=$id'" class="card">
         <a href="?action=view-profile&id={$user->userId}" class="card-profile">
             <img src='$user->profilePic'>
@@ -36,57 +39,62 @@ HTML;
         <div class="card-content">
             <p>$post->postText</p>
 HTML;
-            if ($post->image != null){
-                $html .= "<img src='$post->image'>";
+            if ($post->image != null) {
+                echo "<img src='$post->image'>";
             }
 
-            $html .= '</div>
+            echo'</div>
     </div>';
         }
-        if(!isset($_GET['id'])){
-            $query = "select * from POST";
-            $db = ConnectionFactory::makeConnection();
-            $resultset = $db->prepare($query);
-            $resultset->execute();
-            $count = $resultset->rowCount();
+        if (!isset($_GET['id'])) {
+            $action = 'default';
+            $query = "select count(*) from POST where 1";
+            $author = "";
 
-            $pageCount = ceil($count / 10);
-
-            $html .= <<<HTML
-            <div class="pagination">
-            HTML;
-//            if(!isset($_GET['page']))
-//                $_GET['page'] = 1;
-//            for ($i = 1; $i <= $pageCount; $i++){
-//                if($i = $_GET['page'])
-//                    $html .= '<a href="?action=default&page='.$i.'" id="current-page">'.$i.'</a>';
-//                else
-//                    $html .= '<a href="?action=default&page='.$i.'">'.$i.'</a>';
-//            }
         } else {
-            $query = "select * from POST where userId = ?";
-            $db = ConnectionFactory::makeConnection();
-            $resultset = $db->prepare($query);
-            $resultset->bindParam(1, $_GET['id']);
-            $resultset->execute();
-            $count = $resultset->rowCount();
+            $action = 'view-profile';
+            $query = "select count(*) from POST where userId = {$_GET['id']}";
+            $author = "&id={$_GET['id']}";
+        }
 
-            $pageCount = ceil($count / 10);
+        $db = ConnectionFactory::makeConnection();
+        $resultset = $db->prepare($query);
+        $resultset->execute();
+        $count = $resultset->fetchColumn();
+        $pageCount = ceil($count / 10);
 
-            $html .= <<<HTML
+        unset($resultset);
+        unset($db);
+        unset($query);
+        unset($count);
+        unset($postList);
+
+        echo <<<HTML
             <div class="pagination">
             HTML;
-//            for ($i = 1; $i <= $pageCount; $i++){
-//                if($i = $_GET['page']){
-//                    $html .= '<a href="?action=view-profile&page='.$i.'&id='.$_GET['id'].'" id="current-page">'.$i.'</a>';
-//                } else {
-//                    $html .= '<a href="?action=view-profile&page='.$i.'&id='.$_GET['id'].'">'.$i.'</a>';
-//                }
-//            }
+        if (!isset($_GET['page']))
+            $page = 1;
+        else {
+            $page = $_GET['page'];
         }
-        $html .= '</div>';
-        $html .= '</div>
+        for ($i = 1; $i <= $pageCount; $i++) {
+            if ($i = $page) {
+                echo <<<HTML
+                    <a href="?action={$action}&page={$i}{$author}" id="current-page">{$i}</a>
+                    HTML;
+                unset($page);
+            } else {
+                echo <<<HTML
+                    <a href="?action={$action}&page={$i}{$author}">{$i}</a>
+                    HTML;
+            }
+        }
+
+        echo '</div>';
+        echo '</div>
 <div class="right">';
-        return $html;
+
+        ob_end_flush();
+        return ob_get_clean();
     }
 }
