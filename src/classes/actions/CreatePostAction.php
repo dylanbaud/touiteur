@@ -31,8 +31,8 @@ class CreatePostAction extends Action
             <hr>
             
             <div class="buttons">
-                <label for="inputfile" class="file-label">
-                    <img src="./img/image.png" class="file-icon">
+                <label for="inputfile">
+                    <img src="./img/image.png">
                 </label>
                 <input type="file" name="inputfile" id="inputfile">
                 <input type="submit" value="Poster" class="submit">

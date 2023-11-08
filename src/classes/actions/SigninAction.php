@@ -29,6 +29,7 @@ class SigninAction extends Action
                         <p>Pas encore inscrit ? <a href="?action=sign-up">Inscrivez-vous</a></p>
                     </form>
                 </div>
+<div class="right">
 HTML;
         } elseif ($this->http_method === 'POST' && !Auth::isLogged()) {
             $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
@@ -49,13 +50,15 @@ HTML;
                 <h2>Bonjour $username</h2>
                 <a href="?action=view-profile&id=$id">Accéder au compte</a>
             </div>
+<div class="right">
 HTML;
             } catch (AuthException $e) {
                 $html .= <<<HTML
                     <div class="default">
                         <h2>Erreur d'authentification</h2>
                     </div>
-                HTML;
+<div class="right">
+HTML;
             }
         } else if (Auth::isLogged()) {
             $username = $_SESSION['user']->username;
@@ -65,6 +68,7 @@ HTML;
                 <h2>Bonjour $username</h2>
                 <a href="?action=view-profile&id=$id">Accéder au compte</a>
             </div>
+<div class="right">
 HTML;
         }
         return $html;

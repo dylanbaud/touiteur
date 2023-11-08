@@ -33,7 +33,8 @@ class SettingsAction extends Action
                         <button type="submit" class="submit">Modifier</button>
                     </form>
                 </div>
-        HTML;
+<div class="right">
+HTML;
 
         } else if ($this->http_method === 'POST' && Auth::isLogged()) {
 
@@ -91,7 +92,8 @@ class SettingsAction extends Action
                 <div class="default">
                     <h2>Modifications réussies</h2>
                 </div>
-            HTML;
+<div class="right">
+HTML;
         }
         return $html;
     }

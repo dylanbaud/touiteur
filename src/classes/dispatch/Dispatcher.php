@@ -85,7 +85,7 @@ class Dispatcher
 
 ' . $html . '
 
-<div class="right"></div>
+</div>
 
 </body>
 </html>';
