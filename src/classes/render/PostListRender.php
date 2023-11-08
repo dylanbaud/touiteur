@@ -77,7 +77,6 @@ HTML;
             <div class="pagination">
             HTML;
             for ($i = 1; $i <= $pageCount; $i++){
-
                 if($i = $_GET['page']){
                     $html .= '<a href="?action=view-profile&page='.$i.'&id='.$_GET['id'].'" id="current-page">'.$i.'</a>';
                 } else {

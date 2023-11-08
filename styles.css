@@ -355,6 +355,21 @@ nav .logo:hover{
     background-color: var(--primary-color);
 }
 
+.delete-btn{
+    position: absolute;
+    bottom: 15px;
+    right: 20px;
+}
+
+.delete-btn:hover{
+    opacity: 0.7;
+}
+
+.delete-btn img{
+    width: 25px;
+    height: 25px;
+}
+
 .better-card-profile span{
     color: #b4b0b0;
     font-weight: normal;
@@ -412,6 +427,7 @@ nav .logo:hover{
     width: 70%;
     height: 200px;
     font-size: 1.2rem;
+    margin-top: 15px;
 }
 
 .poster .submit{
