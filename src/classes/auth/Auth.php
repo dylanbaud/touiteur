@@ -53,19 +53,26 @@ class Auth
 
             $hash = password_hash($passwd, PASSWORD_DEFAULT, ['cost' => 12]);
 
-            $query = "insert into USER (username, email, profilepic, password, joinDate, birthDate, role, firstName, lastName) values (?, ?, ? , './img/defaultProfile.png' , ?, ?, ?, 1, ?, ?)";
+            $query = "insert into USER (username, email, profilepic, password, joinDate, birthDate, role, firstName, lastName) values (?, ? , './img/defaultProfile.png' , ?, ?, ?, 1, ?, ?)";
             $resultset = $db->prepare($query);
-            $resultset->bindParam(1, $row['id']);
+            $resultset->bindParam(1, $username);
             $resultset->bindParam(2, $email);
-            $resultset->bindParam(3, $username);
-            $resultset->bindParam(4, $hash);
+            $resultset->bindParam(3, $hash);
             $date = date('Y-m-d');
-            $resultset->bindParam(5, $date);
-            $resultset->bindParam(6, $birthday);
-            $resultset->bindParam(7, $firstname);
-            $resultset->bindParam(8, $lastname);
+            $resultset->bindParam(4, $date);
+            $resultset->bindParam(5, $birthday);
+            $resultset->bindParam(6, $firstname);
+            $resultset->bindParam(7, $lastname);
             $resultset->execute();
-            $_SESSION['user'] = User::getUser($row['id']);
+
+            $query = 'select userId from USER where email = ?';
+            $resultset = $db->prepare($query);
+            $resultset->bindParam(1, $email);
+            $resultset->execute();
+            if (!$resultset) throw new AuthException();
+            $row = $resultset->fetch(PDO::FETCH_ASSOC);
+
+            $_SESSION['user'] = User::getUser($row['userId']);
         } else {
             throw new AuthException();
         }

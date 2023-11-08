@@ -27,11 +27,11 @@ HTML;
             $user = $post->user;
             $id = $post->id;
             $html .= <<<HTML
-    <a href="?action=view-post&id=$id" class="card">
-        <div class="card-profile">
+    <div onclick="location.href='?action=view-post&id=$id'" class="card">
+        <a href="?action=view-profile&id={$user->userId}" class="card-profile">
             <img src='$user->profilePic'>
             <p>$user->username</p>
-        </div>
+        </a>
         <div class="card-content">
             <p>$post->postText</p>
 HTML;
@@ -40,7 +40,7 @@ HTML;
             }
 
             $html .= '</div>
-    </a>';
+    </div>';
         }
         $html .= '</div>
 <div class="right">';

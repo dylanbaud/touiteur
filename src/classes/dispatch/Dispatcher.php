@@ -1,7 +1,6 @@
 <?php
 
 namespace iutnc\touiteur\dispatch;
-
 use iutnc\touiteur\actions as AC;
 
 class Dispatcher
@@ -57,6 +56,9 @@ class Dispatcher
             case 'view-tag':
                 $class = new AC\ViewTagAction();
                 $this->title .= ' | Tag';
+            case 'follow-user':
+                $class = new AC\FollowUserAction();
+                break;
             default:
                 $class = new AC\DefaultAction();
                 $this->title .= ' | Accueil';
