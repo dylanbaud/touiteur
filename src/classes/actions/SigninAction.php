@@ -47,7 +47,7 @@ HTML;
                 $html .= <<<HTML
             <div class="default">
                 <h2>Bonjour $username</h2>
-                <a href="?action=view-profile&id=$id">Accèdez compte</a>
+                <a href="?action=view-profile&id=$id">Accéder au compte</a>
             </div>
 HTML;
             } catch (AuthException $e) {
@@ -63,7 +63,7 @@ HTML;
             $html .= <<<HTML
             <div class="default">
                 <h2>Bonjour $username</h2>
-                <a href="?action=view-profile&id=$id">Accèdez compte</a>
+                <a href="?action=view-profile&id=$id">Accéder au compte</a>
             </div>
 HTML;
         }
