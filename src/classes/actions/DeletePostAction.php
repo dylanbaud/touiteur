@@ -20,6 +20,10 @@ class DeletePostAction extends Action
             $resultset = $resultset->fetch(PDO::FETCH_ASSOC);;
 
             if($resultset['userId'] === $_SESSION['user']->userId){
+                $sql = "DELETE FROM HASTAG WHERE postId = ?";
+                $resultset = $db->prepare($sql);
+                $resultset->bindParam(1, $id);
+                $resultset->execute();
                 $sql = "DELETE FROM POST WHERE postId = ?";
                 $resultset = $db->prepare($sql);
                 $resultset->bindParam(1, $id);
