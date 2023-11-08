@@ -60,6 +60,10 @@ class PostRender
             $html .= '<img src='.$this->post->image.'>';
         }
 
+        if($_SESSION['user']->userId === $user->userId){
+            $html .= '<a href="?delete-post&id='.$this->post->postId.'">Supprimer</a>';
+        }
+
         $html .= ' 
         </div>
         <footer>

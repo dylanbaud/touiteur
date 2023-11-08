@@ -64,6 +64,7 @@ HTML;
             $html .= <<<HTML
         <a href="?action=follow-user&id=$id" id="follow-user">Follow</a>
 HTML;
+            }
         }
         if ($this->user->role === 2) {
             $html .= <<<HTML

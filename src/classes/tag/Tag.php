@@ -81,7 +81,6 @@ class Tag
         $resultset->bindParam(1, $id);
         $resultset->bindParam(2, $offset);
         $resultset->execute();
-
         while ($row = $resultset->fetch(PDO::FETCH_ASSOC)) {
             $post = Post::getPost($row['postId']);
             $postList[] = $post;

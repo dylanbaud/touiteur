@@ -23,7 +23,6 @@ class DefaultAction extends Action
         }
         $postList = PostList::getAllPosts($min);
         $postListRender = new PostListRender($postList);
-        $tagListRender = new TagListRender(TagList::getAllTags());
         return $postListRender->render();
     }
 }

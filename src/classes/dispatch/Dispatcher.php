@@ -56,6 +56,7 @@ class Dispatcher
             case 'view-tag':
                 $class = new AC\ViewTagAction();
                 $this->title .= ' | Tag';
+                break;
             case 'follow-user':
                 $class = new AC\FollowUserAction();
                 break;
