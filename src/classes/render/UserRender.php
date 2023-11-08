@@ -2,6 +2,7 @@
 
 namespace iutnc\touiteur\render;
 
+use iutnc\touiteur\db\ConnectionFactory;
 use iutnc\touiteur\exception\PostException;
 use iutnc\touiteur\exception\UserException;
 use iutnc\touiteur\user\User;
@@ -27,6 +28,16 @@ class UserRender
         $postListRender = new PostListRender($postList);
         $html .= $postListRender->render();
 
+        $db = ConnectionFactory::makeConnection();
+        $id = $this->user->userId;
+
+        $query = "SELECT * FROM SUB WHERE userId = '$id'";
+
+        $resultset = $db->prepare($query);
+        $resultset->execute();
+
+        $followersNb = $resultset->rowCount();
+
         $html .= <<<HTML
     <div class="user-profile">
         <div>
@@ -34,7 +45,26 @@ class UserRender
             <h2>{$this->user->username}</h2>
         </div>
 HTML;
+        if(isset($_SESSION['user'])) {
+            $query = "SELECT * FROM SUB WHERE userId = '{$_SESSION['user']->userId}' AND followerId = '$id'";
+            $resultset = $db->prepare($query);
+            $resultset->execute();
 
+            if ($resultset->rowCount() === 1) {
+                $html .= <<<HTML
+        <a href="?action=follow-user&id=$id", id="follow-user">Unfollow</a>
+HTML;
+            } else {
+                $html .= <<<HTML
+        <a href="?action=follow-user&id=$id", id="follow-user">Follow</a>
+HTML;
+            }
+        }
+        else{
+            $html .= <<<HTML
+        <a href="?action=follow-user&id=$id", id="follow-user">Follow</a>
+HTML;
+        }
         if ($this->user->role === 2) {
             $html .= <<<HTML
             <p>Influenceur</p>
@@ -44,10 +74,21 @@ HTML;
 
         $html .= <<<HTML
         <p>{$this->user->lastName} {$this->user->firstName}</p>
-        <p>Né(e) le {$this->user->birthDate}</p>
-        <p>A rejoint Touiteur le {$this->user->joinDate}</p>
-    </div>
 HTML;
+        if ($followersNb === 1) {
+            $html .= <<<HTML
+        <p>{$followersNb} follower</p>
+HTML;
+        } else {
+            $html .= <<<HTML
+        <p>{$followersNb} followers</p>
+HTML;
+        }
+        $html .= <<<HTML
+        <p> Né(e) le {$this->user->birthDate}</p>
+        <p> A rejoint Touiteur le {$this->user->joinDate}</p>
+    </div>
+    HTML;
 
         if (isset($_SESSION['user']) && $_SESSION['user']->userId === $this->user->userId) {
             $html .= <<<HTML
@@ -57,9 +98,6 @@ HTML;
     </div>
 HTML;
         }
-
-
         return $html;
     }
-
 }
