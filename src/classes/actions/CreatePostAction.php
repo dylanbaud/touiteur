@@ -31,8 +31,8 @@ class CreatePostAction extends Action
             <hr>
             
             <div class="buttons">
-                <label for="inputfile" class="file-label">
-                    <img src="./img/image.png" class="file-icon">
+                <label for="inputfile">
+                    <img src="./img/image.png">
                 </label>
                 <input type="file" name="inputfile" id="inputfile">
                 <input type="submit" value="Poster" class="submit">
@@ -43,6 +43,13 @@ class CreatePostAction extends Action
 HTML;
 
         } elseif ($this->http_method === 'POST' && Auth::isLogged()) {
+
+            $tofind = "ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ";
+            $replac = "AAAAAAaaaaaaOOOOOOooooooEEEEeeeeCcIIIIiiiiUUUUuuuuyNn";
+            $tagtxt = strtr($_POST['text'],$tofind,$replac);
+
+            $tags = [];
+            preg_match_all('/#(\w+)/', $tagtxt, $tags);
 
             $text = filter_var($_POST['text'], FILTER_SANITIZE_STRING);
 
@@ -62,6 +69,45 @@ HTML;
             $id = $_SESSION['user']->userId;
             $resultset->bindParam(3, $id);
             $resultset->execute();
+
+
+
+            foreach ($tags[1] as $tag) {
+                $query = 'select * from TAG where libelle = ?';
+                $resultset = $db->prepare($query);
+                $resultset->bindParam(1, $tag);
+                $resultset->execute();
+                if($resultset->rowCount() == 0){
+                    $query = 'insert into TAG (libelle) VALUES (?)';
+                    $resultset = $db->prepare($query);
+                    $resultset->bindParam(1, $tag);;
+                    $resultset->execute();
+                }
+
+                $query = 'select idTag from TAG where libelle = ?';
+                $resultset = $db->prepare($query);
+                $resultset->bindParam(1, $tag);
+                $resultset->execute();
+                $idTag = $resultset->fetch(\PDO::FETCH_ASSOC)['idTag'];
+
+                $query = 'select max(postId) from POST';
+                $resultset = $db->prepare($query);
+                $resultset->execute();
+                $idPost = $resultset->fetch(\PDO::FETCH_ASSOC)['max(postId)'];
+
+                $query = 'select * from HASTAG where postID = ? and idTag = ?';
+                $resultset = $db->prepare($query);
+                $resultset->bindParam(1, $idPost);
+                $resultset->bindParam(2, $idTag);
+                $resultset->execute();
+
+                if($resultset->rowCount() == 0)
+                    $query = 'insert into HASTAG (postID, idTag) VALUES (?, ?)';
+                    $resultset = $db->prepare($query);
+                    $resultset->bindParam(1, $idPost);
+                    $resultset->bindParam(2, $idTag);
+                    $resultset->execute();
+            }
         }
         return $html;
     }

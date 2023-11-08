@@ -431,3 +431,73 @@ nav .logo:hover{
 .poster #inputfile{
     display: none;
 }
+
+/* ### User Profile ### */
+
+.right{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    padding: 30px;
+}
+
+.right .user-profile{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.right .user-profile div{
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.right .user-profile img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    margin-right: 20px;
+}
+
+.right .user-profile h2{
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.right .user-profile p{
+    padding: 3px 0;
+}
+
+.right .user-options{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.right .user-options a{
+    color: var(--primary-color);
+    border: var(--primary-color) 2px solid;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    transition: all 0.3s ease-in-out;
+    padding: 10px 20px;
+}
+
+.right .user-options a:hover{
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.right .user-options .deconnexion:hover{
+    background-color: red;
+    color: white;
+    border: red 2px solid;
+}

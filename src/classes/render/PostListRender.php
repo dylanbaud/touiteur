@@ -28,7 +28,7 @@ HTML;
             $id = $post->id;
             $html .= <<<HTML
     <a href="?action=view-post&id=$id" class="card">
-        <div class="card-profile">
+        <div  class="card-profile">
             <img src='$user->profilePic'>
             <p>$user->username</p>
         </div>
@@ -42,7 +42,8 @@ HTML;
             $html .= '</div>
     </a>';
         }
-        $html .= '</div>';
+        $html .= '</div>
+<div class="right">';
         return $html;
     }
 }
