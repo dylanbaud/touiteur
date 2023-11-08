@@ -531,6 +531,23 @@ nav .logo:hover{
     border: red 2px solid;
 }
 
+#follow-user{
+    color: var(--primary-color);
+    border: var(--primary-color) 2px solid;
+    font-size: 1.2rem;
+    font-weight: 600;
+    transition: all 0.3s ease-in-out;
+    padding: 10px 30px;
+    border-radius: 25px;
+    align-self: center;
+    margin-bottom: 20px
+}
+
+#follow-user:hover{
+    background-color: var(--primary-color);
+    color: white;
+}
+
 /* ### Sign Settings ### */
 
 .sign-settings form{
@@ -569,6 +586,11 @@ nav .logo:hover{
     font-weight: 600;
     transition: all 0.3s ease-in-out;
     padding: 10px 15px;
+}
+
+.pagination #current-page{
+    background-color: var(--primary-color);
+    color: white;
 }
 
 .pagination a:hover{

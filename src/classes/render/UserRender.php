@@ -52,17 +52,16 @@ HTML;
 
             if ($resultset->rowCount() === 1) {
                 $html .= <<<HTML
-        <a href="?action=follow-user&id=$id", id="follow-user">Unfollow</a>
+        <a href="?action=follow-user&id=$id" id="follow-user">Unfollow</a>
 HTML;
             } else {
                 $html .= <<<HTML
-        <a href="?action=follow-user&id=$id", id="follow-user">Follow</a>
+        <a href="?action=follow-user&id=$id" id="follow-user">Follow</a>
 HTML;
             }
-        }
-        else{
+        } else {
             $html .= <<<HTML
-        <a href="?action=follow-user&id=$id", id="follow-user">Follow</a>
+        <a href="?action=follow-user&id=$id" id="follow-user">Follow</a>
 HTML;
         }
         if ($this->user->role === 2) {
