@@ -48,6 +48,7 @@ class Dispatcher
             case 'create-post':
                 $class = new AC\CreatePostAction();
                 $this->title .= ' | Post';
+                $this->body .= 'style="overflow: hidden;"';
                 break;
             case 'settings':
                 $class = new AC\SettingsAction();
