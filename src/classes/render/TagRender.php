@@ -26,6 +26,13 @@ class TagRender
         $db = ConnectionFactory::makeConnection();
         $id = $this->tag->idTag;
 
+        $query = "SELECT * FROM LIKEDTAG WHERE userId = {$_SESSION["user"]->userId}";
+
+        $resultset = $db->prepare($query);
+        $resultset->execute();
+
+        $likeNb = $resultset->rowCount();
+
         $html .= <<<HTML
     <div class="tag-profile">
         <h2>#{$this->tag->libelle}</h2>
@@ -50,12 +57,23 @@ HTML;
 
             if ($resultset->rowCount() === 1) {
                 $html .= <<<HTML
-        <a href="?action=follow-tag&tagId=$id" id="follow-tag">Se désabonner</a>
+        <a href="?action=follow-tag&tagId=$id" id="follow-tag">Unfollow</a>
 HTML;
             } else {
                 $html .= <<<HTML
-        <a href="?action=follow-tag&tagId=$id" id="follow-tag">S'abonner</a>
+        <a href="?action=follow-tag&tagId=$id" id="follow-tag">Follow</a>
 HTML;
+            }
+
+            if ($likeNb < 2) {
+                $html .= <<<HTML
+        <p>{$likeNb} follower</p>
+HTML;
+            } else {
+                $html .= <<<HTML
+        <p>{$likeNb} followers</p>
+HTML;
+
             }
         }
 
