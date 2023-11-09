@@ -48,12 +48,8 @@ HTML;
 
         } elseif ($this->http_method === 'POST' && Auth::isLogged()) {
 
-            $tofind = "ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ";
-            $replac = "AAAAAAaaaaaaOOOOOOooooooEEEEeeeeCcIIIIiiiiUUUUuuuuyNn";
-            $tagtxt = strtr($_POST['text'],$tofind,$replac);
-
             $tags = [];
-            preg_match_all('/#(\w+)/', $tagtxt, $tags);
+            preg_match_all('/#(\w+)/', $_POST['text'], $tags);
 
             $text = filter_var($_POST['text'], FILTER_SANITIZE_STRING);
 
@@ -73,9 +69,6 @@ HTML;
             $id = $_SESSION['user']->userId;
             $resultset->bindParam(3, $id);
             $resultset->execute();
-            header("Location: ?action=");
-
-
 
             foreach ($tags[1] as $tag) {
                 $query = 'select * from TAG where libelle = ?';
