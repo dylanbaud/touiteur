@@ -484,6 +484,12 @@ nav .logo:hover{
     text-decoration: underline;
 }
 
+.better-card hr{
+    width: 100%;
+    border: none;
+    border-bottom: var(--border-color) 1px solid;
+}
+
 .like-btn{
     display: flex;
     justify-content: center;
