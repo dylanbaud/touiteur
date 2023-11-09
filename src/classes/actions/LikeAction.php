@@ -2,6 +2,8 @@
 
 namespace iutnc\touiteur\actions;
 
+use iutnc\touiteur\user\User;
+
 class LikeAction
 {
     public function execute(): string
