@@ -9,23 +9,22 @@ class LikeAction extends Action
 {
     public function execute(): string
     {
-        $html = '';
-
         if (!isset($_SESSION['user'])){
             header('Location: ?action=sign-in');
         }
-        elseif (isset($_GET['postId'])) {
+        if (isset($_GET['id'])) {
             if(isset($_GET['like'])){
-                if($_GET['like'] == true){
+                $value = $_GET['like'];
+                if($value == "true"){
                     $value = 1;
                 } else {
-                    $value = -1;
+                    $value = 0;
                 }
-                User::like($_SESSION['user']->userId,$_GET['postId'], $value);
+                User::like($_SESSION['user']->userId,$_GET['id'], $value);
             }
 
-            header("Location: ?action=view-post&postId={$_GET['id']}");
+            header("Location: ?action=view-post&id={$_GET['id']}");
         }
-        return $html;
+        return "";
     }
 }

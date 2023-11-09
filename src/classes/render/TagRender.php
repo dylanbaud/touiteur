@@ -26,7 +26,7 @@ class TagRender
         $db = ConnectionFactory::makeConnection();
         $id = $this->tag->idTag;
 
-        $query = "SELECT * FROM LIKEDTAG WHERE userId = {$_SESSION["user"]->userId}";
+        $query = "SELECT * FROM LIKEDTAG WHERE idTag = {$id} and userId = {$_SESSION["user"]->userId}";
 
         $resultset = $db->prepare($query);
         $resultset->execute();
@@ -40,7 +40,7 @@ HTML;
 
         if ($this->tag->description != null){
             $html .= <<<HTML
-        <div class="tag-infos">
+        <div class="tag-info">
             <h3>{$this->tag->description}</h3>
 HTML;
         } else {
