@@ -669,3 +669,44 @@ nav .logo:hover{
     background-color: var(--primary-color);
     color: white;
 }
+
+/* ### Tag ### */
+
+.tag-profile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    padding: 30px;
+    gap: 20px;
+}
+
+.tag-profile h2{
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.tag-profile .tag-info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.tag-profile a{
+    color: var(--primary-color);
+    border: var(--primary-color) 2px solid;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    transition: all 0.3s ease-in-out;
+    padding: 10px 20px;
+}
+
+.tag-profile a:hover{
+    background-color: var(--primary-color);
+    color: white;
+}
