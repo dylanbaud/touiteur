@@ -21,6 +21,7 @@ class DefaultAction extends Action
         } else {
             $min = 0;
         }
+        $_SESSION['posting'] = 0;
         $postList = PostList::getAllPosts($min);
         $postListRender = new PostListRender($postList);
         return $postListRender->render();
