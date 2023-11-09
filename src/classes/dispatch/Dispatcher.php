@@ -70,6 +70,9 @@ class Dispatcher
             case'like';
                 $class = new AC\LikeAction();
                 break;
+            case 'view-following':
+                $class = new AC\ViewFollowedPostsAction();
+                break;
             default:
                 $class = new AC\DefaultAction();
                 $this->title .= ' | Accueil';

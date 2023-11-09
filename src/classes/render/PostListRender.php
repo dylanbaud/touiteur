@@ -34,12 +34,12 @@ HTML;
             $page = $_GET['page'];
         }
 
-        if ($_GET['action'] == '') {
+        if (isset($_GET['action']) && $_GET['action'] == '') {
             $html .= <<<HTML
             <a href="?action=" class="current-choice">Pour vous</a>
             <a href="?action=view-following">Abonnements</a>
 HTML;
-        } else if ($_GET['action'] == 'view-following') {
+        } else if (isset($_GET['action']) && ($_GET['action'] == 'view-following')) {
             $html .= <<<HTML
             <a href="?action=">Pour vous</a>
             <a href="?action=view-following" class="current-choice">Abonnements</a>

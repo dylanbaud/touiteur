@@ -36,8 +36,8 @@ class User
         $db = ConnectionFactory::makeConnection();
 
         $query = 'select *
-from USER
-where userId = ?';
+                    from USER
+                    where userId = ?';
 
         $resultset = $db->prepare($query);
         $resultset->bindParam(1, $id);
@@ -166,5 +166,17 @@ where userId = ?';
             $resultset->execute();
             header("Location: ?action=view-post&id=$postId");
         }
+    }
+
+    public static function getFollowedPosts($userId): array{
+        $db = ConnectionFactory::makeConnection();
+        $query = "SELECT DISTINCT POST.postId as idp FROM POST INNER JOIN SUB ON POST.userId = SUB.userId LEFT JOIN HASTAG ON POST.postId = HASTAG.postId LEFT JOIN LIKEDTAG ON HASTAG.idTag = LIKEDTAG.idTag WHERE SUB.followerId = 19 OR LIKEDTAG.userId = '{$userId}'";
+        $resultset = $db->prepare($query);
+        $resultset->execute();
+        while ($row = $resultset->fetch(PDO::FETCH_ASSOC)) {
+            $post = Post::getPost($row['idp']);
+            $postList[] = $post;
+        }
+        return $postList;
     }
 }
