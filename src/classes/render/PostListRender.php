@@ -82,7 +82,6 @@ HTML;
         }
         else {
             $page = $_GET['page'];
-            echo "<p>$_GET[page]</p>";
         }
         for ($i = 1; $i <= $pageCount; $i++) {
             if ($i == $page) {
