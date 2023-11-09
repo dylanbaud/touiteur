@@ -40,7 +40,7 @@ HTML;
 
         if ($this->tag->description != null){
             $html .= <<<HTML
-        <div class="tag-infos">
+        <div class="tag-info">
             <h3>{$this->tag->description}</h3>
 HTML;
         } else {

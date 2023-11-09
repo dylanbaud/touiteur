@@ -20,8 +20,26 @@ class PostListRender
         $html = <<<HTML
 <div class="post-list">
     <div class="title">
-        <img src="/img/logo.png" alt="Logo">
-        <h1>Touiteur</h1>
+        <div>
+            <img src="/img/logo.png" alt="Logo">
+            <h1>Touiteur</h1>
+        </div>
+        <div class="post-choice">
+HTML;
+
+        if ($_GET['action'] == '') {
+            $html .= <<<HTML
+            <a href="?action=" class="current-choice">Pour vous</a>
+            <a href="?action=">Abonnements</a>
+HTML;
+        } else if ($_GET['action'] == 'view-following') {
+            $html .= <<<HTML
+            <a href="?action=">Pour vous</a>
+            <a href="?action=" class="current-choice">Abonnements</a>
+HTML;
+        }
+        $html .= <<<HTML
+        </div>
     </div>
 HTML;
         $postList = $this->postlist;
