@@ -35,7 +35,7 @@ HTML;
         }
 
         if (isset($_GET['action'])) {
-            if ($_GET['action'] == '') {
+            if ($_GET['action'] == '' || $_GET['action'] = 'default') {
                 $html .= <<<HTML
             <a href="?action=" class="current-choice">Pour vous</a>
             <a href="?action=view-following">Abonnements</a>
