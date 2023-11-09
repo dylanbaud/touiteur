@@ -6,9 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="6283e77f-b719-4081-b4e9-097c48e0916b" name="Changes" comment="">
 <<<<<<< HEAD
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
 =======
       <change beforePath="$PROJECT_DIR$/conf/db.config.ini" beforeDir="false" afterPath="$PROJECT_DIR$/conf/db.config.ini" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/dispatch/Dispatcher.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/dispatch/Dispatcher.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/render/PostRender.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/render/PostRender.php" afterDir="false" />
+>>>>>>> 716957462556b19ae1095e6787a8e2ae69a8be73
       <change beforePath="$PROJECT_DIR$/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles.css" afterDir="false" />
 >>>>>>> fdaf46f140a5ceb858c9066e2bf53d18fc1bd24f
     </list>
@@ -80,8 +86,12 @@
 =======
       <workItem from="1699464192568" duration="619000" />
       <workItem from="1699480439919" duration="3018000" />
+<<<<<<< HEAD
       <workItem from="1699513056357" duration="377000" />
 >>>>>>> fdaf46f140a5ceb858c9066e2bf53d18fc1bd24f
+=======
+      <workItem from="1699513056357" duration="2395000" />
+>>>>>>> 716957462556b19ae1095e6787a8e2ae69a8be73
     </task>
     <servers />
   </component>

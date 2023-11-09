@@ -20,11 +20,15 @@ class SigninAction extends Action
                 <div class="sign">
                     <form method="post" action="?action=sign-in">
                         <h2>Connexion</h2>
-                        <label for="email">Email:</label>
-                        <input type="text" name="email" id="email" required placeholder="exemple@mail.com">
+                        <div class="inputBox">
+                            <input type="text" name="email" id="email" required>
+                            <span>Email</span>
+                        </div>
                         
-                        <label for="password">Mot de passe:</label>
-                        <input type="password" name="password" id="password" required placeholder="dylansmashunpeunon">
+                        <div class="inputBox">
+                            <input type="password" name="password" id="password" required>
+                            <span>Mot de passe</span>
+                        </div>
                         <input type="submit" value="Se connecter" class="submit">
                         <p>Pas encore inscrit ? <a href="?action=sign-up">Inscrivez-vous</a></p>
                     </form>

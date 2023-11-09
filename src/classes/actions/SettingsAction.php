@@ -24,17 +24,25 @@ class SettingsAction extends Action
             </label>
             <input type="file" id="profilePic" name="profilePic" value="{$_SESSION['user']->profilePic}">
             
-            <label for="username">Nom d'utilisateur:</label>
-            <input type="text" name="username" id="username" value="{$_SESSION['user']->username}">
+            <div class="inputBox">
+                <input type="text" name="username" id="username" value="{$_SESSION['user']->username}">
+                <span>Pseudo</span>
+            </div>
             
-            <label for="firstname">Prénom:</label>
-            <input type="text" name="firstname" id="firstname" value="{$_SESSION['user']->firstName}">
+            <div class="inputBox">
+                <input type="text" name="firstname" id="firstname" value="{$_SESSION['user']->firstName}">
+                <span>Prénom</span>
+            </div>
             
-            <label for="lastname">Nom:</label>
-            <input type="text" name="lastname" id="lastname" value="{$_SESSION['user']->lastName}">
+            <div class="inputBox">
+                <input type="text" name="lastname" id="lastname" value="{$_SESSION['user']->lastName}">
+                <span>Nom</span>
+            </div>
             
-            <label for="birthday">Date de naissance:</label>
-            <input type="date" name="birthday" id="birthday" value="{$_SESSION['user']->birthDate}" required>
+            <div class="inputBox">
+                <input type="date" name="birthday" id="birthday" value="{$_SESSION['user']->birthDate}" required>
+                <span>Anniversaire</span>
+            </div>
             
             <input type="submit" class="submit" value="Modifier">
         </form>
