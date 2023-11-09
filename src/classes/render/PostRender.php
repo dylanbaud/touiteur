@@ -2,6 +2,7 @@
 
 namespace iutnc\touiteur\render;
 
+use iutnc\touiteur\auth\Auth;
 use iutnc\touiteur\db\ConnectionFactory;
 use iutnc\touiteur\post\Post;
 use iutnc\touiteur\post\PostList;
@@ -60,7 +61,7 @@ class PostRender
             $html .= '<img src='.$this->post->image.'>';
         }
 
-        if($_SESSION['user']->userId === $user->userId){
+        if(Auth::isLogged() && $_SESSION['user']->userId === $user->userId){
             $html .= '
             <a href="?action=delete-post&id='.$this->post->id.'" class="delete-btn">
                 <img src="/img/icon/trash.svg">
