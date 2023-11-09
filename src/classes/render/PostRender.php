@@ -64,13 +64,16 @@ class PostRender
             $html .= '<img src='.$this->post->image.'>';
         }
 
-        $html .='<a href="?action=like&id='.$this->post->id.'&like=true" class="upvote-btn">
-                <img src="./img/icon/up.png">
-            </a>
-            <p>'.$this->post->score.'</p>
-            <a href="?action=like&id='.$this->post->id.'&like=false" class="downvote-btn">
-                <img src="./img/icon/down.png">
-</a>';
+        $html .=
+            '<div class="like-btn">
+                <a href="?action=like&id='.$this->post->id.'&like=true" class="upvote-btn">
+                    <img src="./img/icon/like.png">
+                </a>
+                <p>'.$this->post->score.'</p>
+                <a href="?action=like&id='.$this->post->id.'&like=false" class="downvote-btn">
+                    <img src="./img/icon/like.png">
+                </a>
+            </div>';
 
         if(Auth::isLogged() && $_SESSION['user']->userId === $user->userId){
             $html .= '

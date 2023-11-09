@@ -54,7 +54,7 @@ HTML;
             $user = $post->user;
             $id = $post->id;
             $html .= <<<HTML
-    <div onclick="location.href='?action=view-post&id=$id&page={$page}'" class="card">
+    <div onclick="location.href='?action=view-post&id=$id'" class="card">
         <a href="?action=view-profile&userId={$user->userId}" class="card-profile">
             <img src='$user->profilePic'>
             <p>$user->username</p>

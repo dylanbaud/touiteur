@@ -484,6 +484,29 @@ nav .logo:hover{
     text-decoration: underline;
 }
 
+.like-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.like-btn p{
+    align-self: center;
+}
+
+.like-btn .downvote-btn img{
+    transform: rotate(180deg);
+}
+
+.like-btn img{
+    width: 25px;
+    height: 25px;
+}
+
+.like-btn a:hover{
+    opacity: 0.7;
+}
+
 /* ### Poster ### */
 
 .poster{
