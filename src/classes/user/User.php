@@ -123,29 +123,29 @@ where userId = ?';
         $resultset->execute();
         if($resultset->rowCount() != 0){
 
-            if($value == 1){
+            if($value){
                 $like = 1;
             } else {
-                $like = 0;
+                $like = -1;
             }
 
             $query = "SELECT isLike FROM HASLIKED WHERE postId = '$postId' AND userId = '$userId'";
             $resultset = $db->prepare($query);
             $resultset->execute();
             $row = $resultset->fetch(PDO::FETCH_ASSOC);
-            if($row['isLike'] != $like){
-                $query = "UPDATE HASLIKED SET isLike = $like WHERE postId = '$postId' AND userId = '$userId'";
+            if($row['isLike'] != $value){
+                $query = "UPDATE HASLIKED SET isLike = $value WHERE postId = '$postId' AND userId = '$userId'";
                 $resultset = $db->prepare($query);
                 $resultset->execute();
-                $value = $value * 2;
-                $query = "UPDATE POST SET score = score + '$value' WHERE postId = '$postId'";
+                $like = $like * 2;
+                $query = "UPDATE POST SET score = score + '$like' WHERE postId = '$postId'";
                 $resultset = $db->prepare($query);
                 $resultset->execute();
             } else {
                 $query = "DELETE FROM HASLIKED WHERE postId = '$postId' AND userId = '$userId'";
                 $resultset = $db->prepare($query);
                 $resultset->execute();
-                $query = "UPDATE POST SET score = score - '$value' WHERE postId = '$postId'";
+                $query = "UPDATE POST SET score = score - '$like' WHERE postId = '$postId'";
                 $resultset = $db->prepare($query);
                 $resultset->execute();
                 header("Location: ?action=view-post&id=$postId");
@@ -158,10 +158,10 @@ where userId = ?';
             } else {
                 $like = 0;
             }
-            $query = "INSERT INTO HASLIKED VALUES ('$userId', '$postId', '$like')";
+            $query = "INSERT INTO HASLIKED VALUES ('$userId', '$postId', '$value')";
             $resultset = $db->prepare($query);
             $resultset->execute();
-            $query = "UPDATE POST SET score = score + '$value' WHERE postId = '$postId'";
+            $query = "UPDATE POST SET score = score + '$like' WHERE postId = '$postId'";
             $resultset = $db->prepare($query);
             $resultset->execute();
             header("Location: ?action=view-post&id=$postId");
