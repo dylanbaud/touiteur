@@ -61,6 +61,9 @@ class Dispatcher
             case 'follow-user':
                 $class = new AC\FollowUserAction();
                 break;
+            case 'follow-tag':
+                $class = new AC\FollowTagAction();
+                break;
             case 'delete-post':
                 $class = new AC\DeletePostAction();
                 break;

@@ -88,4 +88,21 @@ class Tag
 
         return new PostList($postList);
     }
+
+    public static function follow(int $userId, int $idTag){
+        $db = ConnectionFactory::makeConnection();
+        $query = "SELECT idTag FROM LIKEDTAG WHERE userId = '$userId' AND idTag = '$idTag'";
+        $resultset = $db->prepare($query);
+        $resultset->execute();
+        if($resultset->rowCount() === 1){
+            $query = "DELETE FROM LIKEDTAG WHERE userId = '$userId' AND idTag = '$idTag'";
+            $resultset = $db->prepare($query);
+            $resultset->execute();
+        }
+        else {
+            $query = "INSERT INTO LIKEDTAG VALUES ('$userId', '$idTag')";
+            $resultset = $db->prepare($query);
+            $resultset->execute();
+        }
+    }
 }

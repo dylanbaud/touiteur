@@ -3,7 +3,7 @@
 
 namespace iutnc\touiteur\actions;
 
-use iutnc\touiteur\render\PostListRender;
+use iutnc\touiteur\render\TagRender;
 use iutnc\touiteur\tag\Tag;
 
 
@@ -17,8 +17,8 @@ class ViewTagAction extends Action
             $_GET['page'] = 1;
         }
 
-        $id = $_GET['tag'];
-        $render = new PostListRender(Tag::getPostListTag($id));
+        $id = $_GET['tagId'];
+        $render = new TagRender(Tag::getTag($id));
         return $render->render();
     }
 }

@@ -37,7 +37,7 @@ class PostRender
                     $resultset->execute();
                     $row = $resultset->fetch(PDO::FETCH_ASSOC);
                     if($row['libelle'] == $temp){
-                        $outPut .= '<a href="?action=view-tag&tag='.$tag.'">'.$word.'</a> ';
+                        $outPut .= '<a href="?action=view-tag&tagId='.$tag.'">'.$word.'</a> ';
                     }
                 }
             } else {
