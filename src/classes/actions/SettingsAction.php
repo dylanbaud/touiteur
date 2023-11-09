@@ -22,7 +22,7 @@ class SettingsAction extends Action
             <label for="profilePic" style="cursor: pointer; align-self: center;">
                 <img src="{$_SESSION['user']->profilePic}" alt="Photo de profil">
             </label>
-            <input type="file" id="profilePic" name="profilePic">
+            <input type="file" id="profilePic" name="profilePic" value="{$_SESSION['user']->profilePic}">
             
             <label for="username">Nom d'utilisateur:</label>
             <input type="text" name="username" id="username" value="{$_SESSION['user']->username}">

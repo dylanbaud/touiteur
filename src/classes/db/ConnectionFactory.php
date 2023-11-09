@@ -10,7 +10,7 @@ class ConnectionFactory
 
     public static function setConfig($file): void
     {
-        self::$config = parse_ini_file($file);
+        self::$config = parse_ini_file("conf/db.config.ini");
     }
 
     public static function makeConnection(): PDO
