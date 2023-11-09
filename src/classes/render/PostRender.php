@@ -56,17 +56,19 @@ class PostRender
         </a>
         <div class="card-content better-card-content">
             <p>'.$outPut.'</p>
-            <a href="?action=like&id='.$this->post->id.'&like=true" class="upvote-btn">
+            ';
+
+        if ($this->post->image != null){
+            $html .= '<img src='.$this->post->image.'>';
+        }
+
+        $html .='<a href="?action=like&id='.$this->post->id.'&like=true" class="upvote-btn">
                 <img src="./img/icon/up.png">
             </a>
             <p>'.$this->post->score.'</p>
             <a href="?action=like&id='.$this->post->id.'&like=false" class="downvote-btn">
                 <img src="./img/icon/down.png">
 </a>';
-
-        if ($this->post->image != null){
-            $html .= '<img src='.$this->post->image.'>';
-        }
 
         if(Auth::isLogged() && $_SESSION['user']->userId === $user->userId){
             $html .= '
