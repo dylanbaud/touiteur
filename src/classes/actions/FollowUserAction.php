@@ -16,7 +16,7 @@ class FollowUserAction extends Action
         }
         elseif (isset($_GET['id'])) {
             User::follow($_GET['id'], $_SESSION['user']->userId);
-            header("Location: ?action=view-profile&id={$_GET['id']}");
+            header("Location: ?action=view-profile&userId={$_GET['id']}");
         }
         return $html;
     }
