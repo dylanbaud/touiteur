@@ -65,7 +65,8 @@ class PostRender
         }
 
         $html .=
-            '<div class="like-btn">
+            '<hr>
+            <div class="like-btn">
                 <a href="?action=like&id='.$this->post->id.'&like=true" class="upvote-btn">
                     <img src="./img/icon/like.png">
                 </a>
@@ -73,7 +74,8 @@ class PostRender
                 <a href="?action=like&id='.$this->post->id.'&like=false" class="downvote-btn">
                     <img src="./img/icon/like.png">
                 </a>
-            </div>';
+            </div>
+            <hr>';
 
         if(Auth::isLogged() && $_SESSION['user']->userId === $user->userId){
             $html .= '
