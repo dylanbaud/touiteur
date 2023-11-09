@@ -33,6 +33,22 @@ class TagRender
         </div>
 HTML;
 
+        if ($this->tag->description != null){
+            $html .= <<<HTML
+    <div class="tag-profile">
+        <div>
+            <h2>{$this->tag->description}</h2>
+        </div>
+HTML;
+        } else {
+            $html .= <<<HTML
+    <div class="tag-profile">
+        <div>
+            <h2>Ce tag n'a pas encore de description</h2>
+        </div>
+HTML;
+        }
+
         if (isset($_SESSION['user'])) {
             $query = "SELECT * FROM LIKEDTAG WHERE idTag = {$id} AND userId = {$_SESSION["user"]->userId}";
             $resultset = $db->prepare($query);
