@@ -428,6 +428,14 @@ nav .logo:hover{
     color: #b4b0b0;
 }
 
+.tag{
+    color: var(--primary-color);
+}
+
+.tag:hover{
+    text-decoration: underline;
+}
+
 /* ### Poster ### */
 
 .poster{

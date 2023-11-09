@@ -88,7 +88,6 @@ class Dispatcher
 <div class="navbar">
     <nav>
         <a href="?action="><img src="./img/icon/home.svg">Accueil</a>
-        <a href=""><img src="./img/icon/search.svg">Rechercher</a>
         <a href="?action=sign-in"><img src="./img/icon/account.png">Compte</a>
         <a href="?action=create-post" class="post">Poster</a>
     </nav>
