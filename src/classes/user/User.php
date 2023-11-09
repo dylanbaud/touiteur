@@ -159,4 +159,18 @@ where userId = ?';
         }
         header("Location: ?action=view-post&id=$postId");
     }
+
+    public function hasLiked(int $postId): int
+    {
+        $db = ConnectionFactory::makeConnection();
+        $query = "SELECT * FROM HASLIKED WHERE postId = '$postId' AND userId = '$this->userId'";
+        $resultset = $db->prepare($query);
+        $resultset->execute();
+        $row = $resultset->fetch(PDO::FETCH_ASSOC);
+        if ($resultset->rowCount() != 0) {
+            return $row['isLike'];
+        } else {
+            return -1;
+        }
+    }
 }
