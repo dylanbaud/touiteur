@@ -45,9 +45,16 @@ HTML;
     </div>';
         }
         if (!isset($_GET['id'])) {
-            $action = 'default';
-            $query = "select count(*) from POST where 1";
-            $author = "";
+            if(!isset($_GET['tag'])){
+                $action = 'default';
+                $query = "select count(*) from POST where 1";
+                $author = "";
+            } else {
+                $action = 'view-tag';
+                $query = "select count(*) from HASTAG where idTag = {$_GET['tag']}";
+                $author = "";
+            }
+
 
         } else {
             $action = 'view-profile';
