@@ -52,14 +52,14 @@ HTML;
             } else {
                 $action = 'view-tag';
                 $query = "select count(*) from HASTAG where idTag = {$_GET['tagId']}";
-                $author = "";
+                $author = "&tagId={$_GET['tagId']}";
             }
 
 
         } else {
             $action = 'view-profile';
             $query = "select count(*) from POST where userId = {$_GET['userId']}";
-            $author = "&id={$_GET['userId']}";
+            $author = "&userId={$_GET['userId']}";
         }
 
         $db = ConnectionFactory::makeConnection();
