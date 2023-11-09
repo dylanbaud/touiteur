@@ -17,6 +17,10 @@ class CreatePostAction extends Action
         $postList = new PostListRender(PostList::getAllPosts(0));
         $html = $postList->render();
 
+        if(!Auth::isLogged()){
+            header("Location: ?action=sign-in");
+        }
+
         if ($this->http_method === 'GET' && Auth::isLogged()) {
             $html .= <<<HTML
 <div class="blur transparent-blur">
