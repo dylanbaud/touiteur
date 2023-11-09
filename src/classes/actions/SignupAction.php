@@ -18,19 +18,37 @@ class SignupAction extends Action
                 <form method="post" action="?action=sign-up">
                     <h2>Inscription</h2>
                 
-                    <input type="text" name="username" id="username" required placeholder="Pseudo">
-                    
-                    <div class="name">
-                        <input type="text" name="firstname" id="firstname" required placeholder="Prénom">
-                        
-                        <input type="text" name="lastname" id="lastname" required placeholder="Nom">
+                    <div class="inputBox">
+                        <input type="text" name="username" id="username" required>
+                        <span>Pseudo</span>
                     </div>
                     
-                    <input type="date" name="birthday" id="birthday" required placeholder="Date de naissance">
+                    <div class="name">
+                        <div class="inputBox">
+                            <input type="text" name="firstname" id="firstname" required>
+                            <span>Prénom</span>
+                        </div>
+                        
+                        <div class="inputBox">
+                            <input type="text" name="lastname" id="lastname" required>
+                            <span>Nom</span>
+                        </div>
+                    </div>
                     
-                    <input type="text" name="email" id="email" required placeholder="Email">
+                    <div class="inputBox">
+                        <input type="date" name="birthday" id="birthday" required>
+                    </div>
                     
-                    <input type="password" name="password" id="password" required placeholder="Mot de passe">
+                    <div class="inputBox">
+                        <input type="email" name="email" id="email" required>
+                        <span>Email</span>
+                    </div>
+                    
+                    <div class="inputBox">
+                        <input type="password" name="password" id="password" required>
+                        <span>Mot de passe</span>
+                    </div>
+                    
                     <input type="submit" value="S'inscrire" class="submit">
                     <p>Déjà inscrit ? <a href="?action=sign-in">Connectez-vous</a></p>
                 </form>
