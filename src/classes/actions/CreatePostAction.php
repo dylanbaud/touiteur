@@ -109,6 +109,7 @@ HTML;
                     $resultset->bindParam(2, $idTag);
                     $resultset->execute();
             }
+            header("Location: ?action=");
         }
         return $html;
     }
