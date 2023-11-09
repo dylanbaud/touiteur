@@ -82,10 +82,10 @@ where userId = ?';
         $db = ConnectionFactory::makeConnection();
         $query = "select * from POST where userId = ? order by postDate desc limit 10 offset ?";
         $resultset = $db->prepare($query);
-        if(!isset($_GET['page']) || $_GET['page'] < 1){
+        if (!isset($_GET['page']) || $_GET['page'] < 1) {
             $_GET['page'] = 0;
         } else {
-            $offset= ($_GET['page'] - 1) * 10;
+            $offset = ($_GET['page'] - 1) * 10;
         }
         $resultset->bindParam(1, $id);
         $resultset->bindParam(2, $offset);
@@ -99,41 +99,40 @@ where userId = ?';
         return new PostList($postList);
     }
 
-    public static function follow(int $userId, int $idFollow){
+    public static function follow(int $userId, int $idFollow)
+    {
         $db = ConnectionFactory::makeConnection();
         $query = "SELECT followerId FROM SUB WHERE userId = '$userId' AND followerId = '$idFollow'";
         $resultset = $db->prepare($query);
         $resultset->execute();
-        if($resultset->rowCount() === 1){
+        if ($resultset->rowCount() === 1) {
             $query = "DELETE FROM SUB WHERE userId = '$userId' AND followerId = '$idFollow'";
             $resultset = $db->prepare($query);
             $resultset->execute();
-        }
-        else {
+        } else {
             $query = "INSERT INTO SUB VALUES ('$userId', '$idFollow')";
             $resultset = $db->prepare($query);
             $resultset->execute();
         }
     }
 
-    public static function like(int $userId, int $postId, int $value){
+    public static function like(int $userId, int $postId, int $value)
+    {
         $db = ConnectionFactory::makeConnection();
         $query = "SELECT * FROM HASLIKED WHERE postId = '$postId' AND userId = '$userId'";
         $resultset = $db->prepare($query);
         $resultset->execute();
-        if($resultset->rowCount() != 0){
+        $row = $resultset->fetch(PDO::FETCH_ASSOC);
 
-            if($value){
-                $like = 1;
-            } else {
-                $like = -1;
-            }
+        if ($value == 1) {
+            $like = 1;
+        } else {
+            $like = -1;
+        }
 
-            $query = "SELECT isLike FROM HASLIKED WHERE postId = '$postId' AND userId = '$userId'";
-            $resultset = $db->prepare($query);
-            $resultset->execute();
-            $row = $resultset->fetch(PDO::FETCH_ASSOC);
-            if($row['isLike'] != $value){
+        if ($resultset->rowCount() != 0) {
+
+            if ($row['isLike'] != $value) {
                 $query = "UPDATE HASLIKED SET isLike = $value WHERE postId = '$postId' AND userId = '$userId'";
                 $resultset = $db->prepare($query);
                 $resultset->execute();
@@ -148,23 +147,16 @@ where userId = ?';
                 $query = "UPDATE POST SET score = score - '$like' WHERE postId = '$postId'";
                 $resultset = $db->prepare($query);
                 $resultset->execute();
-                header("Location: ?action=view-post&id=$postId");
             }
 
-        }
-        else {
-            if($value == 1){
-                $like = 1;
-            } else {
-                $like = 0;
-            }
+        } else {
             $query = "INSERT INTO HASLIKED VALUES ('$userId', '$postId', '$value')";
             $resultset = $db->prepare($query);
             $resultset->execute();
             $query = "UPDATE POST SET score = score + '$like' WHERE postId = '$postId'";
             $resultset = $db->prepare($query);
             $resultset->execute();
-            header("Location: ?action=view-post&id=$postId");
         }
+        header("Location: ?action=view-post&id=$postId");
     }
 }
