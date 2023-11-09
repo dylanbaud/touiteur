@@ -51,12 +51,8 @@ HTML;
                 $_SESSION['posting'] = 1;
 
 
-                $tofind = "ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ";
-                $replac = "AAAAAAaaaaaaOOOOOOooooooEEEEeeeeCcIIIIiiiiUUUUuuuuyNn";
-                $tagtxt = strtr($_POST['text'], $tofind, $replac);
-
-                $tags = [];
-                preg_match_all('/#(\w+)/', $tagtxt, $tags);
+            $tags = [];
+            preg_match_all('/#(\w+)/', $_POST['text'], $tags);
 
                 $text = filter_var($_POST['text'], FILTER_SANITIZE_STRING);
 

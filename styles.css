@@ -339,6 +339,7 @@ nav .logo:hover{
     padding: 10px;
     gap: 20px;
     width: 100%;
+    word-break: break-word;
 }
 
 .card-content p{

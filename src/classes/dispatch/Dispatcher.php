@@ -67,6 +67,9 @@ class Dispatcher
             case 'delete-post':
                 $class = new AC\DeletePostAction();
                 break;
+            case'like';
+                $class = new AC\LikeAction();
+                break;
             default:
                 $class = new AC\DefaultAction();
                 $this->title .= ' | Accueil';
