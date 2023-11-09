@@ -48,7 +48,7 @@ HTML;
                 $row = $resultset->fetch(PDO::FETCH_ASSOC);
                 $_SESSION['user'] = User::getUser($row['userId']);
                 $id = $_SESSION['user']->userId;
-                header("Location: index.php?action=view-profile&id=$id");
+                header("Location: index.php?action=view-profile&userId=$id");
             } catch (AuthException $e) {
                 $html .= <<<HTML
                     <div class="default">
@@ -60,7 +60,7 @@ HTML;
 
         } else if (Auth::isLogged()) {
             $id = $_SESSION['user']->userId;
-            header("Location: index.php?action=view-profile&id=$id");
+            header("Location: index.php?action=view-profile&userId=$id");
         }
         return $html;
     }

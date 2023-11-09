@@ -49,7 +49,7 @@ class PostRender
 <div class="blur">
     <div class="card better-card">
         <a href="?action=" class="quit-btn"><img src="./img/icon/cancel.png"></a>
-        <a href="?action=view-profile&id='.$user->userId.'" class="card-profile better-card-profile">
+        <a href="?action=view-profile&userId='.$user->userId.'" class="card-profile better-card-profile">
             <img src='.$user->profilePic.'>
             <p>'.$user->username.'<span> - '.$user->lastName.' '.$user->firstName.'</span></p>
         </a>

@@ -15,9 +15,9 @@ class ViewProfileAction extends Action
             $_GET['page'] = 1;
         }
 
-        if (isset($_GET['id'])){
+        if (isset($_GET['userId'])){
             try {
-                $user = User::getUser($_GET['id']);
+                $user = User::getUser($_GET['userId']);
                 $userRender = new UserRender($user);
                 return $userRender->render();
             } catch (UserException $e) {

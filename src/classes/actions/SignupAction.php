@@ -80,7 +80,7 @@ HTML;
             }
         } else if (Auth::isLogged()) {
             $id = $_SESSION['user']->userId;
-            header("Location: index.php?action=view-profile&id=$id");
+            header("Location: index.php?action=view-profile&userId=$id");
         }
         return $html;
     }

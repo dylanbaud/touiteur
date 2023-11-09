@@ -11,11 +11,7 @@ class SignoutAction extends Action
     public function execute(): string
     {
         Auth::logout();
-        return <<<HTML
-            <div class="default">
-                <h2>Vous êtes déconnecté</h2>
-            </div>
-<div class="right">
-HTML;
+        header("Location: ?action=sign-in");
+        return "";
     }
 }
