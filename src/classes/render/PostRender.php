@@ -48,32 +48,48 @@ class PostRender
             }
         }
 
-        $html .= <<<HTML
-                <div class="blur">
+        $html .= '
+            <div class="blur">
                 <div class="card better-card">
-                <a href="?action=default&page={$this->page}" class="quit-btn"><img src="./img/icon/cancel.png"></a>
-                <a href="?action=view-profile&userId='.$user->userId.'" class="card-profile better-card-profile">
-                    <img src='.$user->profilePic.'>
-                    <p>'.$user->username.'<span> - '.$user->lastName.' '.$user->firstName.'</span></p>
-                </a>
-                <div class="card-content better-card-content">
-                    <p>'.$outPut.'</p>
-            HTML;
+                    <a href="?action=default&page='.$this->page.'" class="quit-btn"><img src="./img/icon/cancel.png"></a>
+                    <a href="?action=view-profile&userId='.$user->userId.'" class="card-profile better-card-profile">
+                        <img src='.$user->profilePic.'>
+                        <p>'.$user->username.'<span> - '.$user->lastName.' '.$user->firstName.'</span></p>
+                    </a>
+                    <div class="card-content better-card-content">
+                        <p>'.$outPut.'</p>';
 
         if ($this->post->image != null){
             $html .= '<img src='.$this->post->image.'>';
         }
 
+        $btn1 = '
+            <a href="?action=like&id='.$this->post->id.'&like=true" class="upvote-btn">
+                <img src="./img/icon/like-empty.png">
+            </a>';
+        $btn2 = '
+            <a href="?action=like&id='.$this->post->id.'&like=false" class="downvote-btn">
+                <img src="./img/icon/like-empty.png">
+            </a>';
+
+        if ($_SESSION['user']->hasLiked($this->post->id) == 1){
+            $btn1 = '
+            <a href="?action=like&id='.$this->post->id.'&like=true" class="upvote-btn">
+                <img src="./img/icon/like.png">
+            </a>';
+        } else if ($_SESSION['user']->hasLiked($this->post->id) == 0){
+            $btn2 = '
+            <a href="?action=like&id='.$this->post->id.'&like=false" class="downvote-btn">
+                <img src="./img/icon/like.png">
+            </a>';
+        }
+
         $html .=
             '<hr>
             <div class="like-btn">
-                <a href="?action=like&id='.$this->post->id.'&like=true" class="upvote-btn">
-                    <img src="./img/icon/like.png">
-                </a>
+                '.$btn1.'
                 <p>'.$this->post->score.'</p>
-                <a href="?action=like&id='.$this->post->id.'&like=false" class="downvote-btn">
-                    <img src="./img/icon/like.png">
-                </a>
+                '.$btn2.'
             </div>
             <hr>';
 
