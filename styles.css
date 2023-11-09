@@ -53,13 +53,14 @@ input:-webkit-autofill:active{
 }
 
 .navbar nav{
-    position: fixed;
+    position: sticky;
+    top: 0;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
     height: 100%;
-    margin-left: 3%;
+    margin-left: 25%;
 }
 
 nav a{
@@ -498,11 +499,9 @@ nav .logo:hover{
 }
 
 .right .user-profile{
-    position: fixed;
     display: flex;
     align-items: flex-start;
     flex-direction: column;
-    margin-top: 2%;
 }
 
 .right .user-profile div{
@@ -530,13 +529,11 @@ nav .logo:hover{
 }
 
 .right .user-options{
-    position: fixed;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     gap: 10px;
-    padding-top: 17%;
 }
 
 .right .user-options a{
