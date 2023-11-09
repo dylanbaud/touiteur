@@ -27,15 +27,22 @@ class PostListRender
         <div class="post-choice">
 HTML;
 
-        if ($_GET['action'] == '') {
-            $html .= <<<HTML
+        if (isset($_GET['action'])) {
+            if ($_GET['action'] == '') {
+                $html .= <<<HTML
             <a href="?action=" class="current-choice">Pour vous</a>
             <a href="?action=view-following">Abonnements</a>
 HTML;
-        } else if ($_GET['action'] == 'view-following') {
-            $html .= <<<HTML
+            } else if ($_GET['action'] == 'view-following') {
+                $html .= <<<HTML
             <a href="?action=">Pour vous</a>
             <a href="?action=view-following" class="current-choice">Abonnements</a>
+HTML;
+            }
+        } else {
+            $html .= <<<HTML
+            <a href="?action=" class="current-choice">Pour vous</a>
+            <a href="?action=view-following">Abonnements</a>
 HTML;
         }
         $html .= <<<HTML
@@ -63,7 +70,7 @@ HTML;
     </div>';
         }
         if (!isset($_GET['userId'])) {
-            if(!isset($_GET['tagId'])){
+            if (!isset($_GET['tagId'])) {
                 $action = 'default';
                 $query = "select count(*) from POST where 1";
                 $author = "";
@@ -97,8 +104,7 @@ HTML;
             HTML;
         if (!isset($_GET['page'])) {
             $page = 1;
-        }
-        else {
+        } else {
             $page = $_GET['page'];
         }
         for ($i = 1; $i <= $pageCount; $i++) {
