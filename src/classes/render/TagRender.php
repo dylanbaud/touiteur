@@ -28,24 +28,18 @@ class TagRender
 
         $html .= <<<HTML
     <div class="tag-profile">
-        <div>
-            <h2>#{$this->tag->libelle}</h2>
-        </div>
+        <h2>#{$this->tag->libelle}</h2>
 HTML;
 
         if ($this->tag->description != null){
             $html .= <<<HTML
-    <div class="tag-profile">
-        <div>
-            <h2>{$this->tag->description}</h2>
-        </div>
+        <div class="tag-infos">
+            <h3>{$this->tag->description}</h3>
 HTML;
         } else {
             $html .= <<<HTML
-    <div class="tag-profile">
-        <div>
-            <h2>Ce tag n'a pas encore de description</h2>
-        </div>
+        <div class="tag-info">
+            <h3>Ce tag n'a pas encore de description</h3>
 HTML;
         }
 
@@ -64,6 +58,12 @@ HTML;
 HTML;
             }
         }
+
+        $html .= <<<HTML
+        </div>
+    </div>
+HTML;
+
 
         return $html;
     }
