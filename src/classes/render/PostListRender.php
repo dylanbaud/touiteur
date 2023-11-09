@@ -27,6 +27,13 @@ class PostListRender
         <div class="post-choice">
 HTML;
 
+        if (!isset($_GET['page'])) {
+            $page = 1;
+        }
+        else {
+            $page = $_GET['page'];
+        }
+
         if ($_GET['action'] == '') {
             $html .= <<<HTML
             <a href="?action=" class="current-choice">Pour vous</a>
@@ -47,7 +54,7 @@ HTML;
             $user = $post->user;
             $id = $post->id;
             $html .= <<<HTML
-    <div onclick="location.href='?action=view-post&id=$id'" class="card">
+    <div onclick="location.href='?action=view-post&id=$id&page={$page}'" class="card">
         <a href="?action=view-profile&userId={$user->userId}" class="card-profile">
             <img src='$user->profilePic'>
             <p>$user->username</p>
@@ -95,12 +102,6 @@ HTML;
         $html .= <<<HTML
             <div class="pagination">
             HTML;
-        if (!isset($_GET['page'])) {
-            $page = 1;
-        }
-        else {
-            $page = $_GET['page'];
-        }
         for ($i = 1; $i <= $pageCount; $i++) {
             if ($i == $page) {
                 $html .= <<<HTML

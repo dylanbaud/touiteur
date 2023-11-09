@@ -14,9 +14,10 @@ class ViewPostAction extends Action
     public function execute(): string
     {
         $id = $_GET['id'];
+        $page = $_GET['page'] ?? 1;
         try {
             $post = Post::getPost($id);
-            $render = new PostRender($post);
+            $render = new PostRender($post, $page);
             return $render->render();
         } catch (PostException $e) {
             return "Post inexistant";

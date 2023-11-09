@@ -12,10 +12,12 @@ class PostRender
 {
 
     private Post $post;
+    private int $page;
 
-    public function __construct(Post $post)
+    public function __construct(Post $post, int $page)
     {
         $this->post = $post;
+        $this->page = $page;
     }
 
     public function render(): string
@@ -46,17 +48,17 @@ class PostRender
             }
         }
 
-        $html .= '
-<div class="blur">
-    <div class="card better-card">
-        <a href="?action=" class="quit-btn"><img src="./img/icon/cancel.png"></a>
-        <a href="?action=view-profile&userId='.$user->userId.'" class="card-profile better-card-profile">
-            <img src='.$user->profilePic.'>
-            <p>'.$user->username.'<span> - '.$user->lastName.' '.$user->firstName.'</span></p>
-        </a>
-        <div class="card-content better-card-content">
-            <p>'.$outPut.'</p>
-            ';
+        $html .= <<<HTML
+                <div class="blur">
+                <div class="card better-card">
+                <a href="?action=default&page={$this->page}" class="quit-btn"><img src="./img/icon/cancel.png"></a>
+                <a href="?action=view-profile&userId='.$user->userId.'" class="card-profile better-card-profile">
+                    <img src='.$user->profilePic.'>
+                    <p>'.$user->username.'<span> - '.$user->lastName.' '.$user->firstName.'</span></p>
+                </a>
+                <div class="card-content better-card-content">
+                    <p>'.$outPut.'</p>
+            HTML;
 
         if ($this->post->image != null){
             $html .= '<img src='.$this->post->image.'>';
