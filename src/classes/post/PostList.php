@@ -33,10 +33,13 @@ class PostList
 
         $db = ConnectionFactory::makeConnection();
 
-        $query = '';
-        if(!isset($_SESSION['user']) and $_GET['action'] == 'default') $query = "select postId as idp from POST order by postDate desc limit 10 offset $min";
-        elseif(isset($_SESSION['user'])) $query = "SELECT DISTINCT POST.postId as idp FROM POST INNER JOIN SUB ON POST.userId = SUB.userId LEFT JOIN HASTAG ON POST.postId = HASTAG.postId LEFT JOIN LIKEDTAG ON HASTAG.idTag = LIKEDTAG.idTag WHERE SUB.followerId = {$_SESSION['user']->userId} OR LIKEDTAG.userId = {$_SESSION['user']->userId} LIMIT 10 offset $min";
-        else header('Location: ?action=sign-in');
+        if(!isset($_SESSION['user']) and isset($_GET['action']) and $_GET['action'] == 'view-following') {
+            $query = '';
+            header('Location: ?action=sign-in');
+        }
+        if(!isset($_GET['action']) or !($_GET['action'] == 'view-following')) $query = "select postId as idp from POST order by postDate desc limit 10 offset $min";
+        elseif(isset($_SESSION['user']) and $_GET['action'] == 'view-following') $query = "SELECT DISTINCT POST.postId as idp FROM POST INNER JOIN SUB ON POST.userId = SUB.userId LEFT JOIN HASTAG ON POST.postId = HASTAG.postId LEFT JOIN LIKEDTAG ON HASTAG.idTag = LIKEDTAG.idTag WHERE SUB.followerId = {$_SESSION['user']->userId} OR LIKEDTAG.userId = {$_SESSION['user']->userId} LIMIT 10 offset $min";
+
         $resultset = $db->prepare($query);
         $resultset->execute();
 
