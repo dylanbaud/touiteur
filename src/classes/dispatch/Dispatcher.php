@@ -77,6 +77,7 @@ class Dispatcher
                 case 'show-followers':
                 $class = new AC\ShowFollowersAction();
                 $this->title .= ' | Abonnés';
+                $this->body .= 'style="overflow: hidden;"';
                 break;
             default:
                 $class = new AC\DefaultAction();
