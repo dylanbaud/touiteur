@@ -72,11 +72,11 @@ HTML;
 HTML;
         if ($followersNb < 2) {
             $html .= <<<HTML
-        <p>{$followersNb} follower</p>
+        <a href="?action=show-followers&userid={$this->user->userId}">{$followersNb} follower</a>
 HTML;
         } else {
             $html .= <<<HTML
-        <p>{$followersNb} followers</p>
+        <a href="?action=show-followers&userid={$this->user->userId}">{$followersNb} followers</a>
 HTML;
         }
         $html .= <<<HTML

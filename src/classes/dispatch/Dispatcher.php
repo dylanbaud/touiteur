@@ -74,6 +74,10 @@ class Dispatcher
                 $class = new AC\ViewFollowedPostsAction();
                 $this->title .= ' | Abonnements';
                 break;
+                case 'show-followers':
+                $class = new AC\ShowFollowersAction();
+                $this->title .= ' | Abonnés';
+                break;
             default:
                 $class = new AC\DefaultAction();
                 $this->title .= ' | Accueil';
