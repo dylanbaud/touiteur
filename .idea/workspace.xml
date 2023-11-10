@@ -4,26 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6283e77f-b719-4081-b4e9-097c48e0916b" name="Changes" comment="">
-<<<<<<< HEAD
-<<<<<<< HEAD
+    <list default="true" id="6283e77f-b719-4081-b4e9-097c48e0916b" name="Changes" comment="Correction like revenir sur la bonne page">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-=======
-      <change beforePath="$PROJECT_DIR$/conf/db.config.ini" beforeDir="false" afterPath="$PROJECT_DIR$/conf/db.config.ini" afterDir="false" />
-=======
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/dispatch/Dispatcher.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/dispatch/Dispatcher.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/render/PostRender.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/render/PostRender.php" afterDir="false" />
->>>>>>> 716957462556b19ae1095e6787a8e2ae69a8be73
-      <change beforePath="$PROJECT_DIR$/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles.css" afterDir="false" />
->>>>>>> fdaf46f140a5ceb858c9066e2bf53d18fc1bd24f
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
@@ -33,7 +22,7 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\xampp\php\php.exe">
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/composer" />
     </include_path>
@@ -43,16 +32,12 @@
   &quot;associatedIndex&quot;: 8
 }</component>
   <component name="ProjectId" id="2XtsWPUw7x2Ia9NmKZ1CCqPrI6L" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
@@ -64,6 +49,11 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;web-ide.project.structure&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ]
   }
 }</component>
   <component name="RecentsManager">
@@ -81,24 +71,175 @@
       <updated>1699459743841</updated>
       <workItem from="1699459746137" duration="174000" />
       <workItem from="1699459929783" duration="1210000" />
-<<<<<<< HEAD
-      <workItem from="1699464192568" duration="1552000" />
-=======
       <workItem from="1699464192568" duration="619000" />
-      <workItem from="1699480439919" duration="3018000" />
-<<<<<<< HEAD
-      <workItem from="1699513056357" duration="377000" />
->>>>>>> fdaf46f140a5ceb858c9066e2bf53d18fc1bd24f
-=======
-      <workItem from="1699513056357" duration="2395000" />
->>>>>>> 716957462556b19ae1095e6787a8e2ae69a8be73
+      <workItem from="1699480439919" duration="68000" />
+      <workItem from="1699486539374" duration="47000" />
+      <workItem from="1699486594037" duration="2498000" />
+      <workItem from="1699517730047" duration="9620000" />
+      <workItem from="1699557106890" duration="50000" />
+      <workItem from="1699600295901" duration="14978000" />
     </task>
+    <task id="LOCAL-00001" summary="Correction de la pagination">
+      <created>1699487977159</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1699487977159</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Modification du CSS">
+      <created>1699489102899</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1699489102899</updated>
+    </task>
+    <task id="LOCAL-00003" summary="poster déconnecté -&gt; sign in">
+      <created>1699518524611</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1699518524611</updated>
+    </task>
+    <task id="LOCAL-00004" summary="antispam">
+      <created>1699519946787</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1699519946787</updated>
+    </task>
+    <task id="LOCAL-00005" summary="image">
+      <created>1699520810040</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1699520810040</updated>
+    </task>
+    <task id="LOCAL-00006" summary="image">
+      <created>1699520988823</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1699520988823</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Revient sur la meme page">
+      <created>1699522948134</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1699522948134</updated>
+    </task>
+    <task id="LOCAL-00008" summary="correction">
+      <created>1699523191511</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1699523191511</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Follows">
+      <created>1699527205718</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1699527205718</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Follows">
+      <created>1699527379262</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1699527379262</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Correction de bug de session">
+      <created>1699600925759</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1699600925759</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Correction de pagination">
+      <created>1699603341183</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1699603341183</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Correction">
+      <created>1699604332908</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1699604332908</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Correction">
+      <created>1699604960311</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1699604960311</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Correction">
+      <created>1699605460562</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1699605460562</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Correction">
+      <created>1699606104138</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1699606104138</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Correction">
+      <created>1699606251152</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1699606251152</updated>
+    </task>
+    <task id="LOCAL-00018" summary="blur et fermer touite corrigé">
+      <created>1699611460382</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1699611460382</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Enlevé h1 de test">
+      <created>1699612078510</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1699612078510</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Correction like revenir sur la bonne page">
+      <created>1699615683617</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1699615683617</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Correction de la pagination" />
+    <MESSAGE value="Modification du CSS" />
+    <MESSAGE value="poster déconnecté -&gt; sign in" />
+    <MESSAGE value="antispam" />
+    <MESSAGE value="image" />
+    <MESSAGE value="Revient sur la meme page" />
+    <MESSAGE value="correction" />
+    <MESSAGE value="Follows" />
+    <MESSAGE value="Correction de bug de session" />
+    <MESSAGE value="Correction de pagination" />
+    <MESSAGE value="Correction" />
+    <MESSAGE value="blur et fermer touite corrigé" />
+    <MESSAGE value="Enlevé h1 de test" />
+    <MESSAGE value="Correction like revenir sur la bonne page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Correction like revenir sur la bonne page" />
   </component>
 </project>
