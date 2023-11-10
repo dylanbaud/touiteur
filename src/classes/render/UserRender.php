@@ -72,13 +72,23 @@ HTML;
 HTML;
         if ($followersNb < 2) {
             $html .= <<<HTML
-        <p>{$followersNb} follower</p>
+        <a href="?action=show-followers&userid={$this->user->userId}" class="followers">{$followersNb} follower</a>
 HTML;
         } else {
             $html .= <<<HTML
-        <p>{$followersNb} followers</p>
+        <a href="?action=show-followers&userid={$this->user->userId}" class="followers">{$followersNb} followers</a>
 HTML;
         }
+
+        $avgScore = User::getAvgScore($this->user->userId);
+
+        if ($this->user->userId === $_SESSION['user']->userId) {
+            $html .= <<<HTML
+            <p>Score moyen : {$avgScore}</p>
+HTML;
+        }
+
+
         $html .= <<<HTML
         <p> Né(e) le {$this->user->birthDate}</p>
         <p> A rejoint Touiteur le {$this->user->joinDate}</p>

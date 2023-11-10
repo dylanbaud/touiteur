@@ -625,6 +625,7 @@ nav .logo:hover{
     display: flex;
     align-items: flex-start;
     flex-direction: column;
+    gap: 10px;
 }
 
 .right .user-profile div{
@@ -647,16 +648,12 @@ nav .logo:hover{
     color: var(--primary-color);
 }
 
-.right .user-profile p{
-    padding: 3px 0;
-}
-
 .right .user-options{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
 }
 
 .right .user-options a{
@@ -667,6 +664,7 @@ nav .logo:hover{
     font-weight: 600;
     transition: all 0.3s ease-in-out;
     padding: 10px 20px;
+    width: 100%;
 }
 
 .right .user-options a:hover{
@@ -695,6 +693,14 @@ nav .logo:hover{
 #follow-user:hover{
     background-color: var(--primary-color);
     color: white;
+}
+
+.followers{
+    color: var(--primary-color);
+}
+
+.followers:hover{
+    text-decoration: underline;
 }
 
 /* ### Sign Settings ### */
