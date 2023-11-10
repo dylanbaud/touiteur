@@ -101,6 +101,24 @@ class PostRender
             </a>';
         }
 
+        $id = $user->userId;
+        if (isset($_SESSION['user']) and !($_SESSION['user']->userId === $id)) {
+            $db = ConnectionFactory::makeConnection();
+            $query = "SELECT * FROM SUB WHERE userId = {$id} AND followerId = {$_SESSION["user"]->userId}";
+            $resultset = $db->prepare($query);
+            $resultset->execute();
+
+            if ($resultset->rowCount() === 1) {
+                $html .= <<<HTML
+        <a href="?action=follow-user&id=$id" id="follow-user">Unfollow</a>
+HTML;
+            } else {
+                $html .= <<<HTML
+        <a href="?action=follow-user&id=$id" id="follow-user">Follow</a>
+HTML;
+            }
+        }
+
         $html .= ' 
         </div>
         <footer>
