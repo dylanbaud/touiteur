@@ -45,7 +45,7 @@ HTML;
             <a href="?action=default">Pour vous</a>
             <a href="?action=view-following" class="current-choice">Abonnements</a>
 HTML;
-        } else if ($_GET['action'] != 'view-profile') {
+        } else if ($_GET['action'] != 'view-profile' && $_GET['action'] != 'view-tag') {
             $html .= <<<HTML
             <a href="?action=default" class="current-choice">Pour vous</a>
             <a href="?action=view-following">Abonnements</a>
