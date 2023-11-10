@@ -25,14 +25,7 @@ class TagRender
 
         $db = ConnectionFactory::makeConnection();
         $id = $this->tag->idTag;
-
-        $query = "SELECT * FROM LIKEDTAG WHERE idTag = {$id} and userId = {$_SESSION["user"]->userId}";
-
-        $resultset = $db->prepare($query);
-        $resultset->execute();
-
-        $likeNb = $resultset->rowCount();
-
+        
         $html .= <<<HTML
     <div class="tag-profile">
         <h2>#{$this->tag->libelle}</h2>
@@ -54,6 +47,8 @@ HTML;
             $query = "SELECT * FROM LIKEDTAG WHERE idTag = {$id} AND userId = {$_SESSION["user"]->userId}";
             $resultset = $db->prepare($query);
             $resultset->execute();
+
+            $likeNb = $resultset->rowCount();
 
             if ($resultset->rowCount() === 1) {
                 $html .= <<<HTML
