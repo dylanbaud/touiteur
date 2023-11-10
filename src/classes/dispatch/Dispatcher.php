@@ -71,7 +71,7 @@ class Dispatcher
                 $class = new AC\LikeAction();
                 break;
             case 'view-following':
-                $class = new AC\DefaultAction();
+                $class = new AC\ViewFollowedPostAction();
                 $this->title .= ' | Abonnements';
                 break;
             case 'show-followers':
@@ -106,7 +106,7 @@ class Dispatcher
 <body ' . $this->body . '>
 <div class="navbar">
     <nav>
-        <a href="?action="><img src="./img/icon/home.svg">Accueil</a>
+        <a href="?action=default"><img src="./img/icon/home.svg">Accueil</a>
         <a href="?action=sign-in"><img src="./img/icon/account.png">Compte</a>
         <a href="?action=create-post" class="post">Poster</a>
     </nav>
