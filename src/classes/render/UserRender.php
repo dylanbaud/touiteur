@@ -96,10 +96,22 @@ HTML;
     </div>
     HTML;
 
+
+
         if (isset($_SESSION['user']) && $_SESSION['user']->userId === $this->user->userId) {
+
             $html .= <<<HTML
     <div class="user-options">
-        <a href="?action=settings">Modifier le Profil</a>
+    HTML;
+
+            if ($_SESSION['user']->role == 3){
+                $html .= <<<HTML
+        <a href="?action=view-backoffice">Back Office</a>
+HTML;
+            }
+
+            $html .= <<<HTML
+        <a href="?action=settings">Modifier le profil</a>
         <a href="?action=sign-out" class="deconnexion">Se déconnecter</a>
     </div>
 HTML;
