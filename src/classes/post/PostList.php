@@ -40,7 +40,7 @@ class PostList
         if(isset($_GET['section']) and $_GET['section'] == '2') $query = "SELECT DISTINCT POST.postId as idp FROM POST INNER JOIN SUB ON POST.userId = SUB.userId LEFT JOIN HASTAG ON POST.postId = HASTAG.postId LEFT JOIN LIKEDTAG ON HASTAG.idTag = LIKEDTAG.idTag WHERE SUB.followerId = {$_SESSION['user']->userId} OR LIKEDTAG.userId = {$_SESSION['user']->userId} LIMIT 10 offset $min";
         if(isset($_GET['section']) and $_GET['section'] == '3') return User::getPostListUser($_GET['userId']);
         elseif(!isset($_GET['action']) or !($_GET['action'] == 'view-following')) $query = "select postId as idp from POST order by postDate desc limit 10 offset $min";
-        elseif(isset($_SESSION['user']) and $_GET['action'] == 'view-following') $query = "SELECT DISTINCT POST.postId as idp FROM POST INNER JOIN SUB ON POST.userId = SUB.userId LEFT JOIN HASTAG ON POST.postId = HASTAG.postId LEFT JOIN LIKEDTAG ON HASTAG.idTag = LIKEDTAG.idTag WHERE SUB.followerId = {$_SESSION['user']->userId} OR LIKEDTAG.userId = {$_SESSION['user']->userId} ORDER BY postDate ASC LIMIT 10 offset $min";
+        elseif(isset($_SESSION['user']) and $_GET['action'] == 'view-following') $query = "SELECT DISTINCT POST.postId as idp FROM POST INNER JOIN SUB ON POST.userId = SUB.userId LEFT JOIN HASTAG ON POST.postId = HASTAG.postId LEFT JOIN LIKEDTAG ON HASTAG.idTag = LIKEDTAG.idTag WHERE SUB.followerId = {$_SESSION['user']->userId} OR LIKEDTAG.userId = {$_SESSION['user']->userId} ORDER BY postDate DESC LIMIT 10 offset $min";
 
         $resultset = $db->prepare($query);
         $resultset->execute();
