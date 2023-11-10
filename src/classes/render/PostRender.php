@@ -72,12 +72,12 @@ class PostRender
                 <img src="./img/icon/like-empty.png">
             </a>';
 
-        if ($_SESSION['user']->hasLiked($this->post->id) == 1){
+        if (isset($_SESSION['user']) && $_SESSION['user']->hasLiked($this->post->id) == 1){
             $btn1 = '
             <a href="?action=like&id='.$this->post->id.'&like=true" class="upvote-btn">
                 <img src="./img/icon/like.png">
             </a>';
-        } else if ($_SESSION['user']->hasLiked($this->post->id) == 0){
+        } else if (isset($_SESSION['user']) && $_SESSION['user']->hasLiked($this->post->id) == 0){
             $btn2 = '
             <a href="?action=like&id='.$this->post->id.'&like=false" class="downvote-btn">
                 <img src="./img/icon/like.png">

@@ -28,13 +28,16 @@ class PostList
         $postList = array();
 
         $db = ConnectionFactory::makeConnection();
-        $query = "select * from POST order by postDate desc limit 10 offset ?";
+
+        $query = '';
+        if(!isset($_GET['action']) or $_GET['action'] == 'default') $query = "select postId as idp from POST order by postDate desc limit 10 offset $min";
+        elseif(isset($_SESSION['user'])) $query = "SELECT DISTINCT POST.postId as idp FROM POST INNER JOIN SUB ON POST.userId = SUB.userId LEFT JOIN HASTAG ON POST.postId = HASTAG.postId LEFT JOIN LIKEDTAG ON HASTAG.idTag = LIKEDTAG.idTag WHERE SUB.followerId = {$_SESSION['user']->userId} OR LIKEDTAG.userId = {$_SESSION['user']->userId} LIMIT 10 offset $min";
+        else header('Location: ?action=sign-in');
         $resultset = $db->prepare($query);
-        $resultset->bindParam(1, $min);
         $resultset->execute();
 
         while ($row = $resultset->fetch(PDO::FETCH_ASSOC)) {
-            $post = Post::getPost($row['postId']);
+            $post = Post::getPost($row['idp']);
             $postList[] = $post;
         }
 
