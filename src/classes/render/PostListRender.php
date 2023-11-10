@@ -106,6 +106,7 @@ HTML;
         if(isset($_GET['action']) and $_GET['action'] == 'view-following'){
             $action = 'view-following';
             $author = "";
+            $query = "SELECT count(*) FROM POST INNER JOIN SUB ON POST.userId = SUB.userId LEFT JOIN HASTAG ON POST.postId = HASTAG.postId LEFT JOIN LIKEDTAG ON HASTAG.idTag = LIKEDTAG.idTag WHERE SUB.followerId = {$_SESSION['user']->userId} OR LIKEDTAG.userId = {$_SESSION['user']->userId}";
         }
 
         $db = ConnectionFactory::makeConnection();
