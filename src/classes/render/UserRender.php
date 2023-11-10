@@ -80,14 +80,15 @@ HTML;
 HTML;
         }
 
-        $avgScore = User::getAvgScore($this->user->userId);
+        if(isset($_SESSION['user']) && $_SESSION['user']->userId === $this->user->userId) {
+            $avgScore = User::getAvgScore($this->user->userId);
 
-        if ($this->user->userId === $_SESSION['user']->userId) {
-            $html .= <<<HTML
-            <p>Score moyen : {$avgScore}</p>
-HTML;
+            if ($this->user->userId === $_SESSION['user']->userId) {
+                $html .= <<<HTML
+                <p>Score moyen : {$avgScore}</p>
+            HTML;
+            }
         }
-
 
         $html .= <<<HTML
         <p> Né(e) le {$this->user->birthDate}</p>
