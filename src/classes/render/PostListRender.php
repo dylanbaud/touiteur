@@ -65,9 +65,8 @@ HTML;
         foreach ($postList->posts as $post) {
             $user = $post->user;
             $id = $post->id;
-            if(!$postList->isEmpty()){
                 $html .= <<<HTML
-    <div onclick="location.href='?action=view-post&id=$id&page=$page'" class="card">
+    <div onclick="location.href='?action=view-post&id=$id&page=$page&section=$post->section'" class="card">
         <a href="?action=view-profile&userId={$user->userId}" class="card-profile">
             <img src='$user->profilePic'>
             <p>$user->username</p>
@@ -78,9 +77,6 @@ HTML;
                 if ($post->image != null) {
                     $html .= "<img src='$post->image'>";
                 }
-            }else{
-                $html .= "<p>Vous ne suivez personne</p>";
-            }
 
             $html .= '</div>
     </div>';

@@ -22,7 +22,7 @@ class PostRender
 
     public function render(): string
     {
-        $postList = new PostListRender(PostList::getAllPosts(0));
+        $postList = new PostListRender(PostList::getAllPosts(($this->page-1) * 10, $this->post->section));
         $html = $postList->render();
         $user = $this->post->user;
         $tags = $this->post->tags;
@@ -48,10 +48,12 @@ class PostRender
             }
         }
 
+        $section = ($_GET["section"]) == '1' ? 'default' : 'view-following'.'&page=' . $this->page;
+        $html .= "<h1>SECTION : {$this->post->section}</h1>";
         $html .= '
             <div class="blur">
                 <div class="card better-card">
-                    <a href="?action=default&page='.$this->page.'" class="quit-btn"><img src="./img/icon/cancel.png"></a>
+                    <a href="?action='.$section.'" class="quit-btn"><img src="./img/icon/cancel.png"></a>
                     <a href="?action=view-profile&userId='.$user->userId.'" class="card-profile better-card-profile">
                         <img src='.$user->profilePic.'>
                         <p>'.$user->username.'<span> - '.$user->lastName.' '.$user->firstName.'</span></p>

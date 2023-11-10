@@ -20,10 +20,12 @@ class Post
     protected string $postDate;
     protected User $user;
     protected ?array $tags;
+    protected int $section;
 
-    private function __construct(int $id)
+    private function __construct(int $id, int $s = 1)
     {
         $this->id = $id;
+        $this->section = $s;
     }
 
     /**
@@ -49,7 +51,7 @@ class Post
      * @throws UserException
      * @throws PostException
      */
-    public static function getPost(int $id): Post
+    public static function getPost(int $id, int $s = 1): Post
     {
         $db = ConnectionFactory::makeConnection();
         $query = "select * from POST where postId = ?";
@@ -63,7 +65,7 @@ class Post
 
         if (!$row) throw new PostException();
 
-        $post = new Post($id);
+        $post = new Post($id, $s);
         $post->postText = $row['postText'];
         $post->image = $row['image'];
         $post->score = $row['score'];
@@ -83,4 +85,6 @@ class Post
         return $post;
 
     }
+
+    function setSection($n){$this->section = $n;}
 }
