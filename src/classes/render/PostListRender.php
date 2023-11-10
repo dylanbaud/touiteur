@@ -99,7 +99,7 @@ HTML;
             $author = "&userId={$_GET['userId']}";
         }
 
-        if($_GET['action'] == 'view-following'){
+        if(isset($_GET['action']) and $_GET['action'] == 'view-following'){
             $action = 'view-following';
             $author = "";
         }
