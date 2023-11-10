@@ -48,7 +48,17 @@ class PostRender
             }
         }
 
-        $section = ($_GET["section"]) == '1' ? 'default' : 'view-following'.'&page=' . $this->page;
+        switch ($_GET['section']){
+            case '1':
+                $section = 'default';
+                break;
+            case '2':
+                $section = 'view-following';
+                break;
+            case '3':
+                $section = "view-profile&userId={$user->userId}";
+                break;
+        }
         $html .= '
             <div class="blur">
                 <div class="card better-card">
@@ -64,23 +74,28 @@ class PostRender
             $html .= '<img src='.$this->post->image.'>';
         }
 
+        if(!isset($_GET['section'])) $section = 1;
+        else $section = $_GET['section'];
+        if(!isset($_GET['userId'])) $userId = '';
+        else $userId = $_GET['userId'];
+
         $btn1 = '
-            <a href="?action=like&id='.$this->post->id.'&like=true" class="upvote-btn">
+            <a href="?action=like&id='.$this->post->id.'&like=true&section='.$section.'&userId='.$userId.'" class="upvote-btn">
                 <img src="./img/icon/like-empty.png">
             </a>';
         $btn2 = '
-            <a href="?action=like&id='.$this->post->id.'&like=false" class="downvote-btn">
+            <a href="?action=like&id='.$this->post->id.'&like=false&section='.$section.'&userId='.$userId.'" class="downvote-btn">
                 <img src="./img/icon/like-empty.png">
             </a>';
 
         if (isset($_SESSION['user']) && $_SESSION['user']->hasLiked($this->post->id) == 1){
             $btn1 = '
-            <a href="?action=like&id='.$this->post->id.'&like=true" class="upvote-btn">
+            <a href="?action=like&id='.$this->post->id.'&like=true&section='.$section.'&userId='.$userId.'" class="upvote-btn">
                 <img src="./img/icon/like.png">
             </a>';
         } else if (isset($_SESSION['user']) && $_SESSION['user']->hasLiked($this->post->id) == 0){
             $btn2 = '
-            <a href="?action=like&id='.$this->post->id.'&like=false" class="downvote-btn">
+            <a href="?action=like&id='.$this->post->id.'&like=false&section='.$section.'&userId='.$userId.'" class="downvote-btn">
                 <img src="./img/icon/like.png">
             </a>';
         }

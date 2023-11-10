@@ -75,7 +75,7 @@ class User
      * @throws UserException
      * @throws PostException
      */
-    public static function getPostListUser(int $id): PostList
+    public static function getPostListUser(int $id, int $s = 1): PostList
     {
         $postList = array();
 
@@ -92,7 +92,7 @@ class User
         $resultset->execute();
 
         while ($row = $resultset->fetch(PDO::FETCH_ASSOC)) {
-            $post = Post::getPost($row['postId']);
+            $post = Post::getPost($row['postId'], $s);
             $postList[] = $post;
         }
 
@@ -157,7 +157,12 @@ class User
             $resultset = $db->prepare($query);
             $resultset->execute();
         }
-        header("Location: ?action=view-post&id=$postId");
+        if(!isset($_GET['section'])) $section = 1;
+        else $section = $_GET['section'];
+        if(!isset($_GET['userId'])) $userId = '';
+        else $userId = $_GET['userId'];
+
+        header("Location: ?action=view-post&id=$postId&section={$section}&userId={$userId}");
     }
 
     public function hasLiked(int $postId): int

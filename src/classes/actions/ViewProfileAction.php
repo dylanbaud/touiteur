@@ -8,7 +8,6 @@ use iutnc\touiteur\user\User;
 
 class ViewProfileAction extends Action
 {
-
     public function execute(): string
     {
         if(!isset($_GET['page'])){
@@ -18,7 +17,7 @@ class ViewProfileAction extends Action
         if (isset($_GET['userId'])){
             try {
                 $user = User::getUser($_GET['userId']);
-                $userRender = new UserRender($user);
+                $userRender = new UserRender($user, 3);
                 return $userRender->render();
             } catch (UserException $e) {
                 return 'Problème de connexion';

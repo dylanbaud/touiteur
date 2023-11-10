@@ -11,10 +11,12 @@ class UserRender
 {
 
     private User $user;
+    protected int $section;
 
-    public function __construct(User $user)
+    public function __construct(User $user, int $s)
     {
         $this->user = $user;
+        $this->section = $s;
     }
 
     /**
@@ -24,7 +26,7 @@ class UserRender
     public function render(): string
     {
         $html = '';
-        $postList = User::getPostListUser($this->user->userId);
+        $postList = User::getPostListUser($this->user->userId, $this->section);
         $postListRender = new PostListRender($postList);
         $html .= $postListRender->render();
 

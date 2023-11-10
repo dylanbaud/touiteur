@@ -65,6 +65,18 @@ HTML;
         foreach ($postList->posts as $post) {
             $user = $post->user;
             $id = $post->id;
+            if(isset($_GET['userId'])) {
+                $html .= <<<HTML
+    <div onclick="location.href='?action=view-post&id=$id&page=$page&section=$post->section&userId=$user->userId'" class="card">
+        <a href="?action=view-profile&userId={$user->userId}" class="card-profile">
+            <img src='$user->profilePic'>
+            <p>$user->username</p>
+        </a>
+        <div class="card-content">
+            <p>$post->postText</p>
+HTML;
+            }
+            else{
                 $html .= <<<HTML
     <div onclick="location.href='?action=view-post&id=$id&page=$page&section=$post->section'" class="card">
         <a href="?action=view-profile&userId={$user->userId}" class="card-profile">
@@ -74,6 +86,7 @@ HTML;
         <div class="card-content">
             <p>$post->postText</p>
 HTML;
+            }
                 if ($post->image != null) {
                     $html .= "<img src='$post->image'>";
                 }
@@ -95,7 +108,7 @@ HTML;
 
         } else {
             $action = 'view-profile';
-            $query = "select count(*) from POST where userId = {$_GET['userId']}";
+            $query = "select count(*) from POST where userId = '{$_GET['userId']}'";
             $author = "&userId={$_GET['userId']}";
         }
 
