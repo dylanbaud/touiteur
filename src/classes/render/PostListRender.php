@@ -94,6 +94,11 @@ HTML;
             $author = "&userId={$_GET['userId']}";
         }
 
+        if($_GET['action'] == 'view-following'){
+            $action = 'view-following';
+            $author = "";
+        }
+
         $db = ConnectionFactory::makeConnection();
         $resultset = $db->prepare($query);
         $resultset->execute();
