@@ -188,10 +188,20 @@ class User
 
     public static function getAvgScore(int $userId): int {
         $db = ConnectionFactory::makeConnection();
-        $query = "SELECT AVG(score) as avg FROM POST WHERE userId = {$userId}";
+
+        $query = "SELECT * FROM POST WHERE userId = {$userId}";
         $resultset = $db->prepare($query);
         $resultset->execute();
-        $row = $resultset->fetch(PDO::FETCH_ASSOC);
+
+        if($resultset->rowCount() !== 0){
+            $query = "SELECT AVG(score) as avg FROM POST WHERE userId = {$userId}";
+            $resultset = $db->prepare($query);
+            $resultset->execute();
+            $row = $resultset->fetch(PDO::FETCH_ASSOC);
+        } else {
+            $row['avg'] = 0;
+        }
+
         return $row['avg'];
     }
 }
