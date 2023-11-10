@@ -71,7 +71,7 @@ class Dispatcher
                 $class = new AC\LikeAction();
                 break;
             case 'view-following':
-                $class = new AC\ViewFollowedPostsAction();
+                $class = new AC\DefaultAction();
                 $this->title .= ' | Abonnements';
                 break;
                 case 'show-followers':

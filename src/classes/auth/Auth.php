@@ -49,7 +49,7 @@ class Auth
         if (!$resultset) throw new AuthException();
         $user2 = $resultset->fetch(PDO::FETCH_ASSOC);
 
-        if ($user['nbemail'] == 0 && $user2['nbusername'] == 0 && strlen($passwd) >= 10) {
+        if ($user['nbemail'] == 0 && $user2['nbusername'] == 0 && strlen($passwd) >= 8) {
 
             $hash = password_hash($passwd, PASSWORD_DEFAULT, ['cost' => 12]);
 
