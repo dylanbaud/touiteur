@@ -833,6 +833,7 @@ nav .logo:hover{
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 40%;
 }
 
 .best-user,

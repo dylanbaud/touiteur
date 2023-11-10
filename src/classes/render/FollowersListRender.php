@@ -19,7 +19,7 @@ class FollowersListRender
     {
         $userId = $_GET['userid'];
         $user = User::getUser($userId);
-        $userRender = new UserRender($user);
+        $userRender = new UserRender($user, 0);
         $html = $userRender->render();
 
         $html .= <<<HTML

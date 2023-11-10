@@ -20,7 +20,7 @@ class BestUserListRender
         $html = "";
 
         $db = ConnectionFactory::makeConnection();
-        $query = "SELECT *, COUNT(SUB.userId) AS sub_count
+        $query = "SELECT USER.userId, USER.profilePic, USER.username, COUNT(SUB.userId) AS sub_count
 FROM USER
 LEFT JOIN SUB ON USER.userId = SUB.userId
 GROUP BY USER.userId
