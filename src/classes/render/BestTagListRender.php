@@ -14,7 +14,6 @@ use PDO;
 class BestTagListRender
 {
 
-
     public function render(): string
     {
         $html = "";
@@ -35,13 +34,40 @@ ORDER BY COUNT(HASTAG.idtag) DESC";
 
         if (!$row) throw new TagException();
 
+        $html .= <<<HTML
+    <div class="best">
+        <div class="best-tag">
+            <div class="card">
+                <a href="?action=" class="card-profile">
+                    <p>#{$row['libelle']}</p>
+                </a>
+                <div class="card-content">
+                    <p>Mention(s) : {$row['tag_count']}</p>
+                </div>
+            </div>
+HTML;
+
         while ($row = $resultset->fetch(PDO::FETCH_ASSOC)) {
 
-            $html .= $row['libelle'] . $row['tag_count'];
-
+            $html .= <<<HTML
+            <div class="card">
+                <a href="?action=" class="card-profile">
+                    <p>#{$row['libelle']}</p>
+                </a>
+                <div class="card-content">
+                    <p>Mention(s) : {$row['tag_count']}</p>
+                </div>
+            </div>
+HTML;
         }
+
+        $html .= <<<HTML
+        </div>
+        </div>
+<div class="right"></div>
+HTML;
 
         return $html;
 
-        }
+    }
 }

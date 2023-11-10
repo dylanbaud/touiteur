@@ -657,6 +657,7 @@ nav .logo:hover{
 }
 
 .right .user-options a{
+    text-align: center;
     color: var(--primary-color);
     border: var(--primary-color) 2px solid;
     border-radius: 25px;
@@ -797,4 +798,69 @@ nav .logo:hover{
 .tag-profile a:hover{
     background-color: var(--primary-color);
     color: white;
+}
+
+/* ### Back Office ### */
+
+.back-office{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.back-office a{
+    text-align: center;
+    color: var(--primary-color);
+    border: var(--primary-color) 2px solid;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    transition: all 0.3s ease-in-out;
+    padding: 10px 20px;
+    width: 100%;
+}
+
+.back-office a:hover{
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* ### Best User / Tag ### */
+
+.best{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.best-user,
+.best-tag{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    flex-wrap: wrap;
+}
+
+.best-user .card,
+.best-tag .card{
+    width: auto;
+    height: auto;
+}
+
+.best-tag .card-profile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    padding: 10px;
+}
+
+.best-user .card:hover,
+.best-tag .card:hover{
+    background-color: var(--dark-color);
+    cursor: default;
 }
