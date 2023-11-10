@@ -83,6 +83,10 @@ class Dispatcher
                 $class = new AC\ViewBackOfficeAction();
                 $this->title .= ' | BackOffice';
                 break;
+            case 'view-besttag':
+                $class = new AC\ViewBestTagAction();
+                $this->title .= ' | BestTag';
+                break;
             default:
                 $class = new AC\DefaultAction();
                 $this->title .= ' | Accueil';
