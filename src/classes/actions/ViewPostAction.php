@@ -10,6 +10,7 @@ use iutnc\touiteur\render\PostRender;
 
 class ViewPostAction extends Action
 {
+    protected int $section;
 
     public function execute(): string
     {

@@ -15,7 +15,7 @@ class ViewFollowedPostAction
             $min = 0;
         }
         $_SESSION['posting'] = 0;
-        $postList = PostList::getAllPosts($min);
+        $postList = PostList::getAllPosts($min, 2);
         $postListRender = new PostListRender($postList);
         return $postListRender->render();
     }
