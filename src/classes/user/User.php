@@ -174,9 +174,9 @@ class User
         }
     }
 
-    public static function getFollowedPosts($userId): array{
+    public static function getFollowedPosts(int $userId): array{
         $db = ConnectionFactory::makeConnection();
-        $query = "SELECT DISTINCT POST.postId as idp FROM POST INNER JOIN SUB ON POST.userId = SUB.userId LEFT JOIN HASTAG ON POST.postId = HASTAG.postId LEFT JOIN LIKEDTAG ON HASTAG.idTag = LIKEDTAG.idTag WHERE SUB.followerId = {$userId} OR LIKEDTAG.userId = {$userId}";
+        $query = "SELECT DISTINCT POST.postId as idp FROM POST INNER JOIN SUB ON POST.userId = SUB.userId LEFT JOIN HASTAG ON POST.postId = HASTAG.postId LEFT JOIN LIKEDTAG ON HASTAG.idTag = LIKEDTAG.idTag WHERE SUB.followerId = {$userId} OR LIKEDTAG.userId = {$userId} limit 10";
         $resultset = $db->prepare($query);
         $resultset->execute();
         while ($row = $resultset->fetch(PDO::FETCH_ASSOC)) {
@@ -184,5 +184,14 @@ class User
             $postList[] = $post;
         }
         return $postList;
+    }
+
+    public static function getAvgScore(int $userId): int {
+        $db = ConnectionFactory::makeConnection();
+        $query = "SELECT AVG(score) as avg FROM POST WHERE userId = {$userId}";
+        $resultset = $db->prepare($query);
+        $resultset->execute();
+        $row = $resultset->fetch(PDO::FETCH_ASSOC);
+        return $row['avg'];
     }
 }
