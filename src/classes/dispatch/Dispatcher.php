@@ -72,6 +72,7 @@ class Dispatcher
                 break;
             case 'view-following':
                 $class = new AC\ViewFollowedPostsAction();
+                $this->title .= ' | Abonnements';
                 break;
             default:
                 $class = new AC\DefaultAction();

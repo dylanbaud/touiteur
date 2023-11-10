@@ -51,6 +51,11 @@ HTML;
             <a href="?action=view-following">Abonnements</a>
 HTML;
             }
+        } else {
+            $html .= <<<HTML
+            <a href="?action=" class="current-choice">Pour vous</a>
+            <a href="?action=view-following">Abonnements</a>
+HTML;
         }
         $html .= <<<HTML
         </div>
