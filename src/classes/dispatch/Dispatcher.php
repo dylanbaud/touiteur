@@ -74,10 +74,14 @@ class Dispatcher
                 $class = new AC\ViewFollowedPostsAction();
                 $this->title .= ' | Abonnements';
                 break;
-                case 'show-followers':
+            case 'show-followers':
                 $class = new AC\ShowFollowersAction();
                 $this->title .= ' | Abonnés';
                 $this->body .= 'style="overflow: hidden;"';
+                break;
+            case 'view-backoffice':
+                $class = new AC\ViewBackOfficeAction();
+                $this->title .= ' | BackOffice';
                 break;
             default:
                 $class = new AC\DefaultAction();
