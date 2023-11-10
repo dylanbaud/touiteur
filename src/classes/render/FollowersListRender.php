@@ -3,13 +3,30 @@
 namespace iutnc\touiteur\render;
 
 use iutnc\touiteur\db\ConnectionFactory;
+use iutnc\touiteur\exception\PostException;
+use iutnc\touiteur\exception\UserException;
+use iutnc\touiteur\user\User;
+
 
 class FollowersListRender
 {
+
+    /**
+     * @throws UserException
+     * @throws PostException
+     */
     public function render(): string
     {
-        $html = <<<HTML
-        <div class="follower-list">
+        $userId = $_GET['userid'];
+        $user = User::getUser($userId);
+        $userRender = new UserRender($user);
+        $html = $userRender->render();
+
+        $html .= <<<HTML
+        <div class="blur">
+            <div class="card better-card">
+                <a href="?action=view-profile&userId={$userId}" class="quit-btn"><img src="./img/icon/cancel.png"></a>
+                <h2>Followers de {$user->username}</h2>
         HTML;
 
         $db = ConnectionFactory::makeConnection();
@@ -25,12 +42,11 @@ class FollowersListRender
                 $resultset->execute();
                 $row = $resultset->fetch();
                 $html .= <<<HTML
-            <div class="follower">
-            <a href="?action=view-profile&userId={$row['userId']}">
-                <img src="{$row['profilePic']}" alt="Profile picture">
-                <h2>{$row['username']}</h2>
-            </a>
-            </div>
+                <a href="?action=view-profile&userId={$row['userId']}" class="card-profile better-card-profile">
+                    <img src="{$row['profilePic']}" alt="Profile picture">
+                    <p>{$row['username']}</p>
+                </a>
+                <hr>
             HTML;
             }
         } else {
@@ -40,6 +56,7 @@ HTML;
 
         }
         $html .= <<<HTML
+        </div>
         </div>
         HTML;
 
