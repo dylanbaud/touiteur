@@ -5,6 +5,7 @@ namespace iutnc\touiteur\actions;
 use iutnc\touiteur\auth\Auth;
 use iutnc\touiteur\db\ConnectionFactory;
 use iutnc\touiteur\user\User;
+use PDO;
 
 class SettingsAction extends Action
 {
@@ -75,6 +76,14 @@ HTML;
                 $username = $_SESSION['user']->username;
             } else {
                 $username = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
+                $query = 'select count(*) from USER where username = ?';
+                $resultset = $db->prepare($query);
+                $resultset->bindParam(1, $username);
+                $resultset->execute();
+                $row = $resultset->fetch(PDO::FETCH_ASSOC);
+                if ($row['count(*)'] != 0) {
+                    $username = $_SESSION['user']->username;
+                }
             }
 
             if (!isset($_POST['firstname'])) {
