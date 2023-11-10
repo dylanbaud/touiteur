@@ -14,10 +14,10 @@ class ViewBackOfficeAction extends Action
             $html = '';
             if ($_SESSION['user']->role == 3) {
                 $html .= <<<HTML
-                <form method="post" action="?action=view-backoffice">
-                    <a href="?action=view-bestuser">Accéder aux utilisateurs les plus influents</a></p>
-                    <a href="?action=view-besttag">Accéder aux tags les plus mentionnés</a></p>
-                </form>
+                <div class="back-office">
+                    <a href="?action=view-bestuser">Accéder aux utilisateurs les plus influents</a>
+                    <a href="?action=view-besttag">Accéder aux tags les plus mentionnés</a>
+                </div>
             </div>
 <div class="right"></div>
 HTML;

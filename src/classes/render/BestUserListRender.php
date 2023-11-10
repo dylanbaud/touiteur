@@ -35,11 +35,41 @@ ORDER BY COUNT(SUB.userId) DESC limit 10";
 
         if (!$row) throw new UserException();
 
+        $html .= <<<HTML
+    <div class="best">
+        <div class="best-user">
+            <div class="card">
+                <a href="?action=view-profile&userId={$row['userId']}" class="card-profile">
+                    <img src='{$row['profilePic']}'>
+                    <p>{$row['username']}</p>
+                </a>
+                <div class="card-content">
+                    <p>Follower(s) : {$row['sub_count']}</p>
+                </div>
+            </div>
+HTML;
+
         while ($row = $resultset->fetch(PDO::FETCH_ASSOC)) {
 
-            $html .= $row['username'] . $row['profilePic'] . $row['sub_count'];
+            $html .= <<<HTML
+            <div class="card">
+                <a href="?action=view-profile&userId={$row['userId']}" class="card-profile">
+                    <img src='{$row['profilePic']}'>
+                    <p>{$row['username']}</p>
+                </a>
+                <div class="card-content">
+                    <p>Follower(s) : {$row['sub_count']}</p>
+                </div>
+            </div>
+HTML;
 
         }
+
+        $html .= <<<HTML
+        </div>
+        </div>
+<div class="right"></div>
+HTML;
 
         return $html;
 
