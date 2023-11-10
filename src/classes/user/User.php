@@ -173,16 +173,4 @@ class User
             return -1;
         }
     }
-
-    public static function getFollowedPosts($userId): array{
-        $db = ConnectionFactory::makeConnection();
-        $query = "SELECT DISTINCT POST.postId as idp FROM POST INNER JOIN SUB ON POST.userId = SUB.userId LEFT JOIN HASTAG ON POST.postId = HASTAG.postId LEFT JOIN LIKEDTAG ON HASTAG.idTag = LIKEDTAG.idTag WHERE SUB.followerId = {$userId} OR LIKEDTAG.userId = {$userId}";
-        $resultset = $db->prepare($query);
-        $resultset->execute();
-        while ($row = $resultset->fetch(PDO::FETCH_ASSOC)) {
-            $post = Post::getPost($row['idp']);
-            $postList[] = $post;
-        }
-        return $postList;
-    }
 }

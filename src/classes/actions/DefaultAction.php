@@ -13,7 +13,6 @@ use iutnc\touiteur\tag\TagList;
 
 class DefaultAction extends Action
 {
-
     public function execute(): string
     {
         if(isset($_GET['page'])){
