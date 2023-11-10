@@ -49,7 +49,6 @@ class PostRender
         }
 
         $section = ($_GET["section"]) == '1' ? 'default' : 'view-following'.'&page=' . $this->page;
-        $html .= "<h1>SECTION : {$this->post->section}</h1>";
         $html .= '
             <div class="blur">
                 <div class="card better-card">
