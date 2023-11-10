@@ -87,6 +87,10 @@ class Dispatcher
                 $class = new AC\ViewBestTagAction();
                 $this->title .= ' | BestTag';
                 break;
+            case 'view-bestuser':
+                $class = new AC\ViewBestUserAction();
+                $this->title .= ' | BestUser';
+                break;
             default:
                 $class = new AC\DefaultAction();
                 $this->title .= ' | Accueil';
