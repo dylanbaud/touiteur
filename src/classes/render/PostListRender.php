@@ -65,7 +65,8 @@ HTML;
         foreach ($postList->posts as $post) {
             $user = $post->user;
             $id = $post->id;
-            $html .= <<<HTML
+            if(!$postList->isEmpty()){
+                $html .= <<<HTML
     <div onclick="location.href='?action=view-post&id=$id&page=$page'" class="card">
         <a href="?action=view-profile&userId={$user->userId}" class="card-profile">
             <img src='$user->profilePic'>
@@ -74,8 +75,11 @@ HTML;
         <div class="card-content">
             <p>$post->postText</p>
 HTML;
-            if ($post->image != null) {
-                $html .= "<img src='$post->image'>";
+                if ($post->image != null) {
+                    $html .= "<img src='$post->image'>";
+                }
+            }else{
+                $html .= "<p>Vous ne suivez personne</p>";
             }
 
             $html .= '</div>
@@ -109,12 +113,6 @@ HTML;
         $resultset->execute();
         $count = $resultset->fetchColumn();
         $pageCount = ceil($count / 10);
-
-        unset($resultset);
-        unset($db);
-        unset($query);
-        unset($count);
-        unset($postList);
 
         $html .= <<<HTML
             <div class="pagination">

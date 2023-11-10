@@ -19,6 +19,10 @@ class PostList
         $this->posts = $posts;
     }
 
+    public function isEmpty(): bool{
+        return count($this->posts) === 0;
+    }
+
     /**
      * @throws UserException
      * @throws PostException
@@ -30,7 +34,7 @@ class PostList
         $db = ConnectionFactory::makeConnection();
 
         $query = '';
-        if(!isset($_GET['action']) or $_GET['action'] == 'default') $query = "select postId as idp from POST order by postDate desc limit 10 offset $min";
+        if(!isset($_SESSION['user']) or !isset($_GET['action']) or $_GET['action'] == 'default') $query = "select postId as idp from POST order by postDate desc limit 10 offset $min";
         elseif(isset($_SESSION['user'])) $query = "SELECT DISTINCT POST.postId as idp FROM POST INNER JOIN SUB ON POST.userId = SUB.userId LEFT JOIN HASTAG ON POST.postId = HASTAG.postId LEFT JOIN LIKEDTAG ON HASTAG.idTag = LIKEDTAG.idTag WHERE SUB.followerId = {$_SESSION['user']->userId} OR LIKEDTAG.userId = {$_SESSION['user']->userId} LIMIT 10 offset $min";
         else header('Location: ?action=sign-in');
         $resultset = $db->prepare($query);
